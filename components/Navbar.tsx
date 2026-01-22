@@ -15,8 +15,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full">
-      <nav className="mx-auto flex w-full items-center justify-between px-2 py-4">
+    <header className="w-full">
+      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-2 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0">
           <Image
@@ -44,7 +44,7 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop CTA (XL+) */}
-        <div className="hidden xl:flex items-center gap-2 flex-shrink-0">
+        <div className="hidden xl:flex items-center gap-[2px] flex-shrink-0">
           <a
             href="#contact"
             className="
@@ -68,7 +68,7 @@ export default function Navbar() {
             aria-label="Go to contact"
             className="inline-flex h-[48px] xl:h-[56px] w-[48px] xl:w-[56px] items-center justify-center rounded-xl bg-[#1F4941] transition hover:opacity-90"
           >
-            <Image src="/img/arrow-right.svg" alt="" width={20} height={20} />
+            <Image src="/img/arrow-right.svg" alt="" width={40} height={40} />
           </a>
         </div>
 
@@ -117,7 +117,12 @@ export default function Navbar() {
                 aria-label="Go to contact"
                 className="inline-flex h-[48px] w-[48px] items-center justify-center rounded-xl bg-[#1F4941] transition hover:opacity-90"
               >
-                <Image src="/img/arrow-right.svg" alt="" width={18} height={18} />
+                <Image
+                  src="/img/arrow-right.svg"
+                  alt=""
+                  width={18}
+                  height={18}
+                />
               </a>
             </div>
           </ul>

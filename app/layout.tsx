@@ -27,19 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`
-          ${geistSans.variable}
-          ${geistMono.variable}
-          font-sf antialiased
-          min-h-screen
-          bg-black
-          text-white
-          antialiased
-        `}
-      >
-        <Navbar />
-        {children}
+      <body className="bg-[#F3F3F3]">
+        {/* Offset agar hero tidak tertutup navbar */}
+        <main className=" ">{children}</main>
       </body>
     </html>
   );
