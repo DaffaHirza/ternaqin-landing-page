@@ -3,8 +3,16 @@ import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <section className="hero-section">
-      <Hero />
-    </section>
+    <>
+      {/* ================= HERO PINNED ================= */}
+      <section className="hero-section">
+        <Hero/>
+      </section>
+
+      {/* NEXT SECTION */}
+      <section className="h-screen bg-neutral-900 text-white flex items-center justify-center">
+        Features Section
+      </section>
+    </>
   );
 }
