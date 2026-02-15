@@ -68,7 +68,7 @@ export default function Navbar() {
             aria-label="Go to contact"
             className="inline-flex h-[48px] xl:h-[56px] w-[48px] xl:w-[56px] items-center justify-center rounded-xl bg-[#1F4941] transition hover:opacity-90"
           >
-            <Image src="/img/arrow-right.svg" alt="" width={40} height={40} />
+            <Image src="/img/arrow-right-white.svg" alt="" width={40} height={40} />
           </a>
         </div>
 

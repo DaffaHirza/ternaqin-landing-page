@@ -155,7 +155,13 @@ export default function HeroContent() {
                   </button>
 
                   <button className="w-[52px] sm:w-[60px] h-[52px] sm:h-[60px] rounded-[12px] bg-white flex items-center justify-center text-[#1F4941] text-[22px] sm:text-[32px] shadow-md hover:scale-105 transition">
-                    ↗
+                    <Image
+                      src="/img/arrow-right.svg"
+                      alt="arrow-right"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
                   </button>
                 </div>
               </section>
