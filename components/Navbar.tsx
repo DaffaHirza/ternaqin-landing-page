@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full">
-      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-2 py-4">
+      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-4 py-6">
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0">
           <Image

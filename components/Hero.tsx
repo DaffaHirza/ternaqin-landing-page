@@ -4,11 +4,12 @@ import Image from "next/image";
 import PinnedScene from "@/components/PinnedScene";
 import Navbar from "@/components/Navbar";
 import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 export default function HeroContent() {
   return (
     <PinnedScene
-      frame={16}
+      frame={8}
       background={
         <>
           {/* Background Image */}
@@ -26,8 +27,8 @@ export default function HeroContent() {
               background: `
       linear-gradient(
         to bottom,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.35) 40%,
+        rgba(0,0,0,0.75) 0%,
+        rgba(0,0,0,0.55) 40%,
         rgba(0,0,0,0.55) 75%,
         rgba(0,0,0,0.7) 100%
       )
@@ -53,9 +54,9 @@ export default function HeroContent() {
           <Navbar />
         </div>
 
-        <div className="relative z-20 h-full max-w-[1800px] mx-auto px-6 lg:px-16">
+        <div className="relative z-20 h-full w-full mx-auto px-4">
           {/* HERO TITLE */}
-          <section className="absolute top-24 lg:top-28 left-6 lg:left-16 max-w-[1100px]">
+          <section className="pt-32 lg:pt-40 ">
             <h1 className="font-medium leading-[1.05] tracking-tight text-[clamp(38px,6vw,120px)]">
               Elevate Livestock Quality
               <br />
@@ -75,60 +76,129 @@ export default function HeroContent() {
           </section>
 
           {/* FLOAT CARD (HILANG DI MOBILE) */}
-          <section className="hidden lg:block absolute top-[120px] lg:top-32 right-6 lg:right-16 w-[240px] sm:w-[300px] lg:w-[320px]">
-            <div className="w-full rounded-2xl border border-white bg-white/10 p-4 backdrop-blur-md shadow-xl">
-              <div className="overflow-hidden rounded-[22px]">
-                <Image
-                  src="/img/hero-quality.png"
-                  alt="Premium Quality Cattle"
-                  width={320}
-                  height={200}
-                  className="h-[180px] sm:h-[200px] w-full object-cover"
-                />
-              </div>
+          <section className="hidden lg:block absolute top-[120px] right-4 w-[352px]">
+            <div className="relative rounded-[28px] border border-white bg-white/10 backdrop-blur-xl shadow-2xl overflow-hidden">
+              {/* Background Gradient Statis */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/5 to-transparent pointer-events-none" />
 
-              <h3 className="mt-4 text-[18px] sm:text-[22px] font-medium leading-[150%]">
-                Premium Quality Cattle —
-                <br />
-                Limited Stock Available
-              </h3>
+              <div className="relative p-5">
+                {/* Image */}
+                <div className="overflow-hidden rounded-[22px]">
+                  <Image
+                    src="/img/hero-quality.png"
+                    alt="Premium Quality Cattle"
+                    width={400}
+                    height={250}
+                    className="w-full h-[220px] object-cover"
+                  />
+                </div>
+
+                {/* Title */}
+                <h3 className="mt-5 text-[26px] font-medium leading-[140%] text-white">
+                  Premium Quality Cattle —
+                  <br />
+                  Limited Stock Available
+                </h3>
+
+                {/* Info Bottom */}
+                <div className="mt-5 flex items-center gap-6 text-white/90 text-[15px]">
+                  <div className="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 
+            9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 
+            2.5S13.38 11.5 12 11.5z"
+                      />
+                    </svg>
+                    <span>Semarang</span>
+                  </div>
+
+                  <div className="w-[6px] h-[6px] bg-white/60 rounded-full" />
+
+                  <div className="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        d="M4 18v-2c0-1.1.9-2 2-2h3v4H4zm0-6V8c0-1.1.9-2 2-2h3v6H4zm11 
+            6v-4h3c1.1 0 2 .9 2 2v2h-5zm0-12h3c1.1 0 2 .9 2 2v4h-5V6zM10 
+            4h4v16h-4z"
+                      />
+                    </svg>
+                    <span>10 Animals in Stock</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* CTA + STATS Wrapper */}
-          <div className="absolute bottom-24 left-0 w-full px-6 lg:px-16 flex items-end justify-between">
-            {/* CTA */}
-            <section className="max-w-[640px]">
-              <p className="text-[clamp(16px,2.2vw,28px)] max-w-[680px]">
-                Join our live product demo to see the platform in action and
-                explore all its features
-              </p>
+          <div className="absolute bottom-16 left-0 w-full px-4 text-white">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+              {/* CTA */}
+              <section className="max-w-[640px]">
+                <p className="text-[18px] sm:text-[20px] lg:text-[24px] leading-[140%] text-white/90">
+                  Join our live product demo to see the platform in action and
+                  explore all its features
+                </p>
 
-              <div className="mt-6">
-                <button className="px-[36px] sm:px-[48px] py-[14px] sm:py-[16px] rounded-[12px] bg-white text-[#1F4941] text-[16px] sm:text-[20px] xl:text-[24px] font-medium hover:scale-105 transition">
-                  Book Now
-                </button>
-              </div>
-            </section>
+                <div className="mt-6 flex items-center gap-1">
+                  <button className="px-6 sm:px-15 h-[52px] sm:h-[60px] rounded-[12px] bg-white text-[#1F4941] text-[15px] sm:text-[22px] font-medium shadow-md hover:scale-105 transition">
+                    Book Now
+                  </button>
 
-            {/* STATS */}
-            <div className="flex gap-10 sm:gap-16 lg:gap-24 text-center">
-              <div>
-                <p className="text-[clamp(32px,5vw,68px)] font-medium leading-none">
-                  91M+
-                </p>
-                <p className="text-[14px] sm:text-[18px] lg:text-[24px] text-white/70">
-                  Manage Livestock
-                </p>
-              </div>
+                  <button className="w-[52px] sm:w-[60px] h-[52px] sm:h-[60px] rounded-[12px] bg-white flex items-center justify-center text-[#1F4941] text-[22px] sm:text-[32px] shadow-md hover:scale-105 transition">
+                    ↗
+                  </button>
+                </div>
+              </section>
 
-              <div>
-                <p className="text-[clamp(32px,5vw,68px)] font-medium leading-none">
-                  87K+
-                </p>
-                <p className="text-[14px] sm:text-[18px] lg:text-[24px] text-white/70">
-                  Cooperative Farms
-                </p>
+              {/* STATS */}
+              <div className="flex flex-col sm:flex-row gap-10 sm:gap-14">
+                {/* Stat 1 */}
+                <div className="flex items-center gap-4 sm:gap-6">
+                  <p className="text-[40px] sm:text-[56px] lg:text-[72px] font-medium leading-none">
+                    <AnimatedCounter end={91} suffix="M" />
+                    <span className="text-[18px] sm:text-[24px] lg:text-[32px] align-top">
+                      +
+                    </span>
+                  </p>
+
+                  <div className="border-l border-white/25 pl-4 sm:pl-6">
+                    <p className="text-[16px] sm:text-[20px] lg:text-[24px] font-medium whitespace-nowrap">
+                      Manage Livestock
+                    </p>
+                    <p className="text-white/70 text-[14px] sm:text-[16px] lg:text-[18px] mt-1 whitespace-nowrap">
+                      Empowering livestock at scale
+                    </p>
+                  </div>
+                </div>
+
+                {/* Stat 2 */}
+                <div className="flex items-center gap-4 sm:gap-6">
+                  <p className="text-[40px] sm:text-[56px] lg:text-[72px] font-medium leading-none">
+                    <AnimatedCounter end={87} suffix="K" />
+                    <span className="text-[18px] sm:text-[24px] lg:text-[32px] align-top">
+                      +
+                    </span>
+                  </p>
+
+                  <div className="border-l border-white/25 pl-4 sm:pl-6">
+                    <p className="text-[16px] sm:text-[20px] lg:text-[22px] font-medium whitespace-nowrap">
+                      Cooperative Farms
+                    </p>
+                    <p className="text-white/70 text-[14px] sm:text-[16px] lg:text-[18px] mt-1 whitespace-nowrap">
+                      Trusted by farming network
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -137,7 +207,7 @@ export default function HeroContent() {
 
       {/* ================= SCENE 2 : TEXT REVEAL ================= */}
       <section className="relative text-white">
-        <div className="w-full max-w-[1800px] mx-auto px-6 lg:px-16">
+        <div className="relative z-20 h-full w-full mx-auto px-2">
           <div className="">
             <ScrollReveal
               baseOpacity={0.35}
