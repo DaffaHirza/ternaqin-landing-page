@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useSplashReady } from "./SplashContext";
 
 interface Props {
   end: number;
@@ -13,13 +14,15 @@ export default function AnimatedCounter({
   duration = 2000,
   suffix = "",
 }: Props) {
+  const ready = useSplashReady(); // 🔥 dari context
   const [count, setCount] = useState(0);
   const frame = useRef<number | null>(null);
 
   useEffect(() => {
+    if (!ready) return;
+
     let startTime: number | null = null;
 
-    // Ultra smooth easing
     const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
     const animate = (time: number) => {
@@ -29,15 +32,11 @@ export default function AnimatedCounter({
       const progress = Math.min(elapsed / duration, 1);
 
       const eased = easeOutCubic(progress);
-
-      // Interpolasi halus
       const currentValue = eased * end;
 
-      // Supaya tidak skip angka terlalu jauh
       const smoothValue =
         progress > 0.85
-          ? // slow zone (super smooth last numbers)
-            end - (end - currentValue) * 0.3
+          ? end - (end - currentValue) * 0.3
           : currentValue;
 
       setCount(Math.floor(smoothValue));
@@ -52,11 +51,9 @@ export default function AnimatedCounter({
     frame.current = requestAnimationFrame(animate);
 
     return () => {
-      if (frame.current !== null) {
-        cancelAnimationFrame(frame.current);
-      }
+      if (frame.current) cancelAnimationFrame(frame.current);
     };
-  }, [end, duration]);
+  }, [ready, end, duration]);
 
   return (
     <span className="tabular-nums inline-block">
