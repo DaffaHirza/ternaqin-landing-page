@@ -2,92 +2,101 @@
 
 import { useRef, useEffect, ReactNode } from "react";
 
-type ScrollSceneProps = {
-  children: ReactNode;
+type Props = {
+  hero: ReactNode;
+  next?: ReactNode;
+  overlay?: ReactNode;
   background?: ReactNode;
   frame?: number;
 };
 
 export default function ScrollScene({
-  children,
+  hero,
+  next,
+  overlay,
   background,
   frame = 24,
-}: ScrollSceneProps) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+}: Props) {
+  const trackRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const wrapper = wrapperRef.current!;
+    const track = trackRef.current!;
     const content = contentRef.current!;
 
     let start = 0;
-    let maxScroll = 0;
-    let ticking = false;
+    let length = 0;
 
-    const calculate = () => {
-      start = wrapper.offsetTop;
-      maxScroll = content.scrollHeight - window.innerHeight + frame * 2;
-      wrapper.style.height = maxScroll + window.innerHeight + "px";
+    const calc = () => {
+      start = track.offsetTop;
+
+      // ⭐ TOTAL tinggi semua isi scene
+      length = content.scrollHeight - window.innerHeight;
+
+      track.style.height = length + window.innerHeight + "px";
     };
 
     const update = () => {
-      const scrollY = window.scrollY - start;
-      const clamped = Math.max(0, Math.min(scrollY, maxScroll));
-      const progress = maxScroll === 0 ? 0 : clamped / maxScroll;
+      const y = window.scrollY - start;
+      const clamped = Math.max(0, Math.min(y, length));
 
-      // ✅ expose progress ke CSS
-      wrapper.style.setProperty(
+      const progress = clamped / length;
+
+      document.documentElement.style.setProperty(
         "--pinned-progress",
         progress.toString()
       );
 
+      // ⭐ seluruh isi bergerak
       content.style.transform = `translate3d(0, ${-clamped}px, 0)`;
-
-      ticking = false;
     };
 
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
-      }
-    };
-
-    calculate();
+    calc();
     update();
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", calculate);
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", calc);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", calculate);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", calc);
     };
-  }, [frame]);
+  }, []);
 
   return (
-    <div ref={wrapperRef} className="relative">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <div ref={trackRef} className="relative">
+      <div className="sticky top-0 h-screen">
+        {/* NAVBAR mengikuti frame */}
         <div
-          className="absolute inset-0 rounded-[32px] overflow-hidden"
+          className="fixed z-[999] pointer-events-none"
           style={{
-            top: frame,
             left: frame,
             right: frame,
-            bottom: frame,
+            top: frame,
           }}
         >
-          {/* BACKGROUND */}
-          <div className="absolute inset-0 -z-10">
-            {background}
-          </div>
+          <div className="pointer-events-auto">{overlay}</div>
+        </div>
 
-          {/* SCROLL CONTENT */}
-          <div
-            ref={contentRef}
-            className="absolute inset-0 will-change-transform"
-          >
-            {children}
+        {/* FRAME */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            padding: frame, // lebih aman dari top/left/right/bottom
+          }}
+        >
+          <div className="relative w-full h-full rounded-[32px] overflow-hidden">
+            {/* background */}
+            <div className="absolute inset-0 -z-10">{background}</div>
+
+            {/* CONTENT */}
+            <div
+              ref={contentRef}
+              className="absolute inset-0 will-change-transform z-10"
+            >
+              <div className="min-h-screen">{hero}</div>
+              {next && <div className="min-h-screen">{next}</div>}
+            </div>
           </div>
         </div>
       </div>

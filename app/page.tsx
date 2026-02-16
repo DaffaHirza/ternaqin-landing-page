@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <>
       {/* ================= HERO PINNED ================= */}
       <section className="hero-section">
-        <Hero/>
+        <Hero />
       </section>
 
       {/* NEXT SECTION */}

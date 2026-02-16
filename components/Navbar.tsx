@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,122 +12,234 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [heroActive, setHeroActive] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    let raf: number;
+
+    const readProgress = () => {
+      const progress = parseFloat(
+        getComputedStyle(root).getPropertyValue("--pinned-progress") || "0"
+      );
+
+      setHeroActive((prev) => {
+        if (prev && progress < 0.015) return false;
+        if (!prev && progress > 0.02) return true;
+        return prev;
+      });
+
+      raf = requestAnimationFrame(readProgress);
+    };
+
+    raf = requestAnimationFrame(readProgress);
+
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (menuOpen) {
+      html.style.overflow = "hidden";
+    } else {
+      html.style.overflow = "";
+    }
+
+    return () => {
+      html.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
-    <header className="w-full">
-      <nav className="mx-auto flex max-w-[1800px] items-center justify-between px-4 py-6">
-        {/* Logo */}
-        <Link href="/" className="flex items-center flex-shrink-0">
-          <Image
-            src="/img/ternaqin.svg"
-            alt="TernaQin logo"
-            width={285}
-            height={60}
-            priority
-            className="w-[160px] sm:w-[190px] lg:w-[240px] 2xl:w-[285px]"
-          />
-        </Link>
-
-        {/* Desktop Menu (XL+) */}
-        <ul className="hidden xl:flex items-center gap-8 xl:gap-14 2xl:gap-[80px] font-sf">
-          {navItems.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                className="text-lg xl:text-xl 2xl:text-[28px] font-medium text-white/80 transition hover:text-white"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop CTA (XL+) */}
-        <div className="hidden xl:flex items-center gap-[2px] flex-shrink-0">
-          <a
-            href="#contact"
-            className="
-              inline-flex
-              h-[48px] xl:h-[56px]
-              w-[160px] xl:w-[190px]
-              items-center justify-center
-              rounded-xl
-              bg-[#1F4941]
-              text-lg xl:text-xl 2xl:text-[28px]
-              font-medium
-              text-white
-              transition hover:opacity-90
-            "
-          >
-            Contact Us
-          </a>
-
-          <a
-            href="#contact"
-            aria-label="Go to contact"
-            className="inline-flex h-[48px] xl:h-[56px] w-[48px] xl:w-[56px] items-center justify-center rounded-xl bg-[#1F4941] transition hover:opacity-90"
-          >
-            <Image src="/img/arrow-right-white.svg" alt="" width={40} height={40} />
-          </a>
-        </div>
-
-        {/* Hamburger (< XL) */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="xl:hidden text-white"
-          aria-label="Toggle menu"
+    <>
+      {/* ================= HEADER ================= */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
+          heroActive ? "pt-0 px-0" : "pt-0 px-0"
+        }`}
+      >
+        <div
+          className={`w-full transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
+            heroActive
+              ? `bg-white backdrop-blur-md mx-auto max-w-[1800px] ${
+                  menuOpen
+                    ? "rounded-t-[32px] overflow-hidden"
+                    : "rounded-t-[32px]"
+                }`
+              : "bg-transparent w-full"
+          }`}
         >
-          <div className="space-y-1.5">
-            <span className="block h-0.5 w-6 bg-white" />
-            <span className="block h-0.5 w-6 bg-white" />
-            <span className="block h-0.5 w-6 bg-white" />
-          </div>
-        </button>
-      </nav>
+          <nav className="flex items-center justify-between px-4 py-3 w-full min-w-0">
+            {/* LOGO */}
+            <Link href="/" className="flex items-center flex-shrink-0">
+              <Image
+                src={
+                  heroActive ? "/img/Ternaqin-logo.svg" : "/img/ternaqin.svg"
+                }
+                alt="TernaQin logo"
+                width={285}
+                height={60}
+                priority
+                className="w-[160px] sm:w-[190px] lg:w-[240px] 2xl:w-[285px]"
+              />
+            </Link>
 
-      {/* Mobile Menu (< XL) */}
-      {open && (
-        <div className="xl:hidden bg-transparent">
-          <ul className="flex flex-col gap-6 px-6 py-8 font-sf">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block text-lg font-medium text-white/90 hover:text-white"
+            {/* ===== DESKTOP NAV (ONLY HERO MODE) ===== */}
+            {!heroActive && (
+              <>
+                <ul className="hidden xl:flex items-center gap-8 xl:gap-14 2xl:gap-[80px] font-sf animate-in fade-in duration-300">
+                  {navItems.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        className="text-lg xl:text-xl 2xl:text-[28px] font-medium text-white/80 hover:text-white transition"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="hidden xl:flex items-center gap-[2px] animate-in fade-in duration-300">
+                  <a
+                    href="#contact"
+                    className="inline-flex h-[56px] w-[190px] items-center justify-center rounded-xl bg-[#1F4941] text-xl font-medium text-white"
+                  >
+                    Contact Us
+                  </a>
+
+                  <a
+                    href="#contact"
+                    className="inline-flex h-[56px] w-[56px] items-center justify-center rounded-xl bg-[#1F4941]"
+                  >
+                    <Image
+                      src="/img/arrow-right-white.svg"
+                      alt=""
+                      width={32}
+                      height={32}
+                    />
+                  </a>
+                </div>
+              </>
+            )}
+
+            {/* ===== HAMBURGER (ONLY SCROLLED MODE) ===== */}
+            {heroActive && (
+              <button
+                onClick={() => setMenuOpen((prev) => !prev)}
+                className="relative w-8 h-8 xl:block animate-in fade-in duration-300"
+              >
+                {/* HAMBURGER */}
+                <div
+                  className={`
+        absolute inset-0 flex flex-col justify-center items-center space-y-1.5
+        transition-all duration-300 ease-in-out
+        ${
+          menuOpen
+            ? "opacity-0 scale-75 rotate-90"
+            : "opacity-100 scale-100 rotate-0"
+        }
+      `}
                 >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+                  <span className="block h-0.5 w-6 bg-[#1F4941]" />
+                  <span className="block h-0.5 w-6 bg-[#1F4941]" />
+                  <span className="block h-0.5 w-6 bg-[#1F4941]" />
+                </div>
 
-            <div className="mt-6 flex items-center gap-2">
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="inline-flex h-[48px] w-full items-center justify-center rounded-xl bg-[#1F4941] text-lg font-medium text-white transition hover:opacity-90"
-              >
-                Contact Us
-              </a>
-
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                aria-label="Go to contact"
-                className="inline-flex h-[48px] w-[48px] items-center justify-center rounded-xl bg-[#1F4941] transition hover:opacity-90"
-              >
-                <Image
-                  src="/img/arrow-right.svg"
-                  alt=""
-                  width={18}
-                  height={18}
-                />
-              </a>
-            </div>
-          </ul>
+                {/* CLOSE ICON */}
+                <div
+                  className={`
+        absolute inset-0 flex items-center justify-center
+        transition-all duration-300 ease-in-out
+        ${
+          menuOpen
+            ? "opacity-100 scale-100 rotate-0"
+            : "opacity-0 scale-75 -rotate-90"
+        }
+      `}
+                >
+                  <Image
+                    src="/img/close-icon.svg"
+                    alt="Close menu"
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              </button>
+            )}
+          </nav>
         </div>
-      )}
-    </header>
+      </header>
+      {/* ================= EXPANDING FULL MENU ================= */}
+      <div
+        className={`
+    absolute left-0 right-0
+    top-full
+    z-30
+    origin-top
+    transform
+    transition-transform duration-700
+    ease-[cubic-bezier(.22,1,.36,1)]
+    ${menuOpen ? "scale-y-100" : "scale-y-0"}
+  `}
+      >
+        <div className="w-full bg-white rounded-b-[32px] shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
+          <div className="min-h-[calc(100vh-72px-48px)] px-8 pt-4">
+            <ul
+              className={`
+    flex flex-col text-[26px] font-medium text-black
+    transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
+    ${
+      menuOpen
+        ? "opacity-100 translate-y-0 delay-700"
+        : "opacity-0 -translate-y-4"
+    }
+  `}
+            >
+              {[
+                "About",
+                "Features",
+                "Services",
+                "Process",
+                "Analytics",
+                "Pricing",
+                "FAQs",
+                "Testimonials",
+                "Contact",
+              ].map((item, index) => (
+                <li
+                  key={item}
+                  style={{
+                    transitionDelay: menuOpen ? `${550 + index * 50}ms` : "0ms",
+                  }}
+                  className={`
+      transition-all duration-400 ease-[cubic-bezier(.22,1,.36,1)]
+      ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+    `}
+                >
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-between py-4 hover:opacity-60 transition-all duration-300"
+                  >
+                    <span>{item}</span>
+                    <span className="flex items-center opacity-40">
+                      <Image
+                        src="/img/arrow-right.svg"
+                        alt="arrow"
+                        width={20}
+                        height={20}
+                      />
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
