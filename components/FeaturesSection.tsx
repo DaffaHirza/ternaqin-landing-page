@@ -1,0 +1,514 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+
+export default function FeaturesSection() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current!;
+    const handleScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // progress 0 → 1 saat section masuk viewport
+      const progress = Math.min(
+        Math.max((windowHeight - rect.top) / windowHeight, 0),
+        1
+      );
+
+      // geser dari 100px → 0px
+      const translateY = 100 * (1 - progress);
+
+      el.style.transform = `translateY(${translateY}px)`;
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <section
+      ref={ref}
+      className="relative z-20 bg-[#f3f3f3] py-24 px-4 will-change-transform transition-transform"
+    >
+      <div className="w-full space-y-4">
+        {/* Header */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start my-18">
+          {/* LEFT — Badge */}
+          <div className="md:col-span-2">
+            <span className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium bg-[#1f3d34] text-white rounded-full">
+              <span className="w-2 h-2 bg-white rounded-full" />
+              Features
+            </span>
+          </div>
+
+          {/* RIGHT — Heading */}
+          <div className="md:col-span-10">
+            <h2
+              className="
+      text-[32px] 
+      sm:text-[40px] 
+      md:text-[56px] 
+      lg:text-[72px] 
+      font-semibold 
+      leading-[1.1] 
+      md:leading-[1.05] 
+      tracking-[-0.02em] 
+      text-[#1c1c1c]
+    "
+            >
+              Purpose-Built With Intelligent Automation
+              <br className="hidden md:block" />
+              <span className="text-[#bcbcbc] font-medium">
+                To Optimize Livestock Management And
+                <br className="hidden md:block" />
+                Accelerate Sustainable Growth
+              </span>
+            </h2>
+          </div>
+        </div>
+
+        {/* TOP GRID */}
+        <div className="grid md:grid-cols-12 gap-4">
+          {/* LEFT CARD */}
+          <div
+            className="
+  md:col-span-5 
+  relative 
+  bg-white 
+  rounded-[24px] md:rounded-[32px] 
+  aspect-auto md:aspect-square 
+  p-6 sm:p-8 md:p-14 
+  overflow-hidden
+"
+          >
+            {/* Decorative Background */}
+            <img
+              src="/img/bg-features-top-card.svg"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            />
+
+            {/* Inner Content Wrapper */}
+            <div className="relative z-10 h-full flex flex-col justify-between">
+              {/* Top Row — Logo */}
+              <div className="flex justify-end">
+                <img
+                  src="/img/Ternaqin-logo.svg"
+                  alt="TernaQin"
+                  className="w-16 sm:w-20 md:w-28"
+                />
+              </div>
+
+              {/* Center Heading */}
+              <div className="flex-1 flex items-center py-6 md:py-0">
+                <h3
+                  className="
+        text-[28px] 
+        sm:text-[36px] 
+        md:text-[48px] 
+        lg:text-[60px] 
+        leading-[1.15] 
+        md:leading-[1.1] 
+        font-medium
+      "
+                >
+                  <span className="text-[#1f3d34]">
+                    Advancing Livestock
+                    <br className="hidden sm:block" />
+                    Management
+                  </span>{" "}
+                  <span className="text-[#bdbdbd] font-medium">
+                    Through Proven
+                    <br className="hidden sm:block" />
+                    Performance and Innovation
+                  </span>
+                </h3>
+              </div>
+
+              {/* Bottom Row — CTA */}
+              <div>
+                <span
+                  className="
+        inline-flex 
+        items-center 
+        gap-2 
+        px-4 sm:px-5 
+        py-2 
+        text-xs sm:text-sm 
+        border-2 
+        border-[#1f3d34] 
+        rounded-[6px] 
+        text-[#1f3d34] 
+        bg-[#D9F5E5]/50
+      "
+                >
+                  <span className="w-2 h-2 bg-[#1f3d34] rounded-full" />
+                  System Track Record
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT CARD */}
+          <div
+            className="
+  md:col-span-7 
+  relative 
+  rounded-[24px] md:rounded-[32px] 
+  overflow-hidden 
+  min-h-[420px] md:min-h-[520px]
+"
+          >
+            {/* Background */}
+            <img
+              src="/img/bg-top-card-2.svg"
+              className="absolute inset-0 w-full h-full object-cover"
+              alt=""
+            />
+
+            {/* Blur Overlay */}
+            <div className="absolute inset-0 backdrop-blur-md bg-black/30" />
+
+            <div
+              className="
+    relative 
+    z-10 
+    p-6 sm:p-8 md:p-10 
+    text-white 
+    flex 
+    flex-col 
+    h-full
+  "
+            >
+              {/* TOP SECTION */}
+              <div>
+                <div
+                  className="
+        flex 
+        flex-wrap 
+        gap-0.5 
+        text-xs sm:text-sm md:text-base 
+        mb-4
+      "
+                >
+                  {["SCM", "CRM", "POS", "SEO"].map((item) => (
+                    <span
+                      key={item}
+                      className="
+              px-3 sm:px-4 md:px-6 
+              py-1.5 md:py-2 
+              bg-white/20 
+              border 
+              border-white/40 
+              rounded-[8px] md:rounded-[12px] 
+              backdrop-blur
+            "
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <h3
+                  className="
+        text-[28px] 
+        sm:text-[36px] 
+        md:text-[44px] 
+        lg:text-[55px] 
+        leading-[1.15] 
+        md:leading-[1.1] 
+        font-medium
+      "
+                >
+                  Intelligent Livestock
+                  <br className="hidden sm:block" />
+                  Management
+                </h3>
+              </div>
+
+              {/* PUSHER */}
+              <div className="flex-1" />
+
+              {/* BOTTOM SECTION */}
+              <div className="space-y-4 md:space-y-6">
+                <p
+                  className="
+        text-white/80 
+        text-sm 
+        sm:text-base 
+        md:text-lg 
+        lg:text-[22px] 
+        leading-relaxed 
+      "
+                >
+                  A QR code-based digital livestock management system enabling
+                  real-time tracking and monitoring of cattle health, feed, and
+                  history to enhance farm efficiency and operational
+                  transparency.
+                </p>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    className="
+          px-5 md:px-8 
+          h-[48px] md:h-[60px] 
+          rounded-[10px] md:rounded-[12px] 
+          bg-white 
+          text-[#1F4941] 
+          text-sm md:text-lg 
+          font-medium 
+          shadow-md 
+          hover:scale-105 
+          transition
+        "
+                  >
+                    Learn More
+                  </button>
+
+                  <button
+                    className="
+          w-[48px] md:w-[60px] 
+          h-[48px] md:h-[60px] 
+          rounded-[10px] md:rounded-[12px] 
+          bg-white 
+          flex 
+          items-center 
+          justify-center 
+          shadow-md 
+          hover:scale-105 
+          transition
+        "
+                  >
+                    <Image
+                      src="/img/arrow-right.svg"
+                      alt="arrow-right"
+                      width={24}
+                      height={24}
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 SMALL CARDS */}
+        <div className="grid md:grid-cols-3 gap-4">
+          {[
+            {
+              title: "Blockchain",
+              img: "/img/blockchain-bg-card.svg",
+            },
+            {
+              title: "QR Code",
+              img: "/img/qr-bg-card.svg",
+            },
+            {
+              title: "AI Assistance",
+              img: "/img/ai-bg-card.svg",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="
+    relative 
+    rounded-3xl 
+    overflow-hidden 
+    h-[500px] 
+    md:h-[650px] 
+    lg:h-[750px] 
+    shadow-sm
+  "
+            >
+              <img
+                src={item.img}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/30" />
+
+              <div className="relative z-10 p-6 text-white flex flex-col justify-between h-full">
+                <h3 className="text-[55px] font-medium">{item.title}</h3>
+
+                <button
+                  className="
+          w-[48px] md:w-[60px] 
+          h-[48px] md:h-[60px] 
+          rounded-[10px] md:rounded-[12px] 
+          bg-white 
+          flex 
+          items-center 
+          justify-center 
+          shadow-md 
+          hover:scale-105 
+          transition
+        "
+                >
+                  <Image
+                    src="/img/arrow-right.svg"
+                    alt="arrow-right"
+                    width={32}
+                    height={32}
+                  />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* BOTTOM GRID */}
+        <div className="grid md:grid-cols-12 gap-4">
+          {/* LEFT LARGE (Flexible - 7 cols) */}
+          <div
+            className="
+      md:col-span-7
+      relative 
+      rounded-[24px] md:rounded-[32px] 
+      overflow-hidden 
+      min-h-[420px] md:min-h-[520px]
+      shadow-sm
+    "
+          >
+            <img
+              src="/img/next-generation-bg.svg"
+              className="absolute inset-0 w-full h-full object-cover"
+              alt=""
+            />
+            <div className="absolute inset-0 bg-black/20" />
+
+            <div className="relative z-10 p-4 text-white h-full flex flex-col justify-between">
+              <h3 className="font-medium text-[55px] ">
+                Next-Generation Platform Ecosystem with AI Assistant
+              </h3>
+              <button
+                className="
+          w-[48px] md:w-[60px] 
+          h-[48px] md:h-[60px] 
+          rounded-[10px] md:rounded-[12px] 
+          bg-white 
+          flex 
+          items-center 
+          justify-center 
+          shadow-md 
+          hover:scale-105 
+          transition
+        "
+              >
+                <Image
+                  src="/img/arrow-right.svg"
+                  alt="arrow-right"
+                  width={32}
+                  height={32}
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT SQUARE (Exact Design Like Image) */}
+          <div
+            className="
+    md:col-span-5
+    relative
+    rounded-[32px]
+    aspect-auto md:aspect-square
+    overflow-hidden
+    px-4 py-8
+    text-white
+    shadow-sm
+  "
+          >
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/img/pricing-bg.svg')" }}
+            />
+
+            {/* Subtle Radial Decoration */}
+            <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-white/5 blur-3xl" />
+            <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl" />
+
+            {/* Content */}
+            <div className="relative z-10 h-full flex flex-col justify-between">
+              {/* TOP SECTION */}
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Image
+                    src="/img/ternaqin.svg"
+                    alt="TernaQin Logo"
+                    width={300}
+                    height={32}
+                  />
+                </div>
+
+                <p className="text-white/60 text-[28px]">
+                  The trial access is now available. Try it now!
+                </p>
+              </div>
+
+              {/* STATS DIAGONAL AREA */}
+              <div className="relative flex-1 mt-12">
+                {/* 85% - UPPER (lebih ke tengah & rata kiri) */}
+                <div className="absolute top-1/2 left-1/2 -translate-y-[70%] translate-x-[-5%]">
+                  <p className="text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
+                    85
+                    <span className="text-[34px] align-top ml-1 text-white/60">
+                      %
+                    </span>
+                  </p>
+
+                  <div
+                    className="mt-6 inline-flex items-center gap-3 px-5 py-2
+                    bg-white/20 border-1 border-white
+                    rounded-[8px] text-white 
+                    backdrop-blur-md"
+                  >
+                    <span className="text-[20px] font-regular">
+                      <Image
+                        src="/img/status-up.svg"
+                        alt="TernaQin Logo"
+                        width={28}
+                        height={28}
+                      />
+                    </span>
+                    Livestock Revenue Growth
+                  </div>
+                </div>
+
+                {/* 95% - LOWER LEFT */}
+                <div className="absolute top-1/2 left-1/2 translate-y-[-15%] -translate-x-[95%]">
+                  <p className="text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
+                    95
+                    <span className="text-[34px] align-top ml-1 text-white/60">
+                      %
+                    </span>
+                  </p>
+
+                  <div
+                    className="mt-6 inline-flex items-center gap-3 px-5 py-2
+                    bg-white/20 border-1 border-white
+                    rounded-[8px] text-white 
+                    backdrop-blur-md"
+                  >
+                    <span className="text-lg">
+                      <Image
+                        src="/img/lovely.svg"
+                        alt="love"
+                        width={28}
+                        height={28}
+                      />
+                    </span>
+                    Satisfied With Our Services
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

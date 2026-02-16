@@ -3,6 +3,7 @@
 import { useRef, useEffect, ReactNode } from "react";
 
 type Props = {
+  id?: string;
   hero: ReactNode;
   next?: ReactNode;
   overlay?: ReactNode;
@@ -11,6 +12,7 @@ type Props = {
 };
 
 export default function ScrollScene({
+  id = "pinned-scene",
   hero,
   next,
   overlay,
@@ -29,11 +31,15 @@ export default function ScrollScene({
 
     const calc = () => {
       start = track.offsetTop;
+      
+      const totalHeight = content.scrollHeight;
+      const extraScroll = window.innerHeight; // buffer untuk reveal features
+      const scrollDistance = totalHeight - window.innerHeight + extraScroll;
 
-      // ⭐ TOTAL tinggi semua isi scene
-      length = content.scrollHeight - window.innerHeight;
+      length = Math.max(scrollDistance, 0);
 
-      track.style.height = length + window.innerHeight + "px";
+      // ini kuncinya
+      track.style.height = scrollDistance + window.innerHeight + "px";
     };
 
     const update = () => {
@@ -41,13 +47,12 @@ export default function ScrollScene({
       const clamped = Math.max(0, Math.min(y, length));
 
       const progress = clamped / length;
-
       document.documentElement.style.setProperty(
         "--pinned-progress",
         progress.toString()
       );
 
-      // ⭐ seluruh isi bergerak
+      // gerakkan seluruh isi pinned scene
       content.style.transform = `translate3d(0, ${-clamped}px, 0)`;
     };
 
@@ -64,9 +69,9 @@ export default function ScrollScene({
   }, []);
 
   return (
-    <div ref={trackRef} className="relative">
+    <div ref={trackRef} id={id} className="relative z-0">
       <div className="sticky top-0 h-screen">
-        {/* NAVBAR mengikuti frame */}
+        {/* NAVBAR overlay */}
         <div
           className="fixed z-[999] pointer-events-none"
           style={{
@@ -78,24 +83,21 @@ export default function ScrollScene({
           <div className="pointer-events-auto">{overlay}</div>
         </div>
 
-        {/* FRAME */}
+        {/* FRAME content */}
         <div
           className="absolute inset-0 overflow-hidden"
-          style={{
-            padding: frame, // lebih aman dari top/left/right/bottom
-          }}
+          style={{ padding: frame }}
         >
           <div className="relative w-full h-full rounded-[32px] overflow-hidden">
-            {/* background */}
+            {/* BACKGROUND */}
             <div className="absolute inset-0 -z-10">{background}</div>
 
-            {/* CONTENT */}
+            {/* CONTENT HERO + NEXT */}
             <div
               ref={contentRef}
               className="absolute inset-0 will-change-transform z-10"
             >
               <div className="min-h-screen">{hero}</div>
-              {next && <div className="min-h-screen">{next}</div>}
             </div>
           </div>
         </div>
