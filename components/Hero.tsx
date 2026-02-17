@@ -4,11 +4,9 @@ import HeroMain from "@/components/HeroMain";
 import SectionReveal from "@/components/SectionReveal";
 import Image from "next/image";
 
-
 export default function HeroContent() {
   return (
     <PinnedScene
-    id="pinned-scene" // tambahkan ID supaya mudah referensi
       frame={8}
       overlay={<Navbar />}
       background={

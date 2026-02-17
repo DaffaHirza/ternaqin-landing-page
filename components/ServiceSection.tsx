@@ -32,9 +32,9 @@ export default function SectionService() {
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-12 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
           {/* 01 - PRIMARY CARD */}
-          <div className="col-span-4 relative rounded-[28px] p-10 min-h-[800px] shadow-sm text-white flex flex-col justify-between overflow-hidden">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-4 relative rounded-[28px] p-10 min-h-[800px] shadow-sm text-white flex flex-col justify-between overflow-hidden">
             <div className="absolute inset-0">
               <Image
                 src="/img/bg-service-card-1.svg"
@@ -119,7 +119,7 @@ export default function SectionService() {
           </div>
 
           {/* 02 */}
-          <div className="col-span-2 relative rounded-[28px] p-8 flex flex-col justify-between min-h-[800px] shadow-sm overflow-hidden">
+          <div className="col-span-1 sm:col-span-1 lg:col-span-2 relative    rounded-[28px] p-8 flex flex-col justify-between min-h-[800px] shadow-sm overflow-hidden">
             {/* Background SVG */}
             <div className="absolute inset-0">
               <Image
@@ -157,7 +157,7 @@ export default function SectionService() {
           </div>
 
           {/* 03 */}
-          <div className="col-span-2 relative rounded-[28px] p-8 flex flex-col justify-between min-h-[800px] shadow-sm overflow-hidden">
+          <div className="col-span-1 sm:col-span-1 lg:col-span-2 relative rounded-[28px] p-8 flex flex-col justify-between min-h-[800px] shadow-sm overflow-hidden">
             {/* Background SVG */}
             <div className="absolute inset-0">
               <Image
@@ -195,7 +195,7 @@ export default function SectionService() {
           </div>
 
           {/* TESTIMONIAL */}
-          <div className="col-span-4 bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col min-h-[820px]">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-4 bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col min-h-[820px]">
             {/* Image Section */}
             <div className="relative h-[360px] bg-[#EAEAEA] rounded-[28px] m-4 flex justify-center overflow-hidden">
               <Image
