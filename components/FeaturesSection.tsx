@@ -40,7 +40,7 @@ export default function FeaturesSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start my-18">
           {/* LEFT — Badge */}
           <div className="md:col-span-2">
-            <span className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium bg-[#1f3d34] text-white rounded-full">
+            <span className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium bg-[#1F4941] text-white rounded-full">
               <span className="w-2 h-2 bg-white rounded-full" />
               Features
             </span>
@@ -361,7 +361,7 @@ export default function FeaturesSection() {
         </div>
 
         {/* BOTTOM GRID */}
-        <div className="grid md:grid-cols-12 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4">
           {/* LEFT LARGE (Flexible - 7 cols) */}
           <div
             className="
@@ -381,9 +381,10 @@ export default function FeaturesSection() {
             <div className="absolute inset-0 bg-black/20" />
 
             <div className="relative z-10 p-4 text-white h-full flex flex-col justify-between">
-              <h3 className="font-medium text-[55px] ">
+              <h3 className="font-medium text-[32px] sm:text-[40px] md:text-[55px] leading-tight">
                 Next-Generation Platform Ecosystem with AI Assistant
               </h3>
+
               <button
                 className="
           w-[48px] md:w-[60px] 
@@ -408,18 +409,19 @@ export default function FeaturesSection() {
             </div>
           </div>
 
-          {/* RIGHT SQUARE (Exact Design Like Image) */}
+          {/* RIGHT SQUARE */}
           <div
             className="
-    md:col-span-5
-    relative
-    rounded-[32px]
-    aspect-auto md:aspect-square
-    overflow-hidden
-    px-4 py-8
-    text-white
-    shadow-sm
-  "
+      md:col-span-5
+      relative
+      rounded-[32px]
+      aspect-auto md:aspect-square
+      overflow-hidden
+      px-4 py-8
+      text-white
+      shadow-sm
+      min-h-[500px] md:min-h-0
+    "
           >
             {/* Background Image */}
             <div
@@ -427,13 +429,12 @@ export default function FeaturesSection() {
               style={{ backgroundImage: "url('/img/pricing-bg.svg')" }}
             />
 
-            {/* Subtle Radial Decoration */}
+            {/* Radial Decoration */}
             <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-white/5 blur-3xl" />
             <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl" />
 
-            {/* Content */}
             <div className="relative z-10 h-full flex flex-col justify-between">
-              {/* TOP SECTION */}
+              {/* TOP */}
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Image
@@ -450,21 +451,28 @@ export default function FeaturesSection() {
               </div>
 
               {/* STATS DIAGONAL AREA */}
-              <div className="relative flex-1 mt-12">
-                {/* 85% - UPPER (lebih ke tengah & rata kiri) */}
-                <div className="absolute top-1/2 left-1/2 -translate-y-[70%] translate-x-[-5%]">
-                  <p className="text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
+              <div className="relative flex flex-col md:block flex-1 mt-12">
+                {/* 85% */}
+                <div
+                  className="
+            relative
+            md:absolute md:top-1/2 md:left-1/2 
+            md:-translate-y-[70%] md:translate-x-[-5%]
+            mb-10 md:mb-0
+          "
+                >
+                  <p className="text-[60px] sm:text-[80px] md:text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
                     85
-                    <span className="text-[34px] align-top ml-1 text-white/60">
+                    <span className="text-[20px] sm:text-[26px] md:text-[34px] align-top ml-1 text-white/60">
                       %
                     </span>
                   </p>
 
                   <div
                     className="mt-6 inline-flex items-center gap-3 px-5 py-2
-                    bg-white/20 border-1 border-white
-                    rounded-[8px] text-white 
-                    backdrop-blur-md"
+            bg-white/20 border border-white
+            rounded-[8px] text-white 
+            backdrop-blur-md"
                   >
                     <span className="text-[20px] font-regular">
                       <Image
@@ -478,20 +486,26 @@ export default function FeaturesSection() {
                   </div>
                 </div>
 
-                {/* 95% - LOWER LEFT */}
-                <div className="absolute top-1/2 left-1/2 translate-y-[-15%] -translate-x-[95%]">
-                  <p className="text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
+                {/* 95% */}
+                <div
+                  className="
+            relative
+            md:absolute md:top-1/2 md:left-1/2 
+            md:translate-y-[-15%] md:-translate-x-[95%]
+          "
+                >
+                  <p className="text-[60px] sm:text-[80px] md:text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
                     95
-                    <span className="text-[34px] align-top ml-1 text-white/60">
+                    <span className="text-[20px] sm:text-[26px] md:text-[34px] align-top ml-1 text-white/60">
                       %
                     </span>
                   </p>
 
                   <div
                     className="mt-6 inline-flex items-center gap-3 px-5 py-2
-                    bg-white/20 border-1 border-white
-                    rounded-[8px] text-white 
-                    backdrop-blur-md"
+            bg-white/20 border border-white
+            rounded-[8px] text-white 
+            backdrop-blur-md"
                   >
                     <span className="text-lg">
                       <Image
