@@ -157,12 +157,13 @@ export default function FeaturesSection() {
           {/* RIGHT CARD */}
           <div
             className="
-  md:col-span-7 
-  relative 
-  rounded-[24px] md:rounded-[32px] 
-  overflow-hidden 
-  min-h-[420px] md:min-h-[520px]
-"
+    group
+    md:col-span-7 
+    relative 
+    rounded-[24px] md:rounded-[32px] 
+    overflow-hidden 
+    min-h-[420px] md:min-h-[520px]
+  "
           >
             {/* Background */}
             <img
@@ -172,16 +173,24 @@ export default function FeaturesSection() {
             />
 
             {/* Blur Overlay */}
-            <div className="absolute inset-0 backdrop-blur-md bg-black/30" />
+            <div
+              className="
+    absolute inset-0 
+    backdrop-blur-md 
+    bg-black/40
+    opacity-0 
+    group-hover:opacity-100
+    transition-all 
+    duration-500
+  "
+            />
 
             <div
               className="
-    relative 
-    z-10 
+    relative z-10 
     p-6 sm:p-8 md:p-10 
     text-white 
-    flex 
-    flex-col 
+    flex flex-col 
     h-full
   "
             >
@@ -236,8 +245,20 @@ export default function FeaturesSection() {
 
               {/* BOTTOM SECTION */}
               <div className="space-y-4 md:space-y-6">
-                <p
+                {/* Description (Hidden Default) */}
+                <div
                   className="
+      transform
+      translate-y-6
+      opacity-0
+      group-hover:translate-y-0
+      group-hover:opacity-100
+      transition-all
+      duration-500
+    "
+                >
+                  <p
+                    className="
         text-white/80 
         text-sm 
         sm:text-base 
@@ -245,44 +266,61 @@ export default function FeaturesSection() {
         lg:text-[22px] 
         leading-relaxed 
       "
-                >
-                  A QR code-based digital livestock management system enabling
-                  real-time tracking and monitoring of cattle health, feed, and
-                  history to enhance farm efficiency and operational
-                  transparency.
-                </p>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    className="
-          px-5 md:px-8 
-          h-[48px] md:h-[60px] 
-          rounded-[10px] md:rounded-[12px] 
-          bg-white 
-          text-[#1F4941] 
-          text-sm md:text-lg 
-          font-medium 
-          shadow-md 
-          hover:scale-105 
-          transition
-        "
                   >
-                    Learn More
-                  </button>
+                    A QR code-based digital livestock management system enabling
+                    real-time tracking and monitoring of cattle health, feed,
+                    and history to enhance farm efficiency and operational
+                    transparency.
+                  </p>
+                </div>
 
+                {/* CTA Row */}
+                <div className="flex items-center gap-2">
+                  {/* Learn More Wrapper */}
+                  <div
+                    className="
+      overflow-hidden
+      transition-all
+      duration-500
+      ease-out
+      max-w-0
+      group-hover:max-w-[200px]
+    "
+                  >
+                    <button
+                      className="
+        whitespace-nowrap
+        px-5 md:px-8
+        h-[48px] md:h-[60px]
+        rounded-[10px] md:rounded-[12px]
+        bg-white
+        text-[#1F4941]
+        text-sm md:text-lg
+        font-medium
+        shadow-md
+        opacity-0
+        group-hover:opacity-100
+        transition-opacity
+        duration-300
+      "
+                    >
+                      Learn More
+                    </button>
+                  </div>
+
+                  {/* Arrow */}
                   <button
                     className="
-          w-[48px] md:w-[60px] 
-          h-[48px] md:h-[60px] 
-          rounded-[10px] md:rounded-[12px] 
-          bg-white 
-          flex 
-          items-center 
-          justify-center 
-          shadow-md 
-          hover:scale-105 
-          transition
-        "
+      flex-shrink-0
+      w-[48px] md:w-[60px]
+      h-[48px] md:h-[60px]
+      rounded-[10px] md:rounded-[12px]
+      bg-white
+      flex items-center justify-center
+      shadow-md
+      transition-transform duration-500
+      group-hover:translate-x-1
+    "
                   >
                     <Image
                       src="/img/arrow-right.svg"
@@ -303,58 +341,125 @@ export default function FeaturesSection() {
             {
               title: "Blockchain",
               img: "/img/blockchain-bg-card.svg",
+              desc: "Storing livestock data securely and transparently, including health history, vaccinations, and slaughter.",
             },
             {
               title: "QR Code",
               img: "/img/qr-bg-card.svg",
+              desc: "Digital identity for cattle and meat products to track origin, health, and production a in real time.",
             },
             {
               title: "AI Assistance",
               img: "/img/ai-bg-card.svg",
+              desc: "Providing recommendations for care, feed, and vaccination reminders based on livestock data analysis.",
             },
           ].map((item, i) => (
             <div
               key={i}
               className="
-    relative 
-    rounded-3xl 
-    overflow-hidden 
-    h-[500px] 
-    md:h-[650px] 
-    lg:h-[750px] 
-    shadow-sm
-  "
+        group
+        relative 
+        rounded-3xl 
+        overflow-hidden 
+        h-[500px] 
+        md:h-[650px] 
+        lg:h-[750px] 
+        shadow-sm
+      "
             >
+              {/* Background */}
               <img
                 src={item.img}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/30" />
 
-              <div className="relative z-10 p-6 text-white flex flex-col justify-between h-full">
-                <h3 className="text-[55px] font-medium">{item.title}</h3>
+              {/* Blur Overlay */}
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-100 transition duration-500" />
 
-                <button
-                  className="
-          w-[48px] md:w-[60px] 
-          h-[48px] md:h-[60px] 
-          rounded-[10px] md:rounded-[12px] 
-          bg-white 
-          flex 
-          items-center 
-          justify-center 
-          shadow-md 
-          hover:scale-105 
-          transition
-        "
-                >
-                  <Image
-                    src="/img/arrow-right.svg"
-                    alt="arrow-right"
-                    width={32}
-                    height={32}
-                  />
-                </button>
+              {/* Content */}
+              <div className="relative z-10 p-6 text-white flex flex-col h-full">
+                {/* Title */}
+                <h3 className="text-[40px] md:text-[55px] font-medium">
+                  {item.title}
+                </h3>
+
+                <div className="flex-1" />
+
+                {/* Bottom Content */}
+                <div className="space-y-4">
+                  {/* Description */}
+                  <p
+                    className="
+              text-white/80
+              text-[18px] md:text-[24px]
+              transform
+              translate-y-6
+              opacity-0
+              group-hover:translate-y-0
+              group-hover:opacity-100
+              transition-all
+              duration-500
+            "
+                  >
+                    {item.desc}
+                  </p>
+
+                  <div className="flex items-center gap-2">
+                    {/* Learn More Wrapper */}
+                    <div
+                      className="
+      overflow-hidden
+      transition-all
+      duration-500
+      ease-out
+      max-w-0
+      group-hover:max-w-[200px]
+    "
+                    >
+                      <button
+                        className="
+        whitespace-nowrap
+        px-5 md:px-8
+        h-[48px] md:h-[60px]
+        rounded-[10px] md:rounded-[12px]
+        bg-white
+        text-[#1F4941]
+        text-sm md:text-lg
+        font-medium
+        shadow-md
+        opacity-0
+        group-hover:opacity-100
+        transition-opacity
+        duration-300
+      "
+                      >
+                        Learn More
+                      </button>
+                    </div>
+
+                    {/* Arrow */}
+                    <button
+                      className="
+      flex-shrink-0
+      w-[48px] md:w-[60px]
+      h-[48px] md:h-[60px]
+      rounded-[10px] md:rounded-[12px]
+      bg-white
+      flex items-center justify-center
+      shadow-md
+      transition-transform duration-500
+      group-hover:translate-x-1
+    "
+                    >
+                      <Image
+                        src="/img/arrow-right.svg"
+                        alt="arrow-right"
+                        width={24}
+                        height={24}
+                      />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -412,16 +517,17 @@ export default function FeaturesSection() {
           {/* RIGHT SQUARE */}
           <div
             className="
-      md:col-span-5
-      relative
-      rounded-[32px]
-      aspect-auto md:aspect-square
-      overflow-hidden
-      px-4 py-8
-      text-white
-      shadow-sm
-      min-h-[500px] md:min-h-0
-    "
+    group
+    md:col-span-5
+    relative
+    rounded-[32px]
+    aspect-auto md:aspect-square
+    overflow-hidden
+    px-4 py-8
+    text-white
+    shadow-sm
+    min-h-[500px] md:min-h-0
+  "
           >
             {/* Background Image */}
             <div
@@ -433,6 +539,10 @@ export default function FeaturesSection() {
             <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-white/5 blur-3xl" />
             <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl" />
 
+            {/* Hover darken */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-700" />
+
+            {/* CONTENT */}
             <div className="relative z-10 h-full flex flex-col justify-between">
               {/* TOP */}
               <div>
@@ -451,16 +561,9 @@ export default function FeaturesSection() {
               </div>
 
               {/* STATS DIAGONAL AREA */}
-              <div className="relative flex flex-col md:block flex-1 mt-12">
+              <div className="relative flex flex-col md:block flex-1">
                 {/* 85% */}
-                <div
-                  className="
-            relative
-            md:absolute md:top-1/2 md:left-1/2 
-            md:-translate-y-[70%] md:translate-x-[-5%]
-            mb-10 md:mb-0
-          "
-                >
+                <div className="relative md:absolute md:top-1/2 md:left-1/2 md:-translate-y-[100%] md:translate-x-[-5%] mb-10 md:mb-0">
                   <p className="text-[60px] sm:text-[80px] md:text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
                     85
                     <span className="text-[20px] sm:text-[26px] md:text-[34px] align-top ml-1 text-white/60">
@@ -468,32 +571,19 @@ export default function FeaturesSection() {
                     </span>
                   </p>
 
-                  <div
-                    className="mt-6 inline-flex items-center gap-3 px-5 py-2
-            bg-white/20 border border-white
-            rounded-[8px] text-white 
-            backdrop-blur-md"
-                  >
-                    <span className="text-[20px] font-regular">
-                      <Image
-                        src="/img/status-up.svg"
-                        alt="TernaQin Logo"
-                        width={28}
-                        height={28}
-                      />
-                    </span>
+                  <div className="mt-6 inline-flex items-center gap-3 px-5 py-2 bg-white/20 border border-white rounded-[8px] text-white backdrop-blur-md">
+                    <Image
+                      src="/img/status-up.svg"
+                      alt="growth"
+                      width={28}
+                      height={28}
+                    />
                     Livestock Revenue Growth
                   </div>
                 </div>
 
                 {/* 95% */}
-                <div
-                  className="
-            relative
-            md:absolute md:top-1/2 md:left-1/2 
-            md:translate-y-[-15%] md:-translate-x-[95%]
-          "
-                >
+                <div className="relative md:absolute md:top-1/2 md:left-1/2 md:translate-y-[-40%] md:-translate-x-[95%]">
                   <p className="text-[60px] sm:text-[80px] md:text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
                     95
                     <span className="text-[20px] sm:text-[26px] md:text-[34px] align-top ml-1 text-white/60">
@@ -501,22 +591,55 @@ export default function FeaturesSection() {
                     </span>
                   </p>
 
-                  <div
-                    className="mt-6 inline-flex items-center gap-3 px-5 py-2
-            bg-white/20 border border-white
-            rounded-[8px] text-white 
-            backdrop-blur-md"
-                  >
-                    <span className="text-lg">
-                      <Image
-                        src="/img/lovely.svg"
-                        alt="love"
-                        width={28}
-                        height={28}
-                      />
-                    </span>
+                  <div className="mt-6 inline-flex items-center gap-3 px-5 py-2 bg-white/20 border border-white rounded-[8px] text-white backdrop-blur-md">
+                    <Image
+                      src="/img/lovely.svg"
+                      alt="love"
+                      width={28}
+                      height={28}
+                    />
                     Satisfied With Our Services
                   </div>
+                </div>
+              </div>
+
+              {/* ================= CTA BAR ================= */}
+              <div
+                className="
+      absolute inset-x-0 bottom-0 z-20
+      translate-y-12 opacity-0
+      group-hover:translate-y-0 group-hover:opacity-100
+      transition-all duration-700
+      ease-[cubic-bezier(0.22,1,0.36,1)]
+    "
+              >
+                {/* content */}
+                <div className="relative flex items-center justify-between px-6 py-6">
+                  <p className="text-white/90 text-[24px] tracking-wide">
+                    *Free 1 Month Trial Access
+                  </p>
+
+                  {/* Arrow */}
+                  <button
+                    className="
+      flex-shrink-0
+      w-[48px] md:w-[60px]
+      h-[48px] md:h-[60px]
+      rounded-[10px] md:rounded-[12px]
+      bg-white
+      flex items-center justify-center
+      shadow-md
+      transition-transform duration-500
+      group-hover:translate-x-1
+    "
+                  >
+                    <Image
+                      src="/img/arrow-right.svg"
+                      alt="arrow-right"
+                      width={24}
+                      height={24}
+                    />
+                  </button>
                 </div>
               </div>
             </div>
