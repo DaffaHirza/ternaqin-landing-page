@@ -1,6 +1,31 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { PROCESS_STEPS } from "./processData";
 
 export default function ProcessSection() {
+  const [step, setStep] = useState(0);
+  const [prevStep, setPrevStep] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  const current = PROCESS_STEPS[step];
+  const previous = PROCESS_STEPS[prevStep];
+
+  const changeStep = (newStep: number) => {
+    if (animating) return;
+
+    setAnimating(true);
+    setPrevStep(step);
+    setStep(newStep);
+
+    setTimeout(() => setAnimating(false), 450);
+  };
+
+  const next = () => changeStep((step + 1) % PROCESS_STEPS.length);
+  const prev = () =>
+    changeStep((step - 1 + PROCESS_STEPS.length) % PROCESS_STEPS.length);
+
   return (
     <section className="bg-[#F3F3F3] py-24">
       <div className="w-full px-4 space-y-16">
@@ -43,14 +68,34 @@ export default function ProcessSection() {
         {/* MAIN GRID */}
         <div className="grid grid-cols-12 gap-4 items-stretch">
           {/* LEFT IMAGE */}
-          <div className="col-span-5 rounded-[28px] overflow-hidden">
-            <Image
-              src="/img/process-main.svg"
-              alt="process"
-              width={900}
-              height={1000}
-              className="w-full h-full object-cover"
-            />
+          <div className="col-span-5 flex">
+            <div className="relative w-full h-full min-h-[620px] rounded-[28px] overflow-hidden">
+              {/* OLD */}
+              <Image
+                key={prevStep}
+                src={previous.image}
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className={`object-cover transition-opacity duration-500 ${
+                  animating ? "opacity-0" : "opacity-100"
+                }`}
+              />
+
+              {/* NEW */}
+              <Image
+                key={step}
+                src={current.image}
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className={`object-cover transition-opacity duration-500 ${
+                  animating ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            </div>
           </div>
 
           {/* RIGHT SIDE */}
@@ -59,24 +104,31 @@ export default function ProcessSection() {
             <div className="bg-[#F7F7F7] rounded-[28px] px-10 py-12 flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <span className="text-[40px] font-semibold text-[#1A1A1A]">
-                  01
+                  {String(current.id).padStart(2, "0")}
                 </span>
                 <span className="text-[20px] text-[#9A9A9A]">From 04</span>
               </div>
 
               <div className="flex items-center gap-4">
-                <button className="w-[52px] h-[52px] rounded-[14px] border border-[#E5E5E5] flex items-center justify-center text-[#1A1A1A]">
+                <button
+                  onClick={prev}
+                  className="w-[52px] h-[52px] rounded-[14px] border border-[#E5E5E5] flex items-center justify-center"
+                >
                   <Image
                     src="/img/arrow-left.svg"
-                    alt="arrow-right"
+                    alt=""
                     width={32}
                     height={32}
                   />
                 </button>
-                <button className="w-[52px] h-[52px] rounded-[14px] bg-[#1F4941] text-white flex items-center justify-center">
+
+                <button
+                  onClick={next}
+                  className="w-[52px] h-[52px] rounded-[14px] bg-[#1F4941] flex items-center justify-center"
+                >
                   <Image
                     src="/img/h-arrow-right.svg"
-                    alt="arrow-right"
+                    alt=""
                     width={32}
                     height={32}
                   />
@@ -89,41 +141,36 @@ export default function ProcessSection() {
               <div className="bg-[#F7F7F7] rounded-[28px] p-10 flex flex-col justify-between h-full">
                 <div className="space-y-8">
                   <h3 className="text-[36px] w-full font-semibold text-[#1A1A1A] leading-[1.2]">
-                    Intelligent Registration and
-                    Digital Records Management
+                    {current.title}
                   </h3>
 
                   <div className="flex gap-2">
-                    <span className="px-5 py-2 rounded-[12px] text-sm font-medium border-2 border-[#1F4941] bg-[#D9F5E5]/50 text-[#1F4941]">
-                      Administrator
-                    </span>
-                    <span className="px-5 py-2 rounded-[12px] text-sm font-medium border-2 border-[#1F4941] bg-[#D9F5E5]/50 text-[#1F4941]">
-                      Employee
-                    </span>
+                    {current.roles.map((role) => (
+                      <span
+                        key={role}
+                        className="px-5 py-2 rounded-[12px] text-sm font-medium border-2 border-[#1F4941] bg-[#D9F5E5]/50 text-[#1F4941]"
+                      >
+                        {role}
+                      </span>
+                    ))}
                   </div>
 
                   <p className="text-[18px] text-justify text-[#9A9A9A] leading-[1.8] max-w-[650px]">
-                    Centralized system for registering cattle and managing
-                    livestock data digitally. Ensures accurate, up-to-date
-                    records covering identification, health, and ownership.
-                    Designed to improve traceability, operational efficiency,
-                    and data-driven decision-making.
+                    {current.desc}
                   </p>
                 </div>
 
                 {/* STAT */}
                 <div className="flex items-end gap-6 mt-16">
                   <span className="text-[72px] font-semibold text-[#1F4941] leading-none">
-                    91M+
+                    {current.stat}
                   </span>
 
                   <div className="border-l border-black/25 pl-6">
                     <p className="text-[22px] font-medium text-[#1A1A1A]">
-                      Cattle Managed
+                      {current.statLabel}
                     </p>
-                    <p className="text-[#9A9A9A]">
-                      Empowering livestock at scale
-                    </p>
+                    <p className="text-[#9A9A9A]">{current.statSub}</p>
                   </div>
                 </div>
               </div>

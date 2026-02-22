@@ -143,9 +143,12 @@ export default function Navbar() {
         }
       `}
                 >
-                  <span className="block h-0.5 w-6 bg-[#1F4941]" />
-                  <span className="block h-0.5 w-6 bg-[#1F4941]" />
-                  <span className="block h-0.5 w-6 bg-[#1F4941]" />
+                  <Image
+                    src="/img/hamburger-menu.svg"
+                    alt="open menu"
+                    width={600}
+                    height={600}
+                  />
                 </div>
 
                 {/* CLOSE ICON */}

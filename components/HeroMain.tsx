@@ -5,7 +5,7 @@ import PinnedScene from "@/components/PinnedScene";
 import Navbar from "@/components/Navbar";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import SectionReveal from "@/components/SectionReveal";
-
+import Link from "next/link";
 
 export default function HeroContent() {
   return (
@@ -106,11 +106,17 @@ export default function HeroContent() {
               </p>
 
               <div className="mt-6 flex items-center gap-1">
-                <button className="px-6 sm:px-15 h-[52px] sm:h-[60px] rounded-[12px] bg-white text-[#1F4941] text-[15px] sm:text-[22px] font-medium shadow-md hover:scale-105 transition">
+                <Link
+                  href="/book-now"
+                  className="px-6 sm:px-15 h-[52px] sm:h-[60px] rounded-[12px] bg-white text-[#1F4941] text-[15px] sm:text-[22px] font-medium shadow-md hover:scale-105 transition flex items-center justify-center"
+                >
                   Book Now
-                </button>
+                </Link>
 
-                <button className="w-[52px] sm:w-[60px] h-[52px] sm:h-[60px] rounded-[12px] bg-white flex items-center justify-center text-[#1F4941] text-[22px] sm:text-[32px] shadow-md hover:scale-105 transition">
+                <Link
+                  href="/book-now"
+                  className="w-[52px] sm:w-[60px] h-[52px] sm:h-[60px] rounded-[12px] bg-white flex items-center justify-center text-[#1F4941] text-[22px] sm:text-[32px] shadow-md hover:scale-105 transition"
+                >
                   <Image
                     src="/img/arrow-right.svg"
                     alt="arrow-right"
@@ -118,7 +124,7 @@ export default function HeroContent() {
                     height={40}
                     className="object-contain"
                   />
-                </button>
+                </Link>
               </div>
             </section>
 

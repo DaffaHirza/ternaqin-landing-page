@@ -1,6 +1,10 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 
 export default function SectionService() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
   return (
     <section className="relative bg-[#F3F3F3] py-24 overflow-hidden">
       {/* subtle background curve */}
