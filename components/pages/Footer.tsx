@@ -1,213 +1,93 @@
 "use client";
 
+export default function Footer() {
+    const currentYear = new Date().getFullYear();
 
-import { useState } from "react";
 
-export default function Pricing() {
-    const [isYearlyBasic, setIsYearlyBasic] = useState(false);
-    const [isYearlyBusiness, setIsYearlyBusiness] = useState(true);
 
     return (
-        <div className="min-h-screen py-12 px-5 sm:px-8 lg:px-5 bg-[#F3F3F3]">
-            <div className="max-w-screen mx-auto">
-                <div className="flex items-start mb-12 gap-6">
-                    <span className="flex bg-[#1F4941] text-white px-4 py-2 rounded-full gap-2">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.97 2C6.44997 2 1.96997 6.48 1.96997 12C1.96997 17.52 6.44997 22 11.97 22C17.49 22 21.97 17.52 21.97 12C21.97 6.48 17.5 2 11.97 2ZM15.72 12.35L12 16.58L11.56 17.08C10.95 17.77 10.45 17.59 10.45 16.66V12.7H8.74997C7.97997 12.7 7.76997 12.23 8.27997 11.65L12 7.42L12.44 6.92C13.05 6.23 13.55 6.41 13.55 7.34V11.3H15.25C16.02 11.3 16.23 11.77 15.72 12.35Z" fill="white" />
-                        </svg>
-                        <span>Pricing</span>
-                    </span>
-                    <div className="bungkus">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-4">
-                            Flexible, Transparent Plans Designed For <p className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-400">
-                                Long-Term Growth And Seamless Scaling With Confidence
-                            </p>
-                        </h1>
+        <footer className="min-h-screen relative overflow-hidden bg-[#F3F3F3]">
+            <div className="w-full h-full min-h-screen px-6 pt-12 pb-5 lg:px-12 xl:px-20 flex flex-col justify-between">
+                {/* Contact Information */}
+                <div className="flex flex-wrap justify-between items-start gap-8 py-8 relative z-10">
+                    {/* Contact */}
+                    <div className="shrink-0 space-y-2">
+                        <div className="flex items-center gap-2">
+                            <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M29.3666 17.9173C28.6499 17.9173 28.0833 17.334 28.0833 16.634C28.0833 16.0173 27.4666 14.734 26.4333 13.6173C25.4166 12.534 24.2999 11.9007 23.3666 11.9007C22.6499 11.9007 22.0833 11.3173 22.0833 10.6173C22.0833 9.91732 22.6666 9.33398 23.3666 9.33398C25.0333 9.33398 26.7833 10.234 28.3166 11.8507C29.7499 13.3673 30.6666 15.2507 30.6666 16.6173C30.6666 17.334 30.0833 17.9173 29.3666 17.9173Z" fill="#191919" />
+                                <path d="M35.3834 17.9173C34.6668 17.9173 34.1001 17.334 34.1001 16.634C34.1001 10.7173 29.2834 5.91732 23.3834 5.91732C22.6668 5.91732 22.1001 5.33398 22.1001 4.63398C22.1001 3.93398 22.6668 3.33398 23.3668 3.33398C30.7001 3.33398 36.6668 9.30065 36.6668 16.634C36.6668 17.334 36.0834 17.9173 35.3834 17.9173Z" fill="#191919" />
+                                <path d="M18.4166 24.9173L15.3333 28.0006C14.6833 28.6507 13.6499 28.6507 12.9833 28.0173C12.7999 27.834 12.6166 27.6673 12.4333 27.484C10.7166 25.7507 9.16659 23.934 7.78325 22.034C6.41659 20.134 5.31659 18.234 4.51659 16.3507C3.73325 14.4507 3.33325 12.634 3.33325 10.9007C3.33325 9.76732 3.53325 8.68398 3.93325 7.68398C4.33325 6.66732 4.96659 5.73398 5.84992 4.90065C6.91659 3.85065 8.08325 3.33398 9.31659 3.33398C9.78325 3.33398 10.2499 3.43398 10.6666 3.63398C11.0999 3.83398 11.4833 4.13398 11.7833 4.56732L15.6499 10.0173C15.9499 10.434 16.1666 10.8173 16.3166 11.184C16.4666 11.534 16.5499 11.884 16.5499 12.2007C16.5499 12.6007 16.4333 13.0007 16.1999 13.384C15.9833 13.7673 15.6666 14.1673 15.2666 14.5673L13.9999 15.884C13.8166 16.0673 13.7333 16.284 13.7333 16.5507C13.7333 16.684 13.7499 16.8007 13.7833 16.934C13.8333 17.0673 13.8833 17.1673 13.9166 17.2673C14.2166 17.8173 14.7333 18.534 15.4666 19.4007C16.2166 20.2673 17.0166 21.1507 17.8833 22.034C18.0499 22.2007 18.2333 22.3673 18.3999 22.534C19.0666 23.184 19.0833 24.2507 18.4166 24.9173Z" fill="#191919" />
+                                <path d="M36.6167 30.5504C36.6167 31.0171 36.5333 31.5004 36.3667 31.9671C36.3167 32.1004 36.2667 32.2337 36.2 32.3671C35.9167 32.9671 35.55 33.5337 35.0667 34.0671C34.25 34.9671 33.35 35.6171 32.3333 36.0337C32.3167 36.0337 32.3 36.0504 32.2833 36.0504C31.3 36.4504 30.2333 36.6671 29.0833 36.6671C27.3833 36.6671 25.5667 36.2671 23.65 35.4504C21.7333 34.6337 19.8167 33.5337 17.9167 32.1504C17.2667 31.6671 16.6167 31.1837 16 30.6671L21.45 25.2171C21.9167 25.5671 22.3333 25.8337 22.6833 26.0171C22.7667 26.0504 22.8667 26.1004 22.9833 26.1504C23.1167 26.2004 23.25 26.2171 23.4 26.2171C23.6833 26.2171 23.9 26.1171 24.0833 25.9337L25.35 24.6837C25.7667 24.2671 26.1667 23.9504 26.55 23.7504C26.9333 23.5171 27.3167 23.4004 27.7333 23.4004C28.05 23.4004 28.3833 23.4671 28.75 23.6171C29.1167 23.7671 29.5 23.9837 29.9167 24.2671L35.4333 28.1837C35.8667 28.4837 36.1667 28.8337 36.35 29.2504C36.5167 29.6671 36.6167 30.0837 36.6167 30.5504Z" fill="#191919" />
+                            </svg>
+
+                            <h3 className="text-xl font-semibold text-gray-800">Contact</h3>
+                        </div>
+                        <p className="text-[#A5A5A5]">+(62)85117300763</p>
+                    </div>
+
+                    {/* Email Address */}
+                    <div className="shrink-0 space-y-2">
+                        <div className="flex items-center gap-2">
+                            <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.0001 21.666C5.40008 21.666 1.66675 25.3827 1.66675 29.9993C1.66675 34.616 5.40008 38.3327 10.0001 38.3327C14.6001 38.3327 18.3334 34.5993 18.3334 29.9993C18.3334 25.3993 14.6167 21.666 10.0001 21.666ZM6.60008 26.5993H10.0001C10.6334 26.5993 11.1334 27.116 11.1334 27.7327C11.1334 28.3493 10.6334 28.866 10.0001 28.866H6.60008C5.96675 28.866 5.46675 28.3493 5.46675 27.7327C5.46675 27.116 5.96675 26.5993 6.60008 26.5993ZM13.4001 33.3994H6.60008C5.96675 33.3994 5.46675 32.8827 5.46675 32.266C5.46675 31.6494 5.98341 31.1327 6.60008 31.1327H13.4167C14.0501 31.1327 14.5501 31.6494 14.5501 32.266C14.5501 32.8827 14.0334 33.3994 13.4001 33.3994Z" fill="#191919" />
+                                <path d="M28.3333 5H11.6666C6.66659 5 3.33325 7.5 3.33325 13.3333V18.5667C3.33325 19.7833 4.58325 20.55 5.69992 20.0667C7.53325 19.2667 9.61659 18.9667 11.7999 19.3167C16.1666 20.0333 19.7333 23.4833 20.6166 27.8167C20.8666 29.0833 20.8999 30.3167 20.7333 31.5C20.5999 32.4833 21.3999 33.35 22.3833 33.35H28.3333C33.3333 33.35 36.6666 30.85 36.6666 25.0167V13.3333C36.6666 7.5 33.3333 5 28.3333 5ZM29.1166 14.3167L23.8999 18.4833C22.7999 19.3667 21.3999 19.8 19.9999 19.8C18.5999 19.8 17.1833 19.3667 16.0999 18.4833L10.8833 14.3167C10.3499 13.8833 10.2666 13.0833 10.6833 12.55C11.1166 12.0167 11.8999 11.9167 12.4333 12.35L17.6499 16.5167C18.9166 17.5333 21.0666 17.5333 22.3333 16.5167L27.5499 12.35C28.0833 11.9167 28.8833 12 29.2999 12.55C29.7333 13.0833 29.6499 13.8833 29.1166 14.3167Z" fill="#191919" />
+                            </svg>
+
+                            <h3 className="text-xl font-semibold text-gray-800">Email Address</h3>
+                        </div>
+                        <p className="text-[#A5A5A5]">ternaqinindonesia@gmail.com</p>
+                    </div>
+
+                    {/* Company Location - New Zealand */}
+                    <div className="shrink-0 space-y-2">
+                        <div className="flex items-center gap-2">
+                            <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.33325 13.334C5.56659 13.334 3.33325 15.5673 3.33325 18.334V31.6673C3.33325 34.434 5.56659 36.6673 8.33325 36.6673H10.8333C12.6666 36.6673 14.1666 35.1673 14.1666 33.334V16.6673C14.1666 14.834 12.6666 13.334 10.8333 13.334H8.33325ZM9.99992 28.334C9.99992 29.0173 9.43325 29.584 8.74992 29.584C8.06659 29.584 7.49992 29.0173 7.49992 28.334V21.6673C7.49992 20.984 8.06659 20.4173 8.74992 20.4173C9.43325 20.4173 9.99992 20.984 9.99992 21.6673V28.334Z" fill="#191919" />
+                                <path d="M31.6667 3.33398H21.6667C18.9001 3.33398 16.6667 5.56732 16.6667 8.33398V31.6673C16.6667 34.434 18.9001 36.6673 21.6667 36.6673H22.5001C22.9667 36.6673 23.3334 36.3007 23.3334 35.834V30.0007C23.3334 29.084 24.0834 28.334 25.0001 28.334H28.3334C29.2501 28.334 30.0001 29.084 30.0001 30.0007V35.834C30.0001 36.3007 30.3667 36.6673 30.8334 36.6673H31.6667C34.4334 36.6673 36.6667 34.434 36.6667 31.6673V8.33398C36.6667 5.56732 34.4334 3.33398 31.6667 3.33398ZM24.5834 21.6673C24.5834 22.3507 24.0167 22.9173 23.3334 22.9173C22.6501 22.9173 22.0834 22.3507 22.0834 21.6673V13.334C22.0834 12.6507 22.6501 12.084 23.3334 12.084C24.0167 12.084 24.5834 12.6507 24.5834 13.334V21.6673ZM31.2501 21.6673C31.2501 22.3507 30.6834 22.9173 30.0001 22.9173C29.3167 22.9173 28.7501 22.3507 28.7501 21.6673V13.334C28.7501 12.6507 29.3167 12.084 30.0001 12.084C30.6834 12.084 31.2501 12.6507 31.2501 13.334V21.6673Z" fill="#191919" />
+                            </svg>
+
+                            <h3 className="text-xl font-semibold text-gray-800">Company</h3>
+                        </div>
+                        <p className="text-[#A5A5A5]">Waikato, New Zealand</p>
+                    </div>
+
+                    {/* Company Location - Indonesia */}
+                    <div className="shrink-0 space-y-2">
+                        <div className="flex items-center gap-2">
+                            <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.33325 13.334C5.56659 13.334 3.33325 15.5673 3.33325 18.334V31.6673C3.33325 34.434 5.56659 36.6673 8.33325 36.6673H10.8333C12.6666 36.6673 14.1666 35.1673 14.1666 33.334V16.6673C14.1666 14.834 12.6666 13.334 10.8333 13.334H8.33325ZM9.99992 28.334C9.99992 29.0173 9.43325 29.584 8.74992 29.584C8.06659 29.584 7.49992 29.0173 7.49992 28.334V21.6673C7.49992 20.984 8.06659 20.4173 8.74992 20.4173C9.43325 20.4173 9.99992 20.984 9.99992 21.6673V28.334Z" fill="#191919" />
+                                <path d="M31.6667 3.33398H21.6667C18.9001 3.33398 16.6667 5.56732 16.6667 8.33398V31.6673C16.6667 34.434 18.9001 36.6673 21.6667 36.6673H22.5001C22.9667 36.6673 23.3334 36.3007 23.3334 35.834V30.0007C23.3334 29.084 24.0834 28.334 25.0001 28.334H28.3334C29.2501 28.334 30.0001 29.084 30.0001 30.0007V35.834C30.0001 36.3007 30.3667 36.6673 30.8334 36.6673H31.6667C34.4334 36.6673 36.6667 34.434 36.6667 31.6673V8.33398C36.6667 5.56732 34.4334 3.33398 31.6667 3.33398ZM24.5834 21.6673C24.5834 22.3507 24.0167 22.9173 23.3334 22.9173C22.6501 22.9173 22.0834 22.3507 22.0834 21.6673V13.334C22.0834 12.6507 22.6501 12.084 23.3334 12.084C24.0167 12.084 24.5834 12.6507 24.5834 13.334V21.6673ZM31.2501 21.6673C31.2501 22.3507 30.6834 22.9173 30.0001 22.9173C29.3167 22.9173 28.7501 22.3507 28.7501 21.6673V13.334C28.7501 12.6507 29.3167 12.084 30.0001 12.084C30.6834 12.084 31.2501 12.6507 31.2501 13.334V21.6673Z" fill="#191919" />
+                            </svg>
+
+                            <h3 className="text-xl font-semibold text-gray-800">Company</h3>
+                        </div>
+                        <p className="text-[#A5A5A5]">Semarang, Indonesia</p>
                     </div>
                 </div>
 
+                {/* Large TernaQin Branding with Gradient - Positioned Absolute */}
+                <div className="absolute left-0 right-0 top-[45%] flex items-center justify-center pointer-events-none">
+                    <h2
+                        className="text-[120px] md:text-[200px] lg:text-[260px] xl:text-[320px] font-bold text-transparent bg-clip-text bg-linear-to-b from-[#B8C5C5] to-transparent text-center leading-none"
+                        style={{
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent'
+                        }}
+                    >
+                        TernaQin
+                    </h2>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4">
-                    <div className="bg-white rounded-2xl p-8">
-                        <div className="mb-6">
-                            <h2 className="text-3xl font-bold text-gray-900">Basic Plan</h2>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <div className="flex items-baseline mb-3">
-                                <span className="text-7xl font-medium text-[#191919]">{isYearlyBasic ? '$2400' : '$240'}</span>
-                                {isYearlyBasic && (
-                                    <span className="ml-2 text-base text-[#1F4941] font-medium">Savings Up To 20%</span>
-                                )}
-                            </div>
-                            <p className="text-[#A5A5A5] mb-6">
-                                Basic features available for up to 10 users.
-                            </p>
-                            <div className="flex items-center gap-2 mb-8">
-                                <button
-                                    onClick={() => setIsYearlyBasic(!isYearlyBasic)}
-                                    className="relative inline-flex h-6 w-12 items-center rounded-full transition-colors bg-[#F6F6F6] duration-300"
-                                >
-                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${isYearlyBasic ? 'translate-x-7 bg-[#1F4941]' : 'translate-x-1 bg-[#A5A5A5]'
-                                        }`} />
-                                </button>
-                                <span className="text-sm text-[#191919]">Billed yearly</span>
-                            </div>
-
-                            <div className="space-y-3 mb-8">
-                                <button className="w-full bg-[#1F4941] text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200">
-                                    Get Started
-                                </button>
-                                <button className="w-full bg-transparent text-[#191919] font-medium py-4 px-6 rounded-lg border border-gray-200 transition-colors duration-200">
-                                    Request a Sales Discussion
-                                </button>
-                            </div>
-
-                            <div>
-                                <h3 className="text-xl font-semibold text-[#191919] mb-4">Features</h3>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Up to 10 individual users</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Access to basic features</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Basic reporting and analytics</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Basic AI assistance support</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">All features included in the Free plan</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="w-full bg-white rounded-2xl p-8 relative">
-
-                        <div className="mb-6">
-                            <div className="flex justify-between items-center mb-2">
-                                <h2 className="text-3xl font-bold text-[#191919]">Business Plan</h2>
-                                <span className=" bg-[#D9F5E5] text-[#191919] border-2 border-[#1F4941] text-xs font-medium px-3 py-2 rounded-lg self-center">Popular</span>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <div className="flex items-baseline mb-3">
-                                <span className="text-7xl font-medium text-[#191919]">{isYearlyBusiness ? '$6000' : '$600'}</span>
-                                {isYearlyBusiness && (
-                                    <span className="ml-2 text-base text-[#1F4941] font-medium">Savings Up To 20%</span>
-                                )}
-                            </div>
-                            <p className="text-[#A5A5A5] mb-6">
-                                Business features available for up to 30 users.
-                            </p>
-                            <div className="flex items-center gap-2 mb-8">
-                                <button
-                                    onClick={() => setIsYearlyBusiness(!isYearlyBusiness)}
-                                    className="relative inline-flex h-6 w-12 items-center rounded-full transition-colors bg-[#F6F6F6] duration-300"
-                                >
-                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${isYearlyBusiness ? 'translate-x-7 bg-[#1F4941]' : 'translate-x-1 bg-[#A5A5A5]'
-                                        }`} />
-                                </button>
-                                <span className="text-sm text-[#191919]">Billed yearly</span>
-                            </div>
-
-                            <div className="space-y-3 mb-8">
-                                <button className="w-full bg-[#1F4941] text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200">
-                                    Get Started
-                                </button>
-                                <button className="w-full bg-transparent text-[#191919] font-medium py-4 px-6 rounded-lg border border-gray-200 transition-colors duration-200">
-                                    Request a Sales Discussion
-                                </button>
-                            </div>
-
-                            <div>
-                                <h3 className="text-xl font-semibold text-[#191919] mb-4">Features</h3>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Up to 10 individual users</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Access to basic features</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Basic reporting and analytics</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">Basic AI assistance support</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#1F4941" />
-                                        </svg>
-                                        <span className="text-[#A5A5A5] text-base">All features included in the Free plan</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-gray-900 rounded-2xl p-8 text-white flex flex-col justify-between h-full relative overflow-hidden">
-                        {/* Circle Background */}
-                        <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-100 h-100 rounded-full bg-[#A5A5A5] opacity-8"></div>
-                        <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-150 h-150 rounded-full bg-[#A5A5A5] opacity-8"></div>
-                        <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-200 h-200 rounded-full bg-[#A5A5A5] opacity-8"></div>
-
-
-                        <div className="relative z-10">
-                            <h2 className="text-3xl font-bold mb-6">Enterprise Plan</h2>
-                            <div className="flex items-baseline mb-3">
-                                <span className="text-7xl font-medium">Let&apos;s Talk</span>
-                            </div>
-                            <p className="text-[#A5A5A5]">
-                                Enterprise features available for unlimited users.
-                            </p>
-                        </div>
-
-                        <div className="mb-8 relative z-10">
-                            <p className="text-[#FFFFFF] text-lg font-semibold leading-10">
-                                Unlimited Access To Advanced Features For Enterprise-Scale Livestock Operations,
-                                Driving Intelligent, Data-Driven Management And Long-Term Innovation.
-                            </p>
-                        </div>
-
-
-                        <button className="w-full bg-[#FFFFFF] text-[#1F4941] font-medium py-4 px-6 rounded-lg transition-colors duration-200 relative z-10">
-                            Discussion with Our Sales Team
-                        </button>
-
-                    </div>
+                {/* Copyright Section */}
+                <div className="border-t border-[#E0E0E0] flex items-center justify-between py-4 relative z-10">
+                    <p className="text-[#A5A5A5] text-lg">
+                        © {currentYear} TernaQin Indonesia
+                    </p>
+                    <p className="text-[#A5A5A5] text-lg">
+                        All Right Reserved
+                    </p>
                 </div>
             </div>
-        </div >
+        </footer>
     );
 }

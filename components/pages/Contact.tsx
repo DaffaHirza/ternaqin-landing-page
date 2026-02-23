@@ -66,7 +66,7 @@ export default function Contact() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 relative z-10 px-6 py-12 lg:px-12 xl:px-16 gap-8 lg:gap-15">
-            <div className="flex flex-col justify-between items-start gap-8 text-white min-h-[600px]">
+            <div className="flex flex-col justify-around items-start gap-8 text-white min-h-[600px]">
               <div>
                 <p className="text-4xl lg:text-7xl font-semibold leading-tight tracking-normal pb-3">
                   Let&apos;s Grow Together
