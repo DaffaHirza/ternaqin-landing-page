@@ -3,6 +3,12 @@ import FeaturesSection from "@/components/FeaturesSection";
 import ServiceSection from "@/components/ServiceSection";
 import ProcessSection from "@/components/ProcessSection";
 
+import Pricing from "@/components/pages/Pricing";
+import Faqs from "@/components/pages/Faqs";
+import TestimonialSection from "@/components/pages/Testimonial";
+import Contact from "@/components/pages/Contact";
+import Footer from "@/components/pages/Footer";
+
 export default function Home() {
   function StackSection({
     children,
@@ -25,6 +31,7 @@ export default function Home() {
 
   return (
     <main className="relative">
+      {/* STACK SECTIONS (punya kamu) */}
       <StackSection z={10}>
         <HeroContent />
       </StackSection>
@@ -40,6 +47,13 @@ export default function Home() {
       <StackSection z={40}>
         <ProcessSection />
       </StackSection>
+
+      {/* SECTION PUNYA DAFFA */}
+      <Pricing />
+      <Faqs />
+      <TestimonialSection />
+      <Contact />
+      <Footer />
     </main>
   );
 }
