@@ -16,26 +16,23 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const root = document.documentElement;
-    let raf: number;
+    const hero = document.getElementById("hero");
 
-    const readProgress = () => {
-      const progress = parseFloat(
-        getComputedStyle(root).getPropertyValue("--pinned-progress") || "0"
-      );
+    const handleScroll = () => {
+      if (!hero) return;
 
-      setHeroActive((prev) => {
-        if (prev && progress < 0.015) return false;
-        if (!prev && progress > 0.02) return true;
-        return prev;
-      });
+      const heroBottom = hero.getBoundingClientRect().bottom;
 
-      raf = requestAnimationFrame(readProgress);
+      if (heroBottom <= 80) {
+        setHeroActive(true);
+      } else {
+        setHeroActive(false);
+      }
     };
 
-    raf = requestAnimationFrame(readProgress);
-
-    return () => cancelAnimationFrame(raf);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {

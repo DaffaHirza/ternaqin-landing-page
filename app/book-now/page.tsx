@@ -99,7 +99,7 @@ export default function BookNowPage() {
   return (
     <div className="min-h-screen bg-[#F4F4F4] flex flex-col">
       {/* navbar */}
-
+      <Navbar  />
       {/* CONTENT */}
       <div className="flex-1 px-4 sm:px-8 xl:px-4 py-12 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4">

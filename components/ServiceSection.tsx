@@ -3,7 +3,18 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function SectionService() {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [activeCard, setActiveCard] = useState(1);
+
+  const baseCardStyle = `
+  relative
+  rounded-[32px]
+  overflow-hidden
+  transition-all
+  duration-500
+  ease-in-out
+  cursor-pointer
+  min-h-[280px] lg:min-h-0
+`;
 
   return (
     <section className="relative bg-[#F3F3F3] py-24 overflow-hidden">
@@ -27,7 +38,7 @@ export default function SectionService() {
               Optimizing Livestock
             </h2>
 
-            <p className="mt-8 text-[24px] font-regular md:text-[32px] text-[#9A9A9A] leading-relaxed">
+            <p className="mt-8 text-[24px] md:text-[32px] text-[#9A9A9A] leading-relaxed">
               Providing smart, transparent, and scalable digital solutions to
               streamline livestock management through QR-based tracking and farm
               operations for sustainable growth and efficiency.
@@ -35,16 +46,41 @@ export default function SectionService() {
           </div>
         </div>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
-          {/* 01 - PRIMARY CARD */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4 relative rounded-[28px] p-10 min-h-[800px] shadow-sm text-white flex flex-col justify-between overflow-hidden">
+        {/* FLEX EXPANDING CARDS */}
+        <div
+          className="
+  flex flex-col lg:flex-row 
+  gap-4 
+  h-auto lg:h-[820px]
+"
+        >
+          {/* 01 */}
+          <div
+            onMouseEnter={() => setActiveCard(1)}
+            className={`${baseCardStyle} ${
+              activeCard === 1
+                ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
+                : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
+            }`}
+          >
+            {/* Background Layer */}
             <div className="absolute inset-0">
+              {/* Disable BG */}
               <Image
-                src="/img/bg-service-card-1.svg"
-                alt="service background"
+                src="/img/service-bg-card-disable.svg"
+                alt=""
                 fill
                 className="object-cover"
+              />
+
+              {/* Active BG */}
+              <Image
+                src="/img/bg-service-card-1.svg"
+                alt=""
+                fill
+                className={`object-cover transition-opacity duration-700 ease-in-out ${
+                  activeCard === 1 ? "opacity-100" : "opacity-0"
+                }`}
                 priority
               />
             </div>
@@ -52,184 +88,223 @@ export default function SectionService() {
             <div className="relative z-10 flex flex-col justify-between h-full">
               <div>
                 <div className="flex justify-between items-start">
-                  <span className="text-[60px] leading-none font-semibold opacity-90 relative -top-[3px]">
+                  <span className="text-[40px] lg:text-[60px] font-semibold">
                     01
                   </span>
 
-                  <div className="flex items-start gap-2">
-                    <button
-                      className="
-        px-5 md:px-8 
-        h-[48px] md:h-[60px] 
-        rounded-[10px] md:rounded-[12px] 
-        bg-white 
-        text-[#1F4941] 
-        text-sm md:text-lg 
-        font-medium 
-        shadow-md 
-        hover:scale-105 
-        transition
-      "
-                    >
-                      Learn More
-                    </button>
+                  {activeCard === 1 && (
+                    <div className="flex items-start gap-2">
+                      <button className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition">
+                        Learn More
+                      </button>
 
-                    <button
-                      className="
-        w-[48px] md:w-[60px] 
-        h-[48px] md:h-[60px] 
-        rounded-[10px] md:rounded-[12px] 
-        bg-white 
-        flex items-center justify-center 
-        shadow-md 
-        hover:scale-105 
-        transition
-      "
-                    >
-                      <Image
-                        src="/img/arrow-right.svg"
-                        alt="arrow-right"
-                        width={24}
-                        height={24}
-                      />
-                    </button>
-                  </div>
+                      <button className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                        <Image
+                          src="/img/arrow-right.svg"
+                          alt="arrow-right"
+                          width={24}
+                          height={24}
+                        />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
-                <div className="mt-6 h-[1px] bg-white/30 w-full" />
-
-                <p className="mt-8 text-[18px] text-white/80 leading-relaxed">
-                  A centralized administration platform for managing all
-                  livestock data digitally and efficiently, from cattle
-                  identification, health and vaccination records, to integrated
-                  activity and sales reports.
-                </p>
+                {activeCard === 1 && (
+                  <>
+                    <div className="mt-6 h-[1px] bg-white/30 w-full" />
+                    <p className="mt-8 text-[16px] lg:text-[18px] text-white/80 leading-relaxed">
+                      A centralized administration platform for managing
+                      livestock data digitally.
+                    </p>
+                  </>
+                )}
               </div>
 
-              <div className="flex items-center gap-3 mt-6 text-white/90">
-                <span className="text-lg">
-                  <Image
-                    src="/img/people.svg"
-                    alt="people"
-                    width={40}
-                    height={40}
-                  />
-                </span>
-                <span className="text-[30px] font-medium">
-                  Livestock Administrator
-                </span>
-              </div>
+              <span className="text-[22px] lg:text-[30px] font-medium">
+                Livestock Administrator
+              </span>
             </div>
           </div>
 
           {/* 02 */}
-          <div className="col-span-1 sm:col-span-1 lg:col-span-2 relative    rounded-[28px] p-8 flex flex-col justify-between min-h-[800px] shadow-sm overflow-hidden">
-            {/* Background SVG */}
+          <div
+            onMouseEnter={() => setActiveCard(2)}
+            className={`${baseCardStyle} ${
+              activeCard === 2
+                ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
+                : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
+            }`}
+          >
+            {/* Background Layers */}
             <div className="absolute inset-0">
+              {/* Disable BG */}
               <Image
                 src="/img/service-bg-card-disable.svg"
-                alt="service background"
+                alt=""
                 fill
                 className="object-cover"
               />
+
+              {/* Active BG */}
+              <Image
+                src="/img/bg-service-card-2.svg"
+                alt=""
+                fill
+                className={`object-cover transition-opacity duration-700 ease-in-out ${
+                  activeCard === 2 ? "opacity-100" : "opacity-0"
+                }`}
+              />
             </div>
 
-            {/* Content */}
             <div className="relative z-10 flex flex-col justify-between h-full">
-              <div className="flex justify-between items-start">
-                <span className="text-[68px] leading-none font-semibold text-black relative -top-[4px]">
-                  02
-                </span>
+              <div>
+                <div className="flex justify-between items-start">
+                  <span className="text-[40px] lg:text-[60px] font-semibold">
+                    02
+                  </span>
 
-                <a
-                  href="#contact"
-                  className="flex items-center justify-center h-[56px] w-[56px] rounded-xl bg-[#1F4941]"
-                >
-                  <Image
-                    src="/img/arrow-right-white.svg"
-                    alt=""
-                    width={32}
-                    height={32}
-                  />
-                </a>
+                  {activeCard === 2 && (
+                    <div className="flex items-start gap-2">
+                      <button className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition">
+                        Learn More
+                      </button>
+
+                      <button className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                        <Image
+                          src="/img/arrow-right.svg"
+                          alt="arrow-right"
+                          width={24}
+                          height={24}
+                        />
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {activeCard === 2 && (
+                  <>
+                    <div className="mt-6 h-[1px] bg-white/30 w-full" />
+
+                    <p className="mt-8 text-[16px] lg:text-[18px] text-white/80 leading-relaxed">
+                      Manage employee data, attendance tracking, performance
+                      records, and operational roles in a centralized system
+                      designed for efficient farm workforce management.
+                    </p>
+                  </>
+                )}
               </div>
 
-              <span className="text-[30px] font-medium text-black">
+              <span className="text-[22px] lg:text-[30px] font-medium">
                 Employee
               </span>
             </div>
           </div>
 
           {/* 03 */}
-          <div className="col-span-1 sm:col-span-1 lg:col-span-2 relative rounded-[28px] p-8 flex flex-col justify-between min-h-[800px] shadow-sm overflow-hidden">
-            {/* Background SVG */}
+          <div
+            onMouseEnter={() => setActiveCard(3)}
+            className={`${baseCardStyle} ${
+              activeCard === 3
+                ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
+                : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
+            }`}
+          >
+            {/* Background Layers */}
             <div className="absolute inset-0">
+              {/* Disable BG */}
               <Image
                 src="/img/service-bg-card-disable.svg"
-                alt="service background"
+                alt=""
                 fill
                 className="object-cover"
               />
+
+              {/* Active BG */}
+              <Image
+                src="/img/bg-service-card-3.svg"
+                alt=""
+                fill
+                className={`object-cover transition-opacity duration-700 ease-in-out ${
+                  activeCard === 3 ? "opacity-100" : "opacity-0"
+                }`}
+              />
             </div>
 
-            {/* Content */}
             <div className="relative z-10 flex flex-col justify-between h-full">
-              <div className="flex justify-between items-start">
-                <span className="text-[68px] leading-none font-semibold text-black relative -top-[4px]">
-                  03
-                </span>
+              <div>
+                <div className="flex justify-between items-start">
+                  <span className="text-[40px] lg:text-[60px] font-semibold">
+                    03
+                  </span>
 
-                <a
-                  href="#contact"
-                  className="flex items-center justify-center h-[56px] w-[56px] rounded-xl bg-[#1F4941]"
-                >
-                  <Image
-                    src="/img/arrow-right-white.svg"
-                    alt=""
-                    width={32}
-                    height={32}
-                  />
-                </a>
+                  {activeCard === 3 && (
+                    <div className="flex items-start gap-2">
+                      <button className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition">
+                        Learn More
+                      </button>
+
+                      <button className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                        <Image
+                          src="/img/arrow-right.svg"
+                          alt="arrow-right"
+                          width={24}
+                          height={24}
+                        />
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {activeCard === 3 && (
+                  <>
+                    <div className="mt-6 h-[1px] bg-white/30 w-full" />
+
+                    <p className="mt-8 text-[16px] lg:text-[18px] text-white/80 leading-relaxed">
+                      Streamline slaughterhouse operations with integrated
+                      livestock verification, processing records, and
+                      traceability systems to ensure compliance, transparency,
+                      and efficiency.
+                    </p>
+                  </>
+                )}
               </div>
 
-              <span className="text-[30px] font-medium text-black">
+              <span className="text-[22px] lg:text-[30px] font-medium">
                 Abattoir
               </span>
             </div>
           </div>
 
-          {/* TESTIMONIAL */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-4 bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col min-h-[820px]">
-            {/* Image Section */}
+          {/* TESTIMONIAL (tetap static, tidak ikut animasi) */}
+          <div className="lg:flex-[2] flex-none bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col">
             <div className="relative h-[360px] bg-[#EAEAEA] rounded-[28px] m-4 flex justify-center overflow-hidden">
               <Image
                 src="/img/service-enchancing.svg"
                 alt="phone"
                 fill
-                className="object-cover object-top "
+                className="object-cover object-top"
               />
             </div>
 
-            {/* Content */}
             <div className="px-10 pb-10 pt-6 flex flex-col flex-1 justify-between">
               <div>
-                <h3 className="text-[40px] font-semibold text-[#1A1A1A] leading-[1.15] tracking-[-0.5px]">
+                <h3 className="text-[40px] font-semibold text-[#1A1A1A] leading-[1.15]">
                   Enhancing Experiences <br />
                   for Our Customers
                 </h3>
 
-                <div className="mt-24 text-[#F5A623] text-[20px] tracking-[4px]">
+                <div className="mt-24">
                   <Image src="/img/star.svg" alt="" width={120} height={120} />
                 </div>
 
-                <p className=" text-[20px] text-[#9A9A9A] leading-[1.6] max-w-[480px]">
+                <p className="text-[20px] text-[#9A9A9A] leading-[1.6] max-w-[480px]">
                   “Thank you for being part of the innovation that supports and
                   empowers livestock farming in Indonesia.”
                 </p>
               </div>
 
-              {/* Bottom Row */}
-              <div className=" flex items-center justify-between">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <Image
                     src="/img/chris.svg"
@@ -238,7 +313,7 @@ export default function SectionService() {
                     height={44}
                     className="rounded-full object-cover"
                   />
-                  <span className="text-[18px] font-medium text-[#1A1A1A]">
+                  <span className="text-[16px] lg:text-[18px] font-medium text-[#1A1A1A]">
                     Chris Hemsworth
                   </span>
                 </div>

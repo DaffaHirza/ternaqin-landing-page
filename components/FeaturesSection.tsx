@@ -33,7 +33,12 @@ export default function FeaturesSection() {
   return (
     <section
       ref={ref}
-      className="relative z-20 bg-[#f3f3f3] py-24 px-4 will-change-transform transition-transform"
+      className="
+relative z-20 bg-[#f3f3f3] 
+py-16 md:py-20 lg:py-24 
+px-4 sm:px-6 md:px-8
+will-change-transform transition-transform
+"
     >
       <div className="w-full space-y-4">
         {/* Header */}
@@ -162,7 +167,7 @@ export default function FeaturesSection() {
     relative 
     rounded-[24px] md:rounded-[32px] 
     overflow-hidden 
-    min-h-[420px] md:min-h-[520px]
+   min-h-[360px] sm:min-h-[420px] md:min-h-[520px]
   "
           >
             {/* Background */}
@@ -361,9 +366,7 @@ export default function FeaturesSection() {
         relative 
         rounded-3xl 
         overflow-hidden 
-        h-[500px] 
-        md:h-[650px] 
-        lg:h-[750px] 
+       h-[380px] sm:h-[450px] md:h-[650px] lg:h-[750px]
         shadow-sm
       "
             >
@@ -474,7 +477,7 @@ export default function FeaturesSection() {
       relative 
       rounded-[24px] md:rounded-[32px] 
       overflow-hidden 
-      min-h-[420px] md:min-h-[520px]
+     min-h-[360px] sm:min-h-[420px] md:min-h-[520px]
       shadow-sm
     "
           >
@@ -526,7 +529,7 @@ export default function FeaturesSection() {
     px-4 py-8
     text-white
     shadow-sm
-    min-h-[500px] md:min-h-0
+    min-h-[420px] sm:min-h-[480px] md:min-h-0
   "
           >
             {/* Background Image */}
@@ -555,7 +558,7 @@ export default function FeaturesSection() {
                   />
                 </div>
 
-                <p className="text-white/60 text-[28px]">
+                <p className="text-white/60 text-[18px] sm:text-[22px] md:text-[28px]">
                   The trial access is now available. Try it now!
                 </p>
               </div>
@@ -615,7 +618,7 @@ export default function FeaturesSection() {
               >
                 {/* content */}
                 <div className="relative flex items-center justify-between px-6 py-6">
-                  <p className="text-white/90 text-[24px] tracking-wide">
+                  <p className="text-white/90 text-[16px] sm:text-[20px] md:text-[24px] tracking-wide">
                     *Free 1 Month Trial Access
                   </p>
 

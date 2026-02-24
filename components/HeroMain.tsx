@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function HeroContent() {
   return (
-    <div className="relative w-full h-screen text-white">
+    <div id="hero" className="relative w-full h-screen text-white">
       <div className="relative z-20 h-full w-full mx-auto px-4">
         {/* HERO TITLE */}
         <section className="pt-32 lg:pt-40 ">

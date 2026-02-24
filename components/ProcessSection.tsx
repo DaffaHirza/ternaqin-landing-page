@@ -27,7 +27,7 @@ export default function ProcessSection() {
     changeStep((step - 1 + PROCESS_STEPS.length) % PROCESS_STEPS.length);
 
   return (
-    <section className="bg-[#F3F3F3] py-24">
+    <section className="bg-[#F3F3F3] py-16 md:py-20 lg:py-24">
       <div className="w-full px-4 space-y-16">
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start my-18">
@@ -66,10 +66,10 @@ export default function ProcessSection() {
         </div>
 
         {/* MAIN GRID */}
-        <div className="grid grid-cols-12 gap-4 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 items-stretch">
           {/* LEFT IMAGE */}
-          <div className="col-span-5 flex">
-            <div className="relative w-full h-full min-h-[620px] rounded-[28px] overflow-hidden">
+          <div className="md:col-span-5 flex">
+            <div className="relative w-full h-full min-h-[380px] sm:min-h-[480px] md:min-h-[620px] rounded-[28px] overflow-hidden">
               {/* OLD */}
               <Image
                 key={prevStep}
@@ -99,11 +99,19 @@ export default function ProcessSection() {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="col-span-7 flex flex-col gap-4 h-full">
+          <div className="md:col-span-7 flex flex-col gap-6 md:gap-4 h-full">
             {/* STEP BAR */}
-            <div className="bg-[#F7F7F7] rounded-[28px] px-10 py-12 flex items-center justify-between">
+            <div
+              className="
+bg-[#F7F7F7] 
+rounded-[24px] md:rounded-[28px] 
+px-6 md:px-10 
+py-6 md:py-12 
+flex items-center justify-between
+"
+            >
               <div className="flex items-center gap-4">
-                <span className="text-[40px] font-semibold text-[#1A1A1A]">
+                <span className="text-[28px] md:text-[40px] font-semibold text-[#1A1A1A]">
                   {String(current.id).padStart(2, "0")}
                 </span>
                 <span className="text-[20px] text-[#9A9A9A]">From 04</span>
@@ -136,11 +144,11 @@ export default function ProcessSection() {
               </div>
             </div>
             {/* LOWER GRID */}
-            <div className="grid grid-cols-[6.5fr_5.5fr] gap-4 flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-[6.5fr_5.5fr] gap-6 md:gap-4 flex-1">
               {/* INFO CARD */}
-              <div className="bg-[#F7F7F7] rounded-[28px] p-10 flex flex-col justify-between h-full">
+              <div className="bg-[#F7F7F7] rounded-[28px] p-6 md:p-10flex flex-col justify-between h-full">
                 <div className="space-y-8">
-                  <h3 className="text-[36px] w-full font-semibold text-[#1A1A1A] leading-[1.2]">
+                  <h3 className="text-[24px] sm:text-[30px] md:text-[36px] w-full font-semibold text-[#1A1A1A] leading-[1.2]">
                     {current.title}
                   </h3>
 
@@ -155,14 +163,14 @@ export default function ProcessSection() {
                     ))}
                   </div>
 
-                  <p className="text-[18px] text-justify text-[#9A9A9A] leading-[1.8] max-w-[650px]">
+                  <p className="text-[16px] md:text-[18px] text-justify text-[#9A9A9A] leading-[1.8] max-w-[650px]">
                     {current.desc}
                   </p>
                 </div>
 
                 {/* STAT */}
                 <div className="flex items-end gap-6 mt-16">
-                  <span className="text-[72px] font-semibold text-[#1F4941] leading-none">
+                  <span className="text-[48px] sm:text-[60px] md:text-[72px] font-semibold text-[#1F4941] leading-none">
                     {current.stat}
                   </span>
 
