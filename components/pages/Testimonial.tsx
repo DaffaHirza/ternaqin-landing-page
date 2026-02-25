@@ -105,7 +105,7 @@ export default function TestimonialSection() {
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-4">
                                     Trusted By Teams, Startups, And Enterprises That Prioritize Speed And
                                 </h1>
-                                <p className="text-2xl md:text-2xl lg:text-3xl text-gray-400">
+                                <p className="text-4xl md:text-5xl lg:text-6xl text-gray-400">
                                     Simplicity Backed By Customer Success
                                 </p>
                             </div>

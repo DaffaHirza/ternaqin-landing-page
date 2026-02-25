@@ -66,26 +66,28 @@ export default function Footer() {
                 </div>
 
                 {/* Large TernaQin Branding with Gradient - Positioned Absolute */}
-                <div className="absolute left-0 right-0 top-[45%] flex items-center justify-center pointer-events-none">
-                    <h2
-                        className="text-[120px] md:text-[200px] lg:text-[260px] xl:text-[320px] font-bold text-transparent bg-clip-text bg-linear-to-b from-[#B8C5C5] to-transparent text-center leading-none"
-                        style={{
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent'
-                        }}
-                    >
-                        TernaQin
-                    </h2>
-                </div>
+                <div>
+                    <div className="flex items-center justify-center pointer-events-none">
+                        <h2
+                            className="text-[120px] md:text-[200px] lg:text-[260px] xl:text-[320px] font-bold text-transparent bg-clip-text bg-linear-to-b from-[#B8C5C5] to-transparent text-center leading-none"
+                            style={{
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent'
+                            }}
+                        >
+                            TernaQin
+                        </h2>
+                    </div>
 
-                {/* Copyright Section */}
-                <div className="border-t border-[#E0E0E0] flex items-center justify-between py-4 relative z-10">
-                    <p className="text-[#A5A5A5] text-lg">
-                        © {currentYear} TernaQin Indonesia
-                    </p>
-                    <p className="text-[#A5A5A5] text-lg">
-                        All Right Reserved
-                    </p>
+                    {/* Copyright Section */}
+                    <div className="border-t border-[#E0E0E0] flex items-center justify-between py-4 relative z-10">
+                        <p className="text-[#A5A5A5] text-lg">
+                            © {currentYear} TernaQin Indonesia
+                        </p>
+                        <p className="text-[#A5A5A5] text-lg">
+                            All Right Reserved
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>

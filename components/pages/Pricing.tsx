@@ -183,7 +183,7 @@ export default function Pricing() {
             <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-200 h-200 rounded-full bg-[#A5A5A5] opacity-8"></div>
 
 
-            <div className="relative z-10">
+            <div className="relative z-10 mb-6">
               <h2 className="text-3xl font-bold mb-6">Enterprise Plan</h2>
               <div className="flex items-baseline mb-3">
                 <span className="text-7xl font-medium">Let&apos;s Talk</span>
@@ -193,7 +193,7 @@ export default function Pricing() {
               </p>
             </div>
 
-            <div className="mb-8 relative z-10">
+            <div className="mb-8 mt-6 relative z-10">
               <p className="text-[#FFFFFF] text-lg font-semibold leading-10">
                 Unlimited Access To Advanced Features For Enterprise-Scale Livestock Operations,
                 Driving Intelligent, Data-Driven Management And Long-Term Innovation.
@@ -201,7 +201,7 @@ export default function Pricing() {
             </div>
 
 
-            <button className="w-full bg-[#FFFFFF] text-[#1F4941] font-medium py-4 px-6 rounded-lg transition-colors duration-200 relative z-10">
+            <button className="mt-6 w-full bg-[#FFFFFF] text-[#1F4941] font-medium py-4 px-6 rounded-lg transition-colors duration-200 relative z-10">
               Discussion with Our Sales Team
             </button>
 
