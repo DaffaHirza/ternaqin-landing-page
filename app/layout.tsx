@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import ClientWrapper from "@/components/ClientWrapper";
+import SmoothScroll from "@/components/SmoothScrollProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +28,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[#F3F3F3]">
-        {/* Offset agar hero tidak tertutup navbar */}
-        <main className=" ">{children}</main>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-[#F3F3F3]`}
+      >
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );
