@@ -12,22 +12,21 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [heroActive, setHeroActive] = useState(false);
+  const [isOverHero, setIsOverHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const hero = document.getElementById("hero");
 
+    // Jika tidak ada hero (misal halaman QR, AI, dll)
+    if (!hero) {
+      setIsOverHero(false);
+      return;
+    }
+
     const handleScroll = () => {
-      if (!hero) return;
-
       const heroBottom = hero.getBoundingClientRect().bottom;
-
-      if (heroBottom <= 80) {
-        setHeroActive(true);
-      } else {
-        setHeroActive(false);
-      }
+      setIsOverHero(heroBottom > 80);
     };
 
     handleScroll();
@@ -52,20 +51,14 @@ export default function Navbar() {
   return (
     <>
       {/* ================= HEADER ================= */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
-          heroActive ? "pt-0 px-0" : "pt-0 px-0"
-        }`}
-      >
+      <header className="sticky top-0 z-40 transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]">
         <div
           className={`w-full transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
-            heroActive
-              ? `bg-white backdrop-blur-md mx-auto max-w-[1800px] ${
-                  menuOpen
-                    ? "rounded-t-[32px] overflow-hidden"
-                    : "rounded-t-[32px]"
-                }`
-              : "bg-transparent w-full"
+            isOverHero ? "rounded-t-[32px]" : ""
+          } ${
+            isOverHero
+              ? "bg-transparent w-full"
+              : "bg-[#F3F3F3] backdrop-blur-md mx-auto max-w-[1800px]"
           }`}
         >
           <nav className="flex items-center justify-between px-4 py-3 w-full min-w-0">
@@ -73,7 +66,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center flex-shrink-0">
               <Image
                 src={
-                  heroActive ? "/img/Ternaqin-logo.svg" : "/img/ternaqin.svg"
+                  isOverHero ? "/img/ternaqin.svg" : "/img/Ternaqin-logo.svg"
                 }
                 alt="TernaQin logo"
                 width={285}
@@ -84,7 +77,7 @@ export default function Navbar() {
             </Link>
 
             {/* ===== DESKTOP NAV (ONLY HERO MODE) ===== */}
-            {!heroActive && (
+            {isOverHero && (
               <>
                 <ul className="hidden xl:flex items-center gap-8 xl:gap-14 2xl:gap-[80px] font-sf animate-in fade-in duration-300">
                   {navItems.map((item) => (
@@ -122,8 +115,8 @@ export default function Navbar() {
               </>
             )}
 
-            {/* ===== HAMBURGER (ONLY SCROLLED MODE) ===== */}
-            {heroActive && (
+            {/* ===== HAMBURGER (ONLY WHITE MODE) ===== */}
+            {!isOverHero && (
               <button
                 onClick={() => setMenuOpen((prev) => !prev)}
                 className="relative w-8 h-8 xl:block animate-in fade-in duration-300"
@@ -131,14 +124,14 @@ export default function Navbar() {
                 {/* HAMBURGER */}
                 <div
                   className={`
-        absolute inset-0 flex flex-col justify-center items-center space-y-1.5
-        transition-all duration-300 ease-in-out
-        ${
-          menuOpen
-            ? "opacity-0 scale-75 rotate-90"
-            : "opacity-100 scale-100 rotate-0"
-        }
-      `}
+                    absolute inset-0 flex flex-col justify-center items-center space-y-1.5
+                    transition-all duration-300 ease-in-out
+                    ${
+                      menuOpen
+                        ? "opacity-0 scale-100 rotate-90"
+                        : "opacity-100 scale-150 rotate-0"
+                    }
+                  `}
                 >
                   <Image
                     src="/img/hamburger-menu.svg"
@@ -151,14 +144,14 @@ export default function Navbar() {
                 {/* CLOSE ICON */}
                 <div
                   className={`
-        absolute inset-0 flex items-center justify-center
-        transition-all duration-300 ease-in-out
-        ${
-          menuOpen
-            ? "opacity-100 scale-100 rotate-0"
-            : "opacity-0 scale-75 -rotate-90"
-        }
-      `}
+                    absolute inset-0 flex items-center justify-center
+                    transition-all duration-300 ease-in-out
+                    ${
+                      menuOpen
+                        ? "opacity-100 scale-150 rotate-0"
+                        : "opacity-0 scale-100 -rotate-90"
+                    }
+                  `}
                 >
                   <Image
                     src="/img/close-icon.svg"
@@ -172,11 +165,12 @@ export default function Navbar() {
           </nav>
         </div>
       </header>
+
       {/* ================= EXPANDING FULL MENU ================= */}
       <div
         className={`
-    absolute left-0 right-0
-    top-full
+    fixed left-0 right-0
+    top-[72px]
     z-30
     origin-top
     transform
@@ -185,18 +179,18 @@ export default function Navbar() {
     ${menuOpen ? "scale-y-100" : "scale-y-0"}
   `}
       >
-        <div className="w-full bg-white rounded-b-[32px] shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
+        <div className="w-full bg-[#F3F3F3] rounded-b-[32px] shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
           <div className="min-h-[calc(100vh-72px-48px)] px-8 pt-4">
             <ul
               className={`
-    flex flex-col text-[26px] font-medium text-black
-    transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
-    ${
-      menuOpen
-        ? "opacity-100 translate-y-0 delay-700"
-        : "opacity-0 -translate-y-4"
-    }
-  `}
+          flex flex-col text-[26px] font-medium text-black
+          transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
+          ${
+            menuOpen
+              ? "opacity-100 translate-y-0 delay-700"
+              : "opacity-0 -translate-y-4"
+          }
+        `}
             >
               {[
                 "About",
@@ -215,9 +209,13 @@ export default function Navbar() {
                     transitionDelay: menuOpen ? `${550 + index * 50}ms` : "0ms",
                   }}
                   className={`
-      transition-all duration-400 ease-[cubic-bezier(.22,1,.36,1)]
-      ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-    `}
+              transition-all duration-400 ease-[cubic-bezier(.22,1,.36,1)]
+              ${
+                menuOpen
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }
+            `}
                 >
                   <a
                     href={`#${item.toLowerCase()}`}
