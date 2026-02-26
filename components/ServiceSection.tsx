@@ -18,7 +18,6 @@ export default function SectionService() {
 
   return (
     <section className="relative bg-[#F3F3F3] py-4 overflow-hidden">
-
       <div className="w-full px-4 space-y-12 relative z-10">
         {/* HEADER */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start my-18">
@@ -84,6 +83,11 @@ export default function SectionService() {
                 }`}
                 priority
               />
+
+              {/* 🔥 MOBILE OVERLAY ONLY */}
+              {activeCard === 1 && (
+                <div className="absolute inset-0 bg-black/60 lg:hidden transition-opacity duration-500" />
+              )}
             </div>
 
             <div className="relative z-10 flex flex-col justify-between h-full">
@@ -137,7 +141,7 @@ export default function SectionService() {
                 : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
             }`}
           >
-            {/* Background Layers */}
+            {/* Background Layer */}
             <div className="absolute inset-0">
               {/* Disable BG */}
               <Image
@@ -155,7 +159,13 @@ export default function SectionService() {
                 className={`object-cover transition-opacity duration-700 ease-in-out ${
                   activeCard === 2 ? "opacity-100" : "opacity-0"
                 }`}
+                priority
               />
+
+              {/* 🔥 MOBILE OVERLAY ONLY */}
+              {activeCard === 2 && (
+                <div className="absolute inset-0 bg-black/60 lg:hidden transition-opacity duration-500" />
+              )}
             </div>
 
             <div className="relative z-10 flex flex-col justify-between h-full">
@@ -212,6 +222,7 @@ export default function SectionService() {
             }`}
           >
             {/* Background Layers */}
+            {/* Background Layer */}
             <div className="absolute inset-0">
               {/* Disable BG */}
               <Image
@@ -229,7 +240,13 @@ export default function SectionService() {
                 className={`object-cover transition-opacity duration-700 ease-in-out ${
                   activeCard === 3 ? "opacity-100" : "opacity-0"
                 }`}
+                priority
               />
+
+              {/* 🔥 MOBILE OVERLAY ONLY */}
+              {activeCard === 3 && (
+                <div className="absolute inset-0 bg-black/60 lg:hidden transition-opacity duration-500" />
+              )}
             </div>
 
             <div className="relative z-10 flex flex-col justify-between h-full">
@@ -278,7 +295,7 @@ export default function SectionService() {
           </div>
 
           {/* TESTIMONIAL (tetap static, tidak ikut animasi) */}
-          <div className="lg:flex-[2] flex-none bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col">
+          <div className="lg:flex-[3] flex-none bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col">
             <div className="relative h-[360px] bg-[#EAEAEA] rounded-[28px] m-4 flex justify-center overflow-hidden">
               <Image
                 src="/img/service-enchancing.svg"
