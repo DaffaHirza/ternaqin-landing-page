@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FeaturesSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -82,20 +83,43 @@ will-change-transform transition-transform
           {/* LEFT CARD */}
           <div
             className="
-  md:col-span-5 
-  relative 
-  bg-white 
-  rounded-[24px] md:rounded-[32px] 
-  aspect-auto md:aspect-square 
-  p-6 sm:p-8 md:p-14 
-  overflow-hidden
-"
+    md:col-span-5 
+    relative 
+    bg-white 
+    rounded-[24px] md:rounded-[32px] 
+    aspect-auto md:aspect-square 
+    p-6 sm:p-8 md:p-14 
+    overflow-hidden
+    group
+    [perspective:1200px]
+  "
           >
             {/* Decorative Background */}
             <img
               src="/img/bg-features-top-card.svg"
               alt=""
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+              className="
+    absolute inset-0
+    w-full h-full
+    object-cover
+    pointer-events-none
+
+    rotate-[90deg]
+    scale-110
+    translate-y-4
+
+    transition-all
+    duration-[1400ms]
+    ease-[cubic-bezier(0.16,1,0.3,1)]
+    will-change-transform
+
+    delay-300
+    group-hover:delay-0
+
+    group-hover:rotate-0
+    group-hover:scale-100
+    group-hover:translate-y-0
+  "
             />
 
             {/* Inner Content Wrapper */}
@@ -280,7 +304,10 @@ will-change-transform transition-transform
                 </div>
 
                 {/* CTA Row */}
-                <div className="flex items-center gap-2">
+                <Link
+                  href="/intelligent-livestock-management"
+                  className="flex items-center gap-2 group"
+                >
                   {/* Learn More Wrapper */}
                   <div
                     className="
@@ -292,7 +319,7 @@ will-change-transform transition-transform
       group-hover:max-w-[200px]
     "
                   >
-                    <button
+                    <div
                       className="
         whitespace-nowrap
         px-5 md:px-8
@@ -307,14 +334,15 @@ will-change-transform transition-transform
         group-hover:opacity-100
         transition-opacity
         duration-300
+        flex items-center
       "
                     >
                       Learn More
-                    </button>
+                    </div>
                   </div>
 
                   {/* Arrow */}
-                  <button
+                  <div
                     className="
       flex-shrink-0
       w-[48px] md:w-[60px]
@@ -333,8 +361,8 @@ will-change-transform transition-transform
                       width={24}
                       height={24}
                     />
-                  </button>
-                </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -347,32 +375,38 @@ will-change-transform transition-transform
               title: "Blockchain",
               img: "/img/blockchain-bg-card.svg",
               desc: "Storing livestock data securely and transparently, including health history, vaccinations, and slaughter.",
+              href: "/blockchain",
             },
             {
               title: "QR Code",
               img: "/img/qr-bg-card.svg",
-              desc: "Digital identity for cattle and meat products to track origin, health, and production a in real time.",
+              desc: "Digital identity for cattle and meat products to track origin, health, and production in real time.",
+              href: "/qr-code",
             },
             {
               title: "AI Assistance",
               img: "/img/ai-bg-card.svg",
               desc: "Providing recommendations for care, feed, and vaccination reminders based on livestock data analysis.",
+              href: "/ai-assistance",
             },
           ].map((item, i) => (
-            <div
+            <Link
               key={i}
+              href={item.href}
               className="
         group
         relative 
         rounded-3xl 
         overflow-hidden 
-       h-[380px] sm:h-[450px] md:h-[650px] lg:h-[750px]
+        h-[380px] sm:h-[450px] md:h-[650px] lg:h-[750px]
         shadow-sm
+        block
       "
             >
               {/* Background */}
               <img
                 src={item.img}
+                alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
@@ -407,52 +441,54 @@ will-change-transform transition-transform
                     {item.desc}
                   </p>
 
+                  {/* CTA */}
                   <div className="flex items-center gap-2">
-                    {/* Learn More Wrapper */}
+                    {/* Learn More */}
                     <div
                       className="
-      overflow-hidden
-      transition-all
-      duration-500
-      ease-out
-      max-w-0
-      group-hover:max-w-[200px]
-    "
+                overflow-hidden
+                transition-all
+                duration-500
+                ease-out
+                max-w-0
+                group-hover:max-w-[200px]
+              "
                     >
-                      <button
+                      <div
                         className="
-        whitespace-nowrap
-        px-5 md:px-8
-        h-[48px] md:h-[60px]
-        rounded-[10px] md:rounded-[12px]
-        bg-white
-        text-[#1F4941]
-        text-sm md:text-lg
-        font-medium
-        shadow-md
-        opacity-0
-        group-hover:opacity-100
-        transition-opacity
-        duration-300
-      "
+                  whitespace-nowrap
+                  px-5 md:px-8
+                  h-[48px] md:h-[60px]
+                  rounded-[10px] md:rounded-[12px]
+                  bg-white
+                  text-[#1F4941]
+                  text-sm md:text-lg
+                  font-medium
+                  shadow-md
+                  opacity-0
+                  group-hover:opacity-100
+                  transition-opacity
+                  duration-300
+                  flex items-center
+                "
                       >
                         Learn More
-                      </button>
+                      </div>
                     </div>
 
                     {/* Arrow */}
-                    <button
+                    <div
                       className="
-      flex-shrink-0
-      w-[48px] md:w-[60px]
-      h-[48px] md:h-[60px]
-      rounded-[10px] md:rounded-[12px]
-      bg-white
-      flex items-center justify-center
-      shadow-md
-      transition-transform duration-500
-      group-hover:translate-x-1
-    "
+                flex-shrink-0
+                w-[48px] md:w-[60px]
+                h-[48px] md:h-[60px]
+                rounded-[10px] md:rounded-[12px]
+                bg-white
+                flex items-center justify-center
+                shadow-md
+                transition-transform duration-500
+                group-hover:translate-x-1
+              "
                     >
                       <Image
                         src="/img/arrow-right.svg"
@@ -460,11 +496,11 @@ will-change-transform transition-transform
                         width={24}
                         height={24}
                       />
-                    </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
