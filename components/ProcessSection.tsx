@@ -27,15 +27,20 @@ export default function ProcessSection() {
     changeStep((step - 1 + PROCESS_STEPS.length) % PROCESS_STEPS.length);
 
   return (
-    <section className="bg-[#F3F3F3] py-16 md:py-20 lg:py-24">
+    <section className="bg-[#F3F3F3] py-8 md:py-8 lg:py-8">
       <div className="w-full px-4 space-y-16">
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start my-18">
           {/* LEFT — Badge */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 mt-0 sm:mt-2 md:mt-5 lg:mt-6">
             <span className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium bg-[#1F4941] text-white rounded-full">
-              <span className="w-2 h-2 bg-white rounded-full" />
-              Features
+              <Image
+                src="/img/flash-circle.svg"
+                alt="arrow-right"
+                width={24}
+                height={24}
+              />
+              Process
             </span>
           </div>
 
@@ -43,23 +48,22 @@ export default function ProcessSection() {
           <div className="md:col-span-10">
             <h2
               className="
-      text-[32px] 
-      sm:text-[40px] 
-      md:text-[56px] 
-      lg:text-[72px] 
-      font-semibold 
-      leading-[1.1] 
-      md:leading-[1.05] 
-      tracking-[-0.02em] 
-      text-[#1c1c1c]
-    "
+          text-[32px] 
+          sm:text-[40px] 
+          md:text-[56px] 
+          lg:text-[72px] 
+          font-semibold 
+          leading-[1.1] 
+          md:leading-[1.05] 
+          tracking-[-0.02em] 
+          text-[#1c1c1c]
+        "
             >
-              Purpose-Built With Intelligent Automation
+              Delivering Integrated, Transparent, and Intelligent Livestock
+              Management
               <br className="hidden md:block" />
               <span className="text-[#bcbcbc] font-medium">
-                To Optimize Livestock Management And
-                <br className="hidden md:block" />
-                Accelerate Sustainable Growth
+                Powered By QR Based tracking
               </span>
             </h2>
           </div>

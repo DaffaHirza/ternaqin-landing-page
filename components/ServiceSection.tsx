@@ -17,18 +17,19 @@ export default function SectionService() {
 `;
 
   return (
-    <section className="relative bg-[#F3F3F3] py-24 overflow-hidden">
-      {/* subtle background curve */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-        <div className="absolute -bottom-40 -left-40 w-[800px] h-[800px] rounded-full border-[120px] border-black" />
-      </div>
+    <section className="relative bg-[#F3F3F3] py-4 overflow-hidden">
 
       <div className="w-full px-4 space-y-12 relative z-10">
         {/* HEADER */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start mb-24">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start my-18">
+          <div className="md:col-span-2 mt-0 sm:mt-2 md:mt-5 lg:mt-6">
             <span className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium bg-[#1F4941] text-white rounded-full">
-              <span className="w-2 h-2 bg-white rounded-full" />
+              <Image
+                src="/img/flash-circle.svg"
+                alt="arrow-right"
+                width={24}
+                height={24}
+              />
               Services
             </span>
           </div>

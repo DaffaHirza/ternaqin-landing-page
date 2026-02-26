@@ -37,7 +37,7 @@ export default function FeaturesSection() {
       className="
 relative z-20 bg-[#f3f3f3] 
 py-16 md:py-20 lg:py-24 
-px-4 sm:px-6 md:px-8
+px-4 sm:px-4 md:px-4
 will-change-transform transition-transform
 "
     >
@@ -45,9 +45,14 @@ will-change-transform transition-transform
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start my-18">
           {/* LEFT — Badge */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 mt-0 sm:mt-2 md:mt-5 lg:mt-6">
             <span className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium bg-[#1F4941] text-white rounded-full">
-              <span className="w-2 h-2 bg-white rounded-full" />
+              <Image
+                src="/img/flash-circle.svg"
+                alt="arrow-right"
+                width={24}
+                height={24}
+              />
               Features
             </span>
           </div>
