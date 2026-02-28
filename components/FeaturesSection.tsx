@@ -109,9 +109,9 @@ will-change-transform transition-transform
     object-cover
     pointer-events-none
 
-    rotate-[90deg]
-    scale-110
-    translate-y-4
+    rotate-[0deg]
+    scale-150
+    translate-y-40
 
     transition-all
     duration-[1400ms]
@@ -121,9 +121,9 @@ will-change-transform transition-transform
     delay-300
     group-hover:delay-0
 
-    group-hover:rotate-0
-    group-hover:scale-100
-    group-hover:translate-y-0
+    group-hover:rotate-[15deg]
+    group-hover:scale-150
+    group-hover:translate-y-40
   "
             />
 
@@ -293,13 +293,18 @@ will-change-transform transition-transform
                 >
                   <p
                     className="
-        text-white/80 
-        text-sm 
-        sm:text-base 
-        md:text-lg 
-        lg:text-[22px] 
-        leading-relaxed 
-      "
+    text-white/80
+    text-[18px] md:text-[24px]
+    line-clamp-2
+    md:line-clamp-none
+    transform
+    translate-y-6
+    opacity-0
+    group-hover:translate-y-0
+    group-hover:opacity-100
+    transition-all
+    duration-500
+  "
                   >
                     A QR code-based digital livestock management system enabling
                     real-time tracking and monitoring of cattle health, feed,
@@ -432,16 +437,18 @@ will-change-transform transition-transform
                   {/* Description */}
                   <p
                     className="
-              text-white/80
-              text-[18px] md:text-[24px]
-              transform
-              translate-y-6
-              opacity-0
-              group-hover:translate-y-0
-              group-hover:opacity-100
-              transition-all
-              duration-500
-            "
+    text-white/80
+    text-[18px] md:text-[24px]
+    line-clamp-2
+    md:line-clamp-none
+    transform
+    translate-y-6
+    opacity-0
+    group-hover:translate-y-0
+    group-hover:opacity-100
+    transition-all
+    duration-500
+  "
                   >
                     {item.desc}
                   </p>
@@ -514,47 +521,115 @@ will-change-transform transition-transform
           {/* LEFT LARGE (Flexible - 7 cols) */}
           <div
             className="
-      md:col-span-7
-      relative 
-      rounded-[24px] md:rounded-[32px] 
-      overflow-hidden 
-     min-h-[360px] sm:min-h-[420px] md:min-h-[520px]
-      shadow-sm
-    "
+    group
+    md:col-span-7
+    relative 
+    rounded-[24px] md:rounded-[32px] 
+    overflow-hidden 
+    min-h-[360px] sm:min-h-[420px] md:min-h-[520px]
+    shadow-sm
+    block
+  "
           >
+            {/* Background */}
             <img
               src="/img/next-generation-bg.svg"
-              className="absolute inset-0 w-full h-full object-cover"
-              alt=""
+              alt="Next Generation"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/20" />
 
-            <div className="relative z-10 p-4 text-white h-full flex flex-col justify-between">
-              <h3 className="font-medium text-[32px] sm:text-[40px] md:text-[55px] leading-tight">
+            {/* Blur Overlay */}
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-100 transition duration-500" />
+
+            {/* Content */}
+            <div className="relative z-10 p-6 text-white flex flex-col h-full">
+              {/* Title */}
+              <h3 className="text-[32px] sm:text-[40px] md:text-[55px] font-medium leading-tight max-w-[80%]">
                 Next-Generation Platform Ecosystem with AI Assistant
               </h3>
 
-              <button
-                className="
-          w-[48px] md:w-[60px] 
-          h-[48px] md:h-[60px] 
-          rounded-[10px] md:rounded-[12px] 
-          bg-white 
-          flex 
-          items-center 
-          justify-center 
-          shadow-md 
-          hover:scale-105 
-          transition
-        "
-              >
-                <Image
-                  src="/img/arrow-right.svg"
-                  alt="arrow-right"
-                  width={32}
-                  height={32}
-                />
-              </button>
+              <div className="flex-1" />
+
+              {/* Bottom Content */}
+              <div className="space-y-4">
+                {/* Description */}
+                <p
+                  className="
+    text-white/80
+    text-[18px] md:text-[24px]
+    line-clamp-2
+    md:line-clamp-none
+    transform
+    translate-y-6
+    opacity-0
+    group-hover:translate-y-0
+    group-hover:opacity-100
+    transition-all
+    duration-500
+  "
+                >
+                  AI-powered automation for smarter livestock management.
+                </p>
+
+                {/* CTA */}
+                <div className="flex items-center gap-3">
+                  {/* Learn More Expand */}
+                  <Link
+                    href="/platform"
+                    className="
+    overflow-hidden
+    transition-all
+    duration-500
+    ease-out
+    max-w-0
+    group-hover:max-w-[220px]
+  "
+                  >
+                    <div
+                      className="
+      whitespace-nowrap
+      px-6 md:px-8
+      h-[48px] md:h-[60px]
+      rounded-[10px] md:rounded-[12px]
+      bg-white
+      text-[#1F4941]
+      text-sm md:text-lg
+      font-medium
+      shadow-md
+      opacity-0
+      group-hover:opacity-100
+      transition-opacity
+      duration-300
+      flex items-center
+    "
+                    >
+                      Learn More
+                    </div>
+                  </Link>
+
+                  {/* Arrow */}
+                  <div
+                    className="
+            flex-shrink-0
+            w-[48px] md:w-[60px]
+            h-[48px] md:h-[60px]
+            rounded-[10px] md:rounded-[12px]
+            bg-white
+            flex items-center justify-center
+            shadow-md
+            transition-transform duration-500
+            group-hover:translate-x-1
+          "
+                  >
+                    <Image
+                      src="/img/arrow-right.svg"
+                      alt="arrow-right"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -575,8 +650,25 @@ will-change-transform transition-transform
           >
             {/* Background Image */}
             <div
-              className="absolute inset-0 bg-cover bg-center"
+              className="
+    absolute inset-0 
+    bg-cover bg-center
+    transition-transform duration-700
+    group-hover:scale-105
+  "
               style={{ backgroundImage: "url('/img/pricing-bg.svg')" }}
+            />
+
+            {/* Blur + Dark Overlay */}
+            <div
+              className="
+    absolute inset-0
+    bg-black/30
+    backdrop-blur-md
+    opacity-0
+    group-hover:opacity-100
+    transition-all duration-700
+  "
             />
 
             {/* Radial Decoration */}
@@ -605,7 +697,20 @@ will-change-transform transition-transform
               </div>
 
               {/* STATS DIAGONAL AREA */}
-              <div className="relative flex flex-col md:block flex-1">
+              <div
+                className="
+  relative 
+  flex flex-col 
+  gap-12
+  mt-12
+  mb-24
+  md:mb-0
+  md:mt-0
+  md:block 
+  flex-none
+  md:flex-1
+"
+              >
                 {/* 85% */}
                 <div className="relative md:absolute md:top-1/2 md:left-1/2 md:-translate-y-[100%] md:translate-x-[-5%] mb-10 md:mb-0">
                   <p className="text-[60px] sm:text-[80px] md:text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
@@ -659,23 +764,38 @@ will-change-transform transition-transform
               >
                 {/* content */}
                 <div className="relative flex items-center justify-between px-6 py-6">
-                  <p className="text-white/90 text-[16px] sm:text-[20px] md:text-[24px] tracking-wide">
+                  <p
+                    className="
+    text-white/80
+    text-[18px] md:text-[24px]
+    line-clamp-2
+    md:line-clamp-none
+    transform
+    translate-y-6
+    opacity-0
+    group-hover:translate-y-0
+    group-hover:opacity-100
+    transition-all
+    duration-500
+  "
+                  >
                     *Free 1 Month Trial Access
                   </p>
 
                   {/* Arrow */}
-                  <button
+                  <Link
+                    href="/trial"
                     className="
-      flex-shrink-0
-      w-[48px] md:w-[60px]
-      h-[48px] md:h-[60px]
-      rounded-[10px] md:rounded-[12px]
-      bg-white
-      flex items-center justify-center
-      shadow-md
-      transition-transform duration-500
-      group-hover:translate-x-1
-    "
+    flex-shrink-0
+    w-[48px] md:w-[60px]
+    h-[48px] md:h-[60px]
+    rounded-[10px] md:rounded-[12px]
+    bg-white
+    flex items-center justify-center
+    shadow-md
+    transition-transform duration-500
+    group-hover:translate-x-1
+  "
                   >
                     <Image
                       src="/img/arrow-right.svg"
@@ -683,7 +803,7 @@ will-change-transform transition-transform
                       width={24}
                       height={24}
                     />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
