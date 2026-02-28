@@ -183,13 +183,14 @@ export default function InsightTemplate({
             {sections.map((tab, i) => (
               <button
                 key={i}
-                ref={(el) => (tabRefs.current[i] = el)}
+                ref={(el) => {
+                  tabRefs.current[i] = el;
+                }}
                 onClick={() => setActiveIndex(i)}
-                className={`pb-4 transition-all duration-300 ${
-                  activeIndex === i
+                className={`pb-4 transition-all duration-300 ${activeIndex === i
                     ? "text-black font-medium"
                     : "text-gray-400 hover:text-black"
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
