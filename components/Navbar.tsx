@@ -51,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       {/* ================= HEADER ================= */}
-      <header className="sticky top-0 z-40 transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]">
+      <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]">
         <div
           className={`w-full transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
             isOverHero ? "rounded-t-[32px]" : ""

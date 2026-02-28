@@ -31,15 +31,15 @@ export default function ScrollScene({
 
     const calc = () => {
       start = track.offsetTop;
-      
+
       const totalHeight = content.scrollHeight;
-      const extraScroll = window.innerHeight; // buffer untuk reveal features
-      const scrollDistance = totalHeight - window.innerHeight + extraScroll;
+      const sceneHeight = window.innerHeight;
+
+      const scrollDistance = totalHeight - sceneHeight;
 
       length = Math.max(scrollDistance, 0);
 
-      // ini kuncinya
-      track.style.height = scrollDistance + window.innerHeight + "px";
+      track.style.height = totalHeight + "px";
     };
 
     const update = () => {
