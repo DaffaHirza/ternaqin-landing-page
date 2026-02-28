@@ -89,7 +89,7 @@ export default function SalesTransactions() {
   }));
 
   return (
-    <div className="bg-white rounded-[12px] p-6 shadow-sm h-full flex flex-col">
+    <div className="bg-white rounded-[12px] p-6 h-full flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-start gap-4 mb-8 flex-nowrap">
         <div className="min-w-fit">

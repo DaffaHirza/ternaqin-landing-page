@@ -8,7 +8,7 @@ import LivestockTypesCard from "@/components/LivestockTypesCard";
 
 export default function AnalyticsSection() {
   return (
-    <section className="w-full bg-[#F5F6F6] p-4 rounded-[28px] space-y-4">
+    <section className="w-full bg-[#F5F6F6] p-4 rounded-[12px] space-y-4">
       {/* HEADER */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start my-12 lg:my-20">
         <div className="md:col-span-2">
@@ -38,7 +38,7 @@ export default function AnalyticsSection() {
       </div>
 
       {/* ================= TOP: Latest Update ================= */}
-      <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-[12px] p-5 sm:p-6 ">
         <h3 className="text-[#9A9A9A] text-base text-[clamp(18px,2.5vw,32px)] font-medium mb-6">
           Latest Update
         </h3>
@@ -71,7 +71,7 @@ export default function AnalyticsSection() {
         </div>
       </div>
 
-      <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-[12px] p-5 sm:p-6 ">
         <h3 className="text-[#9A9A9A] text-base text-[clamp(18px,2.5vw,32px)] font-medium mb-6">
           Farmers of The Year
         </h3>

@@ -33,7 +33,7 @@ export default function LivestockCategoryCard({
   }, []);
 
   return (
-    <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm w-full h-full flex flex-col">
+    <div className="bg-white rounded-[12px] p-5 sm:p-6  w-full h-full flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-center gap-4 mb-6">
         <h3 className="text-[clamp(18px,2.5vw,32px)] font-semibold text-[#191919] truncate">

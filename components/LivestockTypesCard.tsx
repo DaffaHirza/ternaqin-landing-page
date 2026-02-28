@@ -36,7 +36,7 @@ export default function LivestockTypesCard({
   }, [data]);
 
   return (
-    <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm w-full flex flex-col">
+    <div className="bg-white rounded-[12px] p-5 sm:p-6  w-full flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-start gap-4 mb-8 flex-nowrap">
         <div className="min-w-fit">
