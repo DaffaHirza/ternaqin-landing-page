@@ -74,30 +74,14 @@ export default function ProcessSection() {
           {/* LEFT IMAGE */}
           <div className="md:col-span-5 flex">
             <div className="relative w-full h-full min-h-[380px] sm:min-h-[480px] md:min-h-[620px] rounded-[28px] overflow-hidden">
-              {/* OLD */}
-              <Image
-                key={prevStep}
-                src={previous.image}
-                alt=""
-                fill
-                priority
-                sizes="(min-width: 768px) 40vw, 100vw"
-                className={`object-cover transition-opacity duration-500 ${
-                  animating ? "opacity-0" : "opacity-100"
-                }`}
-              />
-
-              {/* NEW */}
               <Image
                 key={step}
-                src={current.image}
+                src={PROCESS_STEPS[step].image}
                 alt=""
                 fill
                 priority
                 sizes="(min-width: 768px) 40vw, 100vw"
-                className={`object-cover transition-opacity duration-500 ${
-                  animating ? "opacity-100" : "opacity-0"
-                }`}
+                className="object-cover animate-fade"
               />
             </div>
           </div>

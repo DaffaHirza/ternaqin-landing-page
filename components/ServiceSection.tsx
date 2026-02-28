@@ -124,7 +124,7 @@ export default function SectionService() {
                 {activeCard === 1 && (
                   <>
                     <div className="mt-6 h-[1px] bg-white/30 w-full" />
-                    <p className="mt-8 text-[16px] lg:text-[18px] text-white/80 leading-relaxed">
+                    <p className="mt-8 text-[16px]  lg:text-[18px] text-white/80 leading-relaxed">
                       A centralized administration platform for managing
                       livestock data digitally.
                     </p>
