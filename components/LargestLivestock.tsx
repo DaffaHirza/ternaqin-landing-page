@@ -1,11 +1,11 @@
 export default function LargestLivestock() {
   return (
-    <div className="bg-white rounded-[28px] p-6 sm:p-8">
+    <div className="bg-white rounded-[28px] p-6 sm:p-8 flex flex-col w-full">
       <div className="text-center mb-8">
-        <h2 className="text-[clamp(20px,2.2vw,28px)] font-semibold text-[#191919]">
+        <h2 className="text-[clamp(18px,2.5vw,32px)] font-semibold text-[#191919]">
           Largest Livestock of The Year
         </h2>
-        <p className="text-sm text-[#9A9A9A] mt-1">Jan 01 - Des 31, 2027</p>
+        <p className="text-[clamp(12px,1.8vw,18px)] text-[#9A9A9A] mt-1">Jan 01 - Des 31, 2027</p>
       </div>
       {/* Inner Card */}
       <div className="bg-[#F8F9F9] rounded-[20px] p-6 sm:p-8">

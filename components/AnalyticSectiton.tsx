@@ -4,6 +4,7 @@ import Image from "next/image";
 import SalesTransactions from "@/components/SalesTransactions";
 import LivestockCategory from "@/components/LivestockCategory";
 import LargestLivestock from "@/components/LargestLivestock";
+import LivestockTypesCard from "@/components/LivestockTypesCard";
 
 export default function AnalyticsSection() {
   return (
@@ -97,56 +98,24 @@ export default function AnalyticsSection() {
       </div>
 
       {/* ================= BOTTOM GRID ================= */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1.7fr] gap-4 items-stretch">
         {/* Largest Livestock */}
-        <div className="h-full">
+        <div className="flex">
           <LargestLivestock />
         </div>
 
         {/* Livestock Types */}
-        <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-[#191919]">
-                Livestock Types
-              </h3>
-              <p className="text-xs sm:text-sm text-[#9A9A9A]">
-                Last updated: Jan 01, 2027
-              </p>
-            </div>
-
-            <div className="sm:text-right">
-              <p className="text-xs sm:text-sm text-[#9A9A9A]">
-                6 Types of Livestock
-              </p>
-              <p className="text-2xl sm:text-3xl font-semibold text-[#1F4941]">
-                91M+
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-end gap-3 sm:gap-4 h-[160px] sm:h-[200px]">
-            {[
-              { name: "Turkey", val: "11%" },
-              { name: "Duck", val: "13%" },
-              { name: "Cattle", val: "18%" },
-              { name: "Sheep", val: "18%" },
-              { name: "Fish", val: "15%" },
-              { name: "Chicken", val: "25%" },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center flex-1">
-                <div
-                  className="w-full bg-[#1F4941] rounded-t-[12px] flex items-end justify-center text-white text-xs sm:text-sm font-medium transition-all duration-500"
-                  style={{ height: `${parseInt(item.val) * 4}px` }}
-                >
-                  {item.val}
-                </div>
-                <p className="mt-2 text-xs sm:text-sm text-[#191919] text-center">
-                  {item.name}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="flex">
+          <LivestockTypesCard
+            data={[
+              { name: "Turkey", value: 11 },
+              { name: "Duck", value: 13 },
+              { name: "Cattle", value: 18 },
+              { name: "Sheep", value: 18 },
+              { name: "Fish", value: 15 },
+              { name: "Chicken", value: 25 },
+            ]}
+          />
         </div>
       </div>
     </section>
