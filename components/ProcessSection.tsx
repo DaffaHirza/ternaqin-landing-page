@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { PROCESS_STEPS } from "./processData";
+import { useRouter } from "next/navigation";
 
 export default function ProcessSection() {
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const [prevStep, setPrevStep] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -218,13 +220,18 @@ flex items-center justify-between
                     {/* DIVIDER */}
                     <div className="h-px bg-white/20 mb-8" />
 
-                    {/* BUTTON ROW */}
                     <div className="flex gap-4">
-                      <button className="flex-1 h-[64px] bg-white text-[#1F4941] rounded-[18px] font-medium text-[24px] hover:scale-[1.02] transition">
+                      <button
+                        onClick={() => router.push("/book-now")}
+                        className="flex-1 h-[64px] bg-white text-[#1F4941] rounded-[18px] font-medium text-[24px] hover:scale-[1.02] transition"
+                      >
                         Book Now
                       </button>
 
-                      <button className="w-[64px] h-[64px] bg-white rounded-[18px] flex items-center justify-center hover:scale-[1.02] transition">
+                      <button
+                        onClick={() => router.push("/book-now")}
+                        className="w-[64px] h-[64px] bg-white rounded-[18px] flex items-center justify-center hover:scale-[1.02] transition"
+                      >
                         <Image
                           src="/img/arrow-right.svg"
                           alt="arrow"
