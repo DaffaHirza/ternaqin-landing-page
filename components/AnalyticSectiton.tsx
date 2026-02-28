@@ -3,6 +3,7 @@
 import Image from "next/image";
 import SalesTransactions from "@/components/SalesTransactions";
 import LivestockCategory from "@/components/LivestockCategory";
+import LargestLivestock from "@/components/LargestLivestock";
 
 export default function AnalyticsSection() {
   return (
@@ -98,28 +99,8 @@ export default function AnalyticsSection() {
       {/* ================= BOTTOM GRID ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Largest Livestock */}
-        <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm">
-          <h3 className="text-lg sm:text-xl font-semibold text-[#191919] mb-1">
-            Largest Livestock of The Year
-          </h3>
-          <p className="text-xs sm:text-sm text-[#9A9A9A] mb-6">
-            Jan 01 - Des 31, 2027
-          </p>
-
-          <div className="bg-[#F5F6F6] rounded-[16px] p-4 sm:p-5 space-y-3 text-sm">
-            <div className="flex justify-between">
-              <span>Animal Name</span>
-              <span className="font-medium">Piki Mow</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Animal Species</span>
-              <span className="font-medium">Limousine</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Animal Weight (Kg)</span>
-              <span className="font-medium">1,550,00</span>
-            </div>
-          </div>
+        <div className="h-full">
+          <LargestLivestock />
         </div>
 
         {/* Livestock Types */}
