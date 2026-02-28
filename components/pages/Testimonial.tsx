@@ -69,9 +69,8 @@ function MarqueeRow({ items, direction = "left" }) {
       <div
         className="flex gap-3 w-max"
         style={{
-          animation: `${
-            direction === "left" ? "marqueeLeft" : "marqueeRight"
-          } ${direction === "left" ? "30s" : "35s"} linear infinite`,
+          animation: `${direction === "left" ? "marqueeLeft" : "marqueeRight"
+            } ${direction === "left" ? "30s" : "35s"} linear infinite`,
         }}
       >
         {tripled.map((item, i) => (
@@ -112,7 +111,7 @@ export default function TestimonialSection() {
                     width={24}
                     height={24}
                   />
-                  Testimonials
+                  Testimonial
                 </span>
               </div>
 

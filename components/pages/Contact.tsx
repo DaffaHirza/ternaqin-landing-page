@@ -39,7 +39,7 @@ export default function Contact() {
       } else {
         throw new Error("Failed to send message");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         type: "error",
         message: "Failed to send message. Please try again.",
@@ -66,22 +66,21 @@ export default function Contact() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 relative z-10 px-6 py-12 lg:px-12 xl:px-16 gap-8 lg:gap-15">
-            <div className="flex flex-col justify-around items-start gap-8 text-white min-h-[600px]">
+            <div className=" flex flex-col justify-around items-start gap-8 text-white min-h-150">
               <div>
                 <p className="text-4xl lg:text-7xl font-semibold leading-tight tracking-normal pb-3">
                   Let&apos;s Grow Together
                 </p>
-                <p className="text-lg lg:text-2xl text-[#A5A5A5] flex-shrink-0">
+                <p className="text-lg lg:text-2xl text-[#A5A5A5] shrink-0">
                   Reach Out To Our Team For Expert Support And Inquiries
                 </p>
 
               </div>
               <div className="w-full h-px bg-white/30 rounded-full"></div>
-              <div className="w-full grid grid-cols-2 gap-8">
+              <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="flex flex-col">
                   <svg
-                    width="60"
-                    height="60"
+                    className="w-10 h-10 md:w-15 md:h-15"
                     viewBox="0 0 60 60"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -121,8 +120,7 @@ export default function Contact() {
                 <div className="flex flex-col">
                   <div className="relative">
                     <svg
-                      width="60"
-                      height="60"
+                      className="w-10 h-10 md:w-15 md:h-15"
                       viewBox="0 0 60 60"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"

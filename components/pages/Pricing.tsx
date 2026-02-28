@@ -77,11 +77,10 @@ export default function Pricing() {
                   className="relative inline-flex h-6 w-12 items-center rounded-full transition-colors bg-[#F6F6F6] duration-300"
                 >
                   <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${
-                      isYearlyBasic
+                    className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${isYearlyBasic
                         ? "translate-x-7 bg-[#1F4941]"
                         : "translate-x-1 bg-[#A5A5A5]"
-                    }`}
+                      }`}
                   />
                 </button>
                 <span className="text-sm text-[#191919]">Billed yearly</span>
@@ -222,11 +221,10 @@ export default function Pricing() {
                   className="relative inline-flex h-6 w-12 items-center rounded-full transition-colors bg-[#F6F6F6] duration-300"
                 >
                   <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${
-                      isYearlyBusiness
+                    className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${isYearlyBusiness
                         ? "translate-x-7 bg-[#1F4941]"
                         : "translate-x-1 bg-[#A5A5A5]"
-                    }`}
+                      }`}
                   />
                 </button>
                 <span className="text-sm text-[#191919]">Billed yearly</span>
@@ -341,9 +339,7 @@ export default function Pricing() {
             <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-150 h-150 rounded-full bg-[#A5A5A5] opacity-8"></div>
             <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-200 h-200 rounded-full bg-[#A5A5A5] opacity-8"></div>
 
-
-
-            <div className="relative z-10 mb-6">
+            <div className="relative z-10">
               <h2 className="text-3xl font-bold mb-6">Enterprise Plan</h2>
               <div className="flex items-baseline mb-3">
                 <span className="text-7xl font-medium">Let&apos;s Talk</span>
@@ -361,9 +357,7 @@ export default function Pricing() {
               </p>
             </div>
 
-
-
-            <button className="mt-6 w-full bg-[#FFFFFF] text-[#1F4941] font-medium py-4 px-6 rounded-lg transition-colors duration-200 relative z-10">
+            <button className="w-full bg-[#FFFFFF] text-[#1F4941] font-medium py-4 px-6 rounded-lg transition-colors duration-200 relative z-10">
               Discussion with Our Sales Team
             </button>
           </div>
