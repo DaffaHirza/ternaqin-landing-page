@@ -72,8 +72,7 @@ will-change-transform transition-transform
       text-[#1c1c1c]
     "
             >
-              Purpose-Built With Intelligent Automation
-              <br className="hidden md:block" />
+              Purpose-Built With Intelligent Automation <span> </span>
               <span className="text-[#bcbcbc] font-medium">
                 To Optimize Livestock Management And
                 <br className="hidden md:block" />

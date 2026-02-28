@@ -74,7 +74,6 @@ export default function Contact() {
                 <p className="text-lg lg:text-2xl text-[#A5A5A5] shrink-0">
                   Reach Out To Our Team For Expert Support And Inquiries
                 </p>
-
               </div>
               <div className="w-full h-px bg-white/30 rounded-full"></div>
               <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -185,17 +184,24 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="flex flex-col w-full lg:w-5/6 bg-[#fafafa] p-8 rounded-xl backdrop-blur-md space-y-5"
               >
-
+                <input
+                  type="text"
+                  name="company"
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
                 <p className="text-xl xl:text-4xl text-center md:text-3xl text-[#131313] font-semibold leading-tight">
                   Have Questions Or Would Like To Discuss Further?
                 </p>
 
                 {submitStatus.type && (
                   <div
-                    className={`p-3 rounded-lg ${submitStatus.type === "success"
-                      ? "bg-green-100 text-[#1F4941]"
-                      : "bg-red-100 text-red-800"
-                      }`}
+                    className={`p-3 rounded-lg ${
+                      submitStatus.type === "success"
+                        ? "bg-green-100 text-[#1F4941]"
+                        : "bg-red-100 text-red-800"
+                    }`}
                   >
                     {submitStatus.message}
                   </div>
@@ -269,7 +275,8 @@ export default function Contact() {
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
                 <p className="text-xs text-gray-400 text-center">
-                  By submitting, you acknowledge and accept my terms and privacy policy, along with the way your data will be managed.
+                  By submitting, you acknowledge and accept my terms and privacy
+                  policy, along with the way your data will be managed.
                 </p>
               </form>
             </div>

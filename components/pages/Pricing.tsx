@@ -333,7 +333,7 @@ export default function Pricing() {
               </div>
             </div>
           </div>
-          <div className="bg-gray-900 rounded-2xl p-8 text-white flex flex-col justify-between h-full relative overflow-hidden">
+          <div className="bg-black rounded-2xl p-8 text-white flex flex-col justify-between h-full relative overflow-hidden">
             {/* Circle Background */}
             <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-100 h-100 rounded-full bg-[#A5A5A5] opacity-8"></div>
             <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-150 h-150 rounded-full bg-[#A5A5A5] opacity-8"></div>

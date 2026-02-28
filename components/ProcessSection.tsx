@@ -65,7 +65,7 @@ export default function ProcessSection() {
               Management
               <br className="hidden md:block" />
               <span className="text-[#bcbcbc] font-medium">
-                Powered By QR Based tracking
+                Powered By QR Based Tracking
               </span>
             </h2>
           </div>
