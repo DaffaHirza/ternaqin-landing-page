@@ -1,6 +1,12 @@
 "use client";
 import Image from "next/image";
 
+type TestimonialItem = {
+  id: number;
+  name: string;
+  role: string;
+};
+
 const testimonials = [
   { id: 1, name: "Michael Jack", role: "Founder at Berkah Farm" },
   { id: 2, name: "Sarah Chen", role: "CTO at TechVenture" },
@@ -12,7 +18,12 @@ const testimonials = [
   { id: 8, name: "Maya Indah", role: "Founder at GreenBase" },
 ];
 
-function TestimonialCard({ item, index }) {
+type TestimonialCardProps = {
+  item: TestimonialItem;
+  index: number;
+};
+
+function TestimonialCard({ item, index }: TestimonialCardProps) {
   return (
     <div className="bg-white rounded-lg p-6 max-w-90 shrink-0">
       <div className="flex items-center mb-7">
@@ -60,7 +71,12 @@ function TestimonialCard({ item, index }) {
   );
 }
 
-function MarqueeRow({ items, direction = "left" }) {
+type MarqueeRowProps = {
+  items: TestimonialItem[];
+  direction?: "left" | "right";
+};
+
+function MarqueeRow({ items, direction = "left" }: MarqueeRowProps) {
   const tripled = [...items, ...items, ...items];
   return (
     <div className="overflow-hidden relative">

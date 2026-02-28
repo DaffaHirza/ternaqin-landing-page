@@ -56,7 +56,7 @@ const CustomTick = (props: any) => {
 
 export default function SalesTransactions() {
   const [progress, setProgress] = useState(0);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -79,7 +79,8 @@ export default function SalesTransactions() {
     animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (animationRef.current !== null)
+        cancelAnimationFrame(animationRef.current);
     };
   }, []);
 
