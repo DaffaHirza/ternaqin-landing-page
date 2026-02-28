@@ -247,7 +247,7 @@ will-change-transform transition-transform
               py-1.5 md:py-2 
               bg-white/20 
               border 
-              border-white/40 
+              border-white 
               rounded-[8px] md:rounded-[12px] 
               backdrop-blur
             "

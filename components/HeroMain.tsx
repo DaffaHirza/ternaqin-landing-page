@@ -19,7 +19,7 @@ export default function HeroContent() {
             Global Market Advantage
           </h1>
 
-          <div className="mt-6 flex flex-wrap gap-2 py-3">
+          <div className="mt-6 flex flex-wrap gap-[1px] py-3">
             {["Blockchain", "QR Code", "AI Assistance"].map((item) => (
               <span
                 key={item}

@@ -52,7 +52,7 @@ export default function Contact() {
   return (
     <section
       id="Contact"
-      className="w-full min-h-screen bg-[#F3F3F3] flex items-start justify-center lg:px-3 relative overflow-hidden"
+      className="w-full min-h-screen bg-[#F3F3F3] flex items-start justify-center lg:px-3 md:px-3 px-3 relative overflow-hidden"
     >
       <div className="w-full py-3">
         <div className="relative w-full rounded-[32px] overflow-hidden">
@@ -77,7 +77,7 @@ export default function Contact() {
 
               </div>
               <div className="w-full h-px bg-white/30 rounded-full"></div>
-              <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="w-full grid grid-cols-2 gap-8">
                 <div className="flex flex-col">
                   <svg
                     width="60"
@@ -188,7 +188,7 @@ export default function Contact() {
                 className="flex flex-col w-full lg:w-5/6 bg-[#fafafa] p-8 rounded-xl backdrop-blur-md space-y-5"
               >
 
-                <p className="xl:text-4xl text-center md:text-3xl text-[#131313] font-semibold leading-tight">
+                <p className="text-xl xl:text-4xl text-center md:text-3xl text-[#131313] font-semibold leading-tight">
                   Have Questions Or Would Like To Discuss Further?
                 </p>
 

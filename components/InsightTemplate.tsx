@@ -112,11 +112,11 @@ export default function InsightTemplate({
           </button>
         </div>
         {/* TOP CATEGORY */}
-        <div className="flex flex-wrap gap-4 mb-8">
+        <div className="flex flex-wrap gap-[1px] p-2 mb-8">
           {categories.map((item, i) => (
             <span
               key={i}
-              className="px-4 py-2 bg-gray-100 rounded-full text-gray-600"
+              className="px-4 py-2 bg-gray-100 rounded-[12px] border border-[#E3E3E3] text-gray-600"
             >
               {item.label}
             </span>

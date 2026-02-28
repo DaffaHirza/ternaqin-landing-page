@@ -2,7 +2,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export default function SectionReveal() {
   return (
-    <section className="relative text-white py-[15vh] lg:py-[20vh] xl:py-[20vh]">
+    <section className="relative text-white py-[15vh]">
       <div className="relative z-20 h-full w-full px-4">
         <ScrollReveal
           baseOpacity={0.35}

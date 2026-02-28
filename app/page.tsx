@@ -2,7 +2,7 @@ import HeroContent from "@/components/Hero";
 import FeaturesSection from "@/components/FeaturesSection";
 import ServiceSection from "@/components/ServiceSection";
 import ProcessSection from "@/components/ProcessSection";
-
+import AnalyticsSection from "@/components/AnalyticSectiton";
 import Pricing from "@/components/pages/Pricing";
 import Faqs from "@/components/pages/Faqs";
 import TestimonialSection from "@/components/pages/Testimonial";
@@ -46,6 +46,10 @@ export default function Home() {
 
       <StackSection z={40}>
         <ProcessSection />
+      </StackSection>
+
+      <StackSection z={40}>
+        <AnalyticsSection />
       </StackSection>
 
       {/* SECTION PUNYA DAFFA */}

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SectionService() {
   const [activeCard, setActiveCard] = useState(1);
@@ -99,18 +100,23 @@ export default function SectionService() {
 
                   {activeCard === 1 && (
                     <div className="flex items-start gap-2">
-                      <button className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition">
-                        Learn More
-                      </button>
+                      <Link
+                        href="/services/livestock"
+                        className="flex items-center gap-2"
+                      >
+                        <span className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
+                          Learn More
+                        </span>
 
-                      <button className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
-                        <Image
-                          src="/img/arrow-right.svg"
-                          alt="arrow-right"
-                          width={24}
-                          height={24}
-                        />
-                      </button>
+                        <span className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                          <Image
+                            src="/img/arrow-right.svg"
+                            alt="arrow-right"
+                            width={24}
+                            height={24}
+                          />
+                        </span>
+                      </Link>
                     </div>
                   )}
                 </div>
@@ -177,18 +183,23 @@ export default function SectionService() {
 
                   {activeCard === 2 && (
                     <div className="flex items-start gap-2">
-                      <button className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition">
-                        Learn More
-                      </button>
+                      <Link
+                        href="/services/employee"
+                        className="flex items-center gap-2"
+                      >
+                        <span className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
+                          Learn More
+                        </span>
 
-                      <button className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
-                        <Image
-                          src="/img/arrow-right.svg"
-                          alt="arrow-right"
-                          width={24}
-                          height={24}
-                        />
-                      </button>
+                        <span className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                          <Image
+                            src="/img/arrow-right.svg"
+                            alt="arrow-right"
+                            width={24}
+                            height={24}
+                          />
+                        </span>
+                      </Link>
                     </div>
                   )}
                 </div>
@@ -258,18 +269,23 @@ export default function SectionService() {
 
                   {activeCard === 3 && (
                     <div className="flex items-start gap-2">
-                      <button className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition">
-                        Learn More
-                      </button>
+                      <Link
+                        href="/services/abattoir"
+                        className="flex items-center gap-2"
+                      >
+                        <span className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
+                          Learn More
+                        </span>
 
-                      <button className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
-                        <Image
-                          src="/img/arrow-right.svg"
-                          alt="arrow-right"
-                          width={24}
-                          height={24}
-                        />
-                      </button>
+                        <span className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                          <Image
+                            src="/img/arrow-right.svg"
+                            alt="arrow-right"
+                            width={24}
+                            height={24}
+                          />
+                        </span>
+                      </Link>
                     </div>
                   )}
                 </div>
