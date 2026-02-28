@@ -37,7 +37,7 @@ export default function AnalyticsSection() {
 
       {/* ================= TOP: Latest Update ================= */}
       <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm">
-        <h3 className="text-[#9A9A9A] text-base sm:text-lg font-medium mb-6">
+        <h3 className="text-[#9A9A9A] text-base text-[clamp(18px,2.5vw,32px)] font-medium mb-6">
           Latest Update
         </h3>
 
@@ -48,7 +48,7 @@ export default function AnalyticsSection() {
             "TernQin grants trial access to new users, offering an opportunity to experience advanced features",
           ].map((text, i) => (
             <div key={i} className="space-y-3">
-              <p className="text-[#191919] text-sm sm:text-[15px] leading-relaxed">
+              <p className="text-[#191919] text-[clamp(14px,1.8vw,18px)] leading-relaxed">
                 {text}
               </p>
               <p className="text-[#9A9A9A] text-xs sm:text-sm">
@@ -66,6 +66,32 @@ export default function AnalyticsSection() {
 
         <div className="h-full">
           <LivestockCategory />
+        </div>
+      </div>
+
+      <div className="bg-white rounded-[24px] p-5 sm:p-6 shadow-sm">
+        <h3 className="text-[#9A9A9A] text-base text-[clamp(18px,2.5vw,32px)] font-medium mb-6">
+          Farmers of The Year
+        </h3>
+
+        <div className="flex justify-between w-full gap-10 overflow-x-auto font-medium pr-0">
+          {[
+            { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
+            { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
+            { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
+            { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
+            { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
+            { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
+          ].map((item, i) => (
+            <div key={i} className="min-w-[200px] space-y-3 flex-shrink-0">
+              <p className="text-[#191919] text-[clamp(14px,1.8vw,18px)] leading-relaxed">
+                {item.name}
+              </p>
+              <p className="text-[#9A9A9A] text-xs sm:text-sm">
+                {item.location}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 

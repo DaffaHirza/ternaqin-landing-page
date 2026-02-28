@@ -24,6 +24,36 @@ const originalData = [
 
 const MAX_VALUE = 100;
 
+const CustomTick = (props: any) => {
+  const { x, y, payload, index, visibleTicksCount } = props;
+
+  const OFFSET = window.innerWidth < 640 ? 8 : 14;
+  let adjustedX = x;
+  let textAnchor: "start" | "middle" | "end" = "middle";
+
+  if (index === 0) {
+    adjustedX = x + OFFSET;
+    textAnchor = "start";
+  }
+
+  if (index === visibleTicksCount - 1) {
+    adjustedX = x - OFFSET;
+    textAnchor = "end";
+  }
+
+  return (
+    <text
+      x={adjustedX}
+      y={y + 15}
+      textAnchor={textAnchor}
+      fill="#9A9A9A"
+      fontSize={12}
+    >
+      {payload.value}
+    </text>
+  );
+};
+
 export default function SalesTransactions() {
   const [progress, setProgress] = useState(0);
   const animationRef = useRef<number>();
@@ -94,7 +124,7 @@ export default function SalesTransactions() {
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={animatedData}
-              margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+              margin={{ top: 0, right: 0, left: 0, bottom: 20 }}
             >
               <defs>
                 <linearGradient id="colorArea" x1="0" y1="0" x2="0" y2="1">
@@ -109,10 +139,10 @@ export default function SalesTransactions() {
                 tickLine={false}
                 interval={0}
                 scale="point"
-                tick={{ fill: "#9A9A9A", fontSize: 12 }}
+                tick={<CustomTick />}
               />
 
-              <YAxis hide domain={[0, MAX_VALUE]} />
+              <YAxis hide domain={[0, (dataMax: number) => dataMax + 10]} />
 
               <Area
                 type="monotone"
