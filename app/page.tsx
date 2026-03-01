@@ -20,7 +20,7 @@ export default function Home() {
     return (
       <section className="relative min-h-[200vh]">
         <div
-          className="sticky top-0 min-h-screen bg-white"
+          className="sticky top-0 min-h-screen bg-[#f3f3f3]"
           style={{ zIndex: z }}
         >
           {children}

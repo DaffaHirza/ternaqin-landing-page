@@ -7,6 +7,21 @@ import LargestLivestock from "@/components/LargestLivestock";
 import LivestockTypesCard from "@/components/LivestockTypesCard";
 
 export default function AnalyticsSection() {
+  const latestUpdates = [
+    "TernQin grants trial access to new users, allowing them to experience the platform’s full feature set",
+    "TernQin Announces the Adoption of Blockchain and AI to Strengthen Smart Livestock Management",
+    "TernQin grants trial access to new users, offering an opportunity to experience advanced features",
+  ];
+
+  const farmerItems = [
+    { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
+    { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
+    { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
+    { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
+    { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
+    { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
+  ];
+
   return (
     <section className="w-full bg-[#F5F6F6] p-4 rounded-[12px] space-y-4">
       {/* HEADER */}
@@ -43,21 +58,22 @@ export default function AnalyticsSection() {
           Latest Update
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 font-medium">
-          {[
-            "TernQin grants trial access to new users, allowing them to experience the platform’s full feature set",
-            "TernQin Announces the Adoption of Blockchain and AI to Strengthen Smart Livestock Management",
-            "TernQin grants trial access to new users, offering an opportunity to experience advanced features",
-          ].map((text, i) => (
-            <div key={i} className="space-y-3">
-              <p className="text-[#191919] text-[clamp(14px,1.8vw,18px)] leading-relaxed">
-                {text}
-              </p>
-              <p className="text-[#9A9A9A] text-xs sm:text-sm">
-                10.30 • Jan 01, 2027
-              </p>
-            </div>
-          ))}
+        <div className="relative overflow-hidden">
+          <div className="marquee-latest flex w-max gap-4 sm:gap-6 md:gap-8 font-medium">
+            {[...latestUpdates, ...latestUpdates].map((text, i) => (
+              <div
+                key={`${text.slice(0, 20)}-${i}`}
+                className="min-w-[260px] sm:min-w-[320px] lg:min-w-[380px] space-y-3 shrink-0"
+              >
+                <p className="text-[#191919] text-[clamp(14px,1.8vw,18px)] leading-relaxed">
+                  {text}
+                </p>
+                <p className="text-[#9A9A9A] text-xs sm:text-sm">
+                  10.30 • Jan 01, 2027
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {/* ================= MIDDLE GRID ================= */}
@@ -76,24 +92,22 @@ export default function AnalyticsSection() {
           Farmers of The Year
         </h3>
 
-        <div className="flex justify-between w-full gap-10 overflow-x-auto font-medium pr-0">
-          {[
-            { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
-            { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
-            { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
-            { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
-            { name: "Setia Farm", location: "Purworejo, Jawa Tengah" },
-            { name: "Rimba Raya", location: "Purworejo, Jawa Tengah" },
-          ].map((item, i) => (
-            <div key={i} className="min-w-[200px] space-y-3 flex-shrink-0">
-              <p className="text-[#191919] text-[clamp(14px,1.8vw,18px)] leading-relaxed">
-                {item.name}
-              </p>
-              <p className="text-[#9A9A9A] text-xs sm:text-sm">
-                {item.location}
-              </p>
-            </div>
-          ))}
+        <div className="relative overflow-hidden">
+          <div className="marquee-right flex w-max gap-5 sm:gap-8 md:gap-10 font-medium">
+            {[...farmerItems, ...farmerItems].map((item, i) => (
+              <div
+                key={`${item.name}-${i}`}
+                className="min-w-[170px] sm:min-w-[190px] md:min-w-[220px] space-y-2 sm:space-y-3 shrink-0"
+              >
+                <p className="text-[#191919] text-[clamp(14px,1.8vw,18px)] leading-relaxed">
+                  {item.name}
+                </p>
+                <p className="text-[#9A9A9A] text-xs sm:text-sm">
+                  {item.location}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -118,6 +132,27 @@ export default function AnalyticsSection() {
           />
         </div>
       </div>
+
+      <style jsx>{`
+        .marquee-latest {
+          animation: analytics-marquee-right 30s linear infinite;
+          will-change: transform;
+        }
+
+        .marquee-right {
+          animation: analytics-marquee-right 24s linear infinite;
+          will-change: transform;
+        }
+
+        @keyframes analytics-marquee-right {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -67,11 +67,11 @@ export default function LivestockTypesCard({
           {data.map((item, i) => (
             <div key={i} className="flex flex-col items-center flex-1 min-w-0">
               {/* Track */}
-              <div className="w-full h-[140px] sm:h-[180px] md:h-[320px] lg:h-[420px] bg-white rounded-[16px] flex items-end overflow-hidden">
+              <div className="w-full h-[180px] sm:h-[240px] md:h-[390px] lg:h-[500px] bg-white rounded-[16px] flex items-end overflow-hidden">
                 {/* Fill */}
                 <div
-                  className="w-full bg-[#1F4941] flex items-end justify-center text-white text-xs sm:text-sm font-medium transition-all duration-1000 ease-out"
-                  style={{ height: `${animatedValues[i]}%` }}
+                  className="w-full bg-[#1F4941] rounded-t-[12px] sm:rounded-t-[14px] flex items-end justify-center text-white text-xs sm:text-sm font-medium transition-all duration-1000 ease-out"
+                  style={{ height: `${Math.min(100, animatedValues[i] * 1.8)}%` }}
                 >
                   <span className="mb-1">
                     {" "}

@@ -146,7 +146,7 @@ export default function TestimonialSection() {
              text-[#1c1c1c]
            "
                 >
-                  Trusted By Teams, Startups, and Enterprises That Prioritize Speed and
+                  Trusted By Teams, Startups, and Enterprises That Prioritize Speed and{" "}
                   <br className="hidden md:block" />
                   <span className="text-[#bcbcbc] font-medium">
                     Simplicity Backed by Customer Success

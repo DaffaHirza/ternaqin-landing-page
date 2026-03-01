@@ -1,10 +1,69 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function SectionService() {
   const [activeCard, setActiveCard] = useState(1);
+  const [isPhoneVisible, setIsPhoneVisible] = useState(false);
+  const phoneCardRef = useRef<HTMLDivElement | null>(null);
+  const serviceCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const element = phoneCardRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsPhoneVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const isBelowLg = window.matchMedia("(max-width: 1023px)").matches;
+    const isTouchOnly = window.matchMedia(
+      "(hover: none), (pointer: coarse)"
+    ).matches;
+    if (!isBelowLg || !isTouchOnly) return;
+
+    const cards = serviceCardRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visibleEntry) return;
+
+        const cardIndex = cards.findIndex((card) => card === visibleEntry.target);
+        if (cardIndex !== -1) {
+          setActiveCard(cardIndex + 1);
+        }
+      },
+      {
+        threshold: [0.35, 0.5, 0.7],
+        rootMargin: "-10% 0px -10% 0px",
+      }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
 
   const baseCardStyle = `
   relative
@@ -14,7 +73,7 @@ export default function SectionService() {
   duration-500
   ease-in-out
   cursor-pointer
-  min-h-[280px] lg:min-h-0
+  min-h-[260px] md:min-h-[300px] lg:min-h-0
 `;
 
   return (
@@ -57,12 +116,20 @@ export default function SectionService() {
         >
           {/* 01 */}
           <div
+            ref={(el) => {
+              serviceCardRefs.current[0] = el;
+            }}
             onMouseEnter={() => setActiveCard(1)}
-            className={`${baseCardStyle} ${
-              activeCard === 1
-                ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
-                : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
-            }`}
+            onMouseMove={() => setActiveCard(1)}
+            onMouseOver={() => setActiveCard(1)}
+            onPointerEnter={() => setActiveCard(1)}
+            onPointerMove={() => setActiveCard(1)}
+            onPointerOver={() => setActiveCard(1)}
+            onClick={() => setActiveCard(1)}
+            className={`${baseCardStyle} ${activeCard === 1
+              ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
+              : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
+              }`}
           >
             {/* Background Layer */}
             <div className="absolute inset-0">
@@ -79,9 +146,8 @@ export default function SectionService() {
                 src="/img/bg-service-card-1.svg"
                 alt=""
                 fill
-                className={`object-cover transition-opacity duration-700 ease-in-out ${
-                  activeCard === 1 ? "opacity-100" : "opacity-0"
-                }`}
+                className={`object-cover transition-opacity duration-700 ease-in-out ${activeCard === 1 ? "opacity-100" : "opacity-0"
+                  }`}
                 priority
               />
 
@@ -93,27 +159,27 @@ export default function SectionService() {
 
             <div className="relative z-10 flex flex-col justify-between h-full">
               <div>
-                <div className="flex justify-between items-start">
-                  <span className="text-[40px] lg:text-[60px] font-semibold">
+                <div className="flex justify-between items-start gap-3">
+                  <span className="text-[32px] sm:text-[36px] lg:text-[60px] font-semibold leading-none">
                     01
                   </span>
 
                   {activeCard === 1 && (
-                    <div className="flex items-start gap-2">
+                    <div className="flex items-start gap-2 shrink-0">
                       <Link
                         href="/services/livestock"
                         className="flex items-center gap-2"
                       >
-                        <span className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
+                        <span className="px-4 sm:px-6 lg:px-8 h-[44px] sm:h-[50px] lg:h-[60px] rounded-[10px] lg:rounded-[12px] bg-white text-[#1F4941] text-sm sm:text-base lg:text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
                           Learn More
                         </span>
 
-                        <span className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                        <span className="w-[44px] sm:w-[50px] lg:w-[60px] h-[44px] sm:h-[50px] lg:h-[60px] rounded-[10px] lg:rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
                           <Image
                             src="/img/arrow-right.svg"
                             alt="arrow-right"
-                            width={24}
-                            height={24}
+                            width={20}
+                            height={20}
                           />
                         </span>
                       </Link>
@@ -123,8 +189,8 @@ export default function SectionService() {
 
                 {activeCard === 1 && (
                   <>
-                    <div className="mt-6 h-[1px] bg-white/30 w-full" />
-                    <p className="mt-8 text-[16px]  lg:text-[18px] text-white/80 leading-relaxed">
+                    <div className="mt-4 lg:mt-6 h-[1px] bg-white/30 w-full" />
+                    <p className="mt-5 lg:mt-8 text-[14px] sm:text-[15px] lg:text-[18px] text-white/80 leading-relaxed">
                       A centralized administration platform for managing
                       livestock data digitally.
                     </p>
@@ -132,7 +198,7 @@ export default function SectionService() {
                 )}
               </div>
 
-              <span className="text-[22px] lg:text-[30px] font-medium">
+              <span className="text-[20px] sm:text-[22px] lg:text-[30px] font-medium">
                 Livestock Administrator
               </span>
             </div>
@@ -140,12 +206,20 @@ export default function SectionService() {
 
           {/* 02 */}
           <div
+            ref={(el) => {
+              serviceCardRefs.current[1] = el;
+            }}
             onMouseEnter={() => setActiveCard(2)}
-            className={`${baseCardStyle} ${
-              activeCard === 2
-                ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
-                : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
-            }`}
+            onMouseMove={() => setActiveCard(2)}
+            onMouseOver={() => setActiveCard(2)}
+            onPointerEnter={() => setActiveCard(2)}
+            onPointerMove={() => setActiveCard(2)}
+            onPointerOver={() => setActiveCard(2)}
+            onClick={() => setActiveCard(2)}
+            className={`${baseCardStyle} ${activeCard === 2
+              ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
+              : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
+              }`}
           >
             {/* Background Layer */}
             <div className="absolute inset-0">
@@ -162,9 +236,8 @@ export default function SectionService() {
                 src="/img/bg-service-card-2.svg"
                 alt=""
                 fill
-                className={`object-cover transition-opacity duration-700 ease-in-out ${
-                  activeCard === 2 ? "opacity-100" : "opacity-0"
-                }`}
+                className={`object-cover transition-opacity duration-700 ease-in-out ${activeCard === 2 ? "opacity-100" : "opacity-0"
+                  }`}
                 priority
               />
 
@@ -176,27 +249,27 @@ export default function SectionService() {
 
             <div className="relative z-10 flex flex-col justify-between h-full">
               <div>
-                <div className="flex justify-between items-start">
-                  <span className="text-[40px] lg:text-[60px] font-semibold">
+                <div className="flex justify-between items-start gap-3">
+                  <span className="text-[32px] sm:text-[36px] lg:text-[60px] font-semibold leading-none">
                     02
                   </span>
 
                   {activeCard === 2 && (
-                    <div className="flex items-start gap-2">
+                    <div className="flex items-start gap-2 shrink-0">
                       <Link
                         href="/services/employee"
                         className="flex items-center gap-2"
                       >
-                        <span className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
+                        <span className="px-4 sm:px-6 lg:px-8 h-[44px] sm:h-[50px] lg:h-[60px] rounded-[10px] lg:rounded-[12px] bg-white text-[#1F4941] text-sm sm:text-base lg:text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
                           Learn More
                         </span>
 
-                        <span className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                        <span className="w-[44px] sm:w-[50px] lg:w-[60px] h-[44px] sm:h-[50px] lg:h-[60px] rounded-[10px] lg:rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
                           <Image
                             src="/img/arrow-right.svg"
                             alt="arrow-right"
-                            width={24}
-                            height={24}
+                            width={20}
+                            height={20}
                           />
                         </span>
                       </Link>
@@ -206,9 +279,9 @@ export default function SectionService() {
 
                 {activeCard === 2 && (
                   <>
-                    <div className="mt-6 h-[1px] bg-white/30 w-full" />
+                    <div className="mt-4 lg:mt-6 h-[1px] bg-white/30 w-full" />
 
-                    <p className="mt-8 text-[16px] lg:text-[18px] text-white/80 leading-relaxed">
+                    <p className="mt-5 lg:mt-8 text-[14px] sm:text-[15px] lg:text-[18px] text-white/80 leading-relaxed">
                       Manage employee data, attendance tracking, performance
                       records, and operational roles in a centralized system
                       designed for efficient farm workforce management.
@@ -217,7 +290,7 @@ export default function SectionService() {
                 )}
               </div>
 
-              <span className="text-[22px] lg:text-[30px] font-medium">
+              <span className="text-[20px] sm:text-[22px] lg:text-[30px] font-medium">
                 Employee
               </span>
             </div>
@@ -225,12 +298,20 @@ export default function SectionService() {
 
           {/* 03 */}
           <div
+            ref={(el) => {
+              serviceCardRefs.current[2] = el;
+            }}
             onMouseEnter={() => setActiveCard(3)}
-            className={`${baseCardStyle} ${
-              activeCard === 3
-                ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
-                : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
-            }`}
+            onMouseMove={() => setActiveCard(3)}
+            onMouseOver={() => setActiveCard(3)}
+            onPointerEnter={() => setActiveCard(3)}
+            onPointerMove={() => setActiveCard(3)}
+            onPointerOver={() => setActiveCard(3)}
+            onClick={() => setActiveCard(3)}
+            className={`${baseCardStyle} ${activeCard === 3
+              ? "lg:flex-[3] flex-none lg:p-10 p-6 text-white"
+              : "lg:flex-[1] flex-none lg:p-8 p-6 text-black"
+              }`}
           >
             {/* Background Layers */}
             {/* Background Layer */}
@@ -248,9 +329,8 @@ export default function SectionService() {
                 src="/img/bg-service-card-3.svg"
                 alt=""
                 fill
-                className={`object-cover transition-opacity duration-700 ease-in-out ${
-                  activeCard === 3 ? "opacity-100" : "opacity-0"
-                }`}
+                className={`object-cover transition-opacity duration-700 ease-in-out ${activeCard === 3 ? "opacity-100" : "opacity-0"
+                  }`}
                 priority
               />
 
@@ -262,27 +342,27 @@ export default function SectionService() {
 
             <div className="relative z-10 flex flex-col justify-between h-full">
               <div>
-                <div className="flex justify-between items-start">
-                  <span className="text-[40px] lg:text-[60px] font-semibold">
+                <div className="flex justify-between items-start gap-3">
+                  <span className="text-[32px] sm:text-[36px] lg:text-[60px] font-semibold leading-none">
                     03
                   </span>
 
                   {activeCard === 3 && (
-                    <div className="flex items-start gap-2">
+                    <div className="flex items-start gap-2 shrink-0">
                       <Link
                         href="/services/abattoir"
                         className="flex items-center gap-2"
                       >
-                        <span className="px-8 h-[60px] rounded-[12px] bg-white text-[#1F4941] text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
+                        <span className="px-4 sm:px-6 lg:px-8 h-[44px] sm:h-[50px] lg:h-[60px] rounded-[10px] lg:rounded-[12px] bg-white text-[#1F4941] text-sm sm:text-base lg:text-lg font-medium shadow-md hover:scale-105 transition flex items-center">
                           Learn More
                         </span>
 
-                        <span className="w-[60px] h-[60px] rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
+                        <span className="w-[44px] sm:w-[50px] lg:w-[60px] h-[44px] sm:h-[50px] lg:h-[60px] rounded-[10px] lg:rounded-[12px] bg-white flex items-center justify-center shadow-md hover:scale-105 transition">
                           <Image
                             src="/img/arrow-right.svg"
                             alt="arrow-right"
-                            width={24}
-                            height={24}
+                            width={20}
+                            height={20}
                           />
                         </span>
                       </Link>
@@ -292,9 +372,9 @@ export default function SectionService() {
 
                 {activeCard === 3 && (
                   <>
-                    <div className="mt-6 h-[1px] bg-white/30 w-full" />
+                    <div className="mt-4 lg:mt-6 h-[1px] bg-white/30 w-full" />
 
-                    <p className="mt-8 text-[16px] lg:text-[18px] text-white/80 leading-relaxed">
+                    <p className="mt-5 lg:mt-8 text-[14px] sm:text-[15px] lg:text-[18px] text-white/80 leading-relaxed">
                       Streamline slaughterhouse operations with integrated
                       livestock verification, processing records, and
                       traceability systems to ensure compliance, transparency,
@@ -304,7 +384,7 @@ export default function SectionService() {
                 )}
               </div>
 
-              <span className="text-[22px] lg:text-[30px] font-medium">
+              <span className="text-[20px] sm:text-[22px] lg:text-[30px] font-medium">
                 Abattoir
               </span>
             </div>
@@ -312,7 +392,13 @@ export default function SectionService() {
 
           {/* TESTIMONIAL (tetap static, tidak ikut animasi) */}
           <div className="lg:flex-[3] flex-none bg-white rounded-[32px] overflow-hidden shadow-sm flex flex-col">
-            <div className="relative h-[360px] bg-[#EAEAEA] rounded-[28px] m-4 flex justify-center overflow-hidden">
+            <div
+              ref={phoneCardRef}
+              className={`relative h-[360px] bg-[#EAEAEA] rounded-[28px] m-4 flex justify-center overflow-hidden transition-all duration-700 ease-out motion-reduce:transition-none lg:translate-y-0 lg:opacity-100 ${isPhoneVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-12 opacity-0"
+                }`}
+            >
               <Image
                 src="/img/service-enchancing.svg"
                 alt="phone"
@@ -323,7 +409,7 @@ export default function SectionService() {
 
             <div className="px-10 pb-10 pt-6 flex flex-col flex-1 justify-between">
               <div>
-                <h3 className="text-[40px] font-semibold text-[#1A1A1A] leading-[1.15]">
+                <h3 className="text-[40px] lg:text-4xl font-semibold text-[#1A1A1A] leading-[1.15]">
                   Enhancing Experiences <br />
                   for Our Customers
                 </h3>

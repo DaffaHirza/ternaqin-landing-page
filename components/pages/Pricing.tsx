@@ -40,7 +40,7 @@ export default function Pricing() {
          text-[#1c1c1c]
        "
             >
-              Flexible, Transparent Plans Designed For
+              Flexible, Transparent Plans Designed For{" "}
               <br className="hidden md:block" />
               <span className="text-[#bcbcbc] font-medium">
                 Long-Term Growth And Seamless
@@ -51,8 +51,8 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-4">
-          <div className="bg-white rounded-2xl p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-4 items-stretch">
+          <div className="bg-white rounded-2xl p-8 h-full">
             <div className="mb-6">
               <h2 className="text-3xl font-bold text-gray-900">Basic Plan</h2>
             </div>
@@ -78,8 +78,8 @@ export default function Pricing() {
                 >
                   <span
                     className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${isYearlyBasic
-                        ? "translate-x-7 bg-[#1F4941]"
-                        : "translate-x-1 bg-[#A5A5A5]"
+                      ? "translate-x-7 bg-[#1F4941]"
+                      : "translate-x-1 bg-[#A5A5A5]"
                       }`}
                   />
                 </button>
@@ -189,7 +189,7 @@ export default function Pricing() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-white rounded-2xl p-8 relative">
+          <div className="w-full bg-white rounded-2xl p-8 relative h-full">
             <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
                 <h2 className="text-3xl font-bold text-[#191919]">
@@ -222,8 +222,8 @@ export default function Pricing() {
                 >
                   <span
                     className={`inline-block h-4 w-4 transform rounded-full bg-grey transition-transform duration-300 ${isYearlyBusiness
-                        ? "translate-x-7 bg-[#1F4941]"
-                        : "translate-x-1 bg-[#A5A5A5]"
+                      ? "translate-x-7 bg-[#1F4941]"
+                      : "translate-x-1 bg-[#A5A5A5]"
                       }`}
                   />
                 </button>
@@ -333,7 +333,7 @@ export default function Pricing() {
               </div>
             </div>
           </div>
-          <div className="bg-gray-900 rounded-2xl p-8 text-white flex flex-col justify-between h-full relative overflow-hidden">
+          <div className="bg-gray-900 rounded-2xl p-8 text-white flex flex-col justify-between h-full max-lg:min-h-[780px] relative overflow-hidden">
             {/* Circle Background */}
             <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-100 h-100 rounded-full bg-[#A5A5A5] opacity-8"></div>
             <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-150 h-150 rounded-full bg-[#A5A5A5] opacity-8"></div>

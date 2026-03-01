@@ -9,17 +9,17 @@ import Link from "next/link";
 
 export default function HeroContent() {
   return (
-    <div id="hero" className="relative w-full h-screen text-white">
-      <div className="relative z-20 h-full w-full mx-auto px-4">
+    <div id="hero" className="relative w-full min-h-[100svh] lg:h-screen text-white">
+      <div className="relative z-20 h-full min-h-[100svh] w-full mx-auto px-4 pb-6 sm:pb-8 lg:pb-0">
         {/* HERO TITLE */}
-        <section className="pt-32 lg:pt-40 ">
-          <h1 className="font-medium tracking-tight text-[clamp(36px,5.5vw,110px)] leading-[1.08] sm:leading-[1.05]">
+        <section className="pt-24 sm:pt-28 lg:pt-40">
+          <h1 className="font-medium tracking-tight text-[clamp(28px,9vw,110px)] leading-[1.08] sm:leading-[1.05] max-w-[16ch] lg:max-w-none">
             Elevate Livestock Quality
             <br />
             Global Market Advantage
           </h1>
 
-          <div className="mt-6 flex flex-wrap gap-[1px] py-3">
+          <div className="mt-4 sm:mt-6 flex flex-wrap gap-[1px] py-2 sm:py-3">
             {["Blockchain", "QR Code", "AI Assistance"].map((item) => (
               <span
                 key={item}
@@ -96,26 +96,26 @@ export default function HeroContent() {
           </div>
         </section>
 
-        <div className="absolute bottom-10 lg:bottom-16 left-0 w-full px-4 text-white">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+        <div className="mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:bottom-16 left-0 w-full px-4 text-white">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 sm:gap-10 lg:gap-12">
             {/* CTA */}
-            <section className="max-w-[640px] lg:max-w-[520px]">
-              <p className="text-[17px] sm:text-[19px] lg:text-[22px] leading-[150%] text-white/90">
+            <section className="max-w-full lg:max-w-[520px]">
+              <p className="text-[15px] sm:text-[18px] lg:text-[22px] leading-[150%] text-white/90 max-w-[34ch] sm:max-w-none">
                 Join our live product demo to see the platform in action and
                 explore all its features
               </p>
 
-              <div className="mt-6 flex items-center gap-1">
+              <div className="mt-4 sm:mt-6 flex items-center gap-1">
                 <Link
                   href="/book-now"
-                  className="px-6 sm:px-15 h-[52px] sm:h-[60px] rounded-[12px] bg-white text-[#1F4941] text-[15px] sm:text-[22px] font-medium shadow-md hover:scale-105 transition flex items-center justify-center"
+                  className="px-5 sm:px-15 h-[48px] sm:h-[60px] rounded-[12px] bg-white text-[#1F4941] text-[15px] sm:text-[22px] font-medium shadow-md hover:scale-105 transition flex items-center justify-center"
                 >
                   Book Now
                 </Link>
 
                 <Link
                   href="/book-now"
-                  className="w-[52px] sm:w-[60px] h-[52px] sm:h-[60px] rounded-[12px] bg-white flex items-center justify-center text-[#1F4941] text-[22px] sm:text-[32px] shadow-md hover:scale-105 transition"
+                  className="w-[48px] sm:w-[60px] h-[48px] sm:h-[60px] rounded-[12px] bg-white flex items-center justify-center text-[#1F4941] text-[22px] sm:text-[32px] shadow-md hover:scale-105 transition"
                 >
                   <Image
                     src="/img/arrow-right.svg"
@@ -129,9 +129,9 @@ export default function HeroContent() {
             </section>
 
             {/* STATS */}
-            <div className="flex flex-col sm:flex-row gap-12 sm:gap-16">
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-16">
               {/* STAT 1 */}
-              <div className="flex items-center gap-6">
+              <div className="grid grid-cols-[128px_1px_minmax(0,1fr)] sm:grid-cols-[150px_1px_minmax(0,1fr)] lg:grid-cols-[180px_1px_minmax(0,1fr)] items-center gap-x-4 sm:gap-x-6">
                 {/* Number */}
                 <div className="flex items-start">
                   <span className="text-[42px] sm:text-[56px] lg:text-[68px] xl:text-[72px] font-medium leading-none tracking-tight">
@@ -157,7 +157,7 @@ export default function HeroContent() {
               </div>
 
               {/* STAT 2 */}
-              <div className="flex items-center gap-6">
+              <div className="grid grid-cols-[128px_1px_minmax(0,1fr)] sm:grid-cols-[150px_1px_minmax(0,1fr)] lg:grid-cols-[180px_1px_minmax(0,1fr)] items-center gap-x-4 sm:gap-x-6">
                 <div className="flex items-start">
                   <span className="text-[42px] sm:text-[56px] lg:text-[68px] xl:text-[72px] font-medium leading-none tracking-tight">
                     <AnimatedCounter end={87} suffix="K" />

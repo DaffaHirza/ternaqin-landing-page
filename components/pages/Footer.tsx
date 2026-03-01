@@ -69,7 +69,7 @@ export default function Footer() {
                 <div>
                     <div className="flex items-center justify-center pointer-events-none">
                         <h2
-                            className="text-[120px] md:text-[200px] lg:text-[260px] xl:text-[320px] font-bold text-transparent bg-clip-text bg-linear-to-b from-[#B8C5C5] to-transparent text-center leading-none"
+                            className="text-[90px] md:text-[200px] lg:text-[260px] xl:text-[320px] font-bold text-transparent bg-clip-text bg-linear-to-b from-[#B8C5C5] to-transparent text-center leading-none"
                             style={{
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent'
@@ -81,10 +81,10 @@ export default function Footer() {
 
                     {/* Copyright Section */}
                     <div className="border-t border-[#E0E0E0] flex items-center justify-between py-4 relative z-10">
-                        <p className="text-[#A5A5A5] text-lg">
+                        <p className="text-[#A5A5A5] text-sm sm:text-base lg:text-lg text-center md:text-left leading-relaxed">
                             © {currentYear} TernaQin Indonesia
                         </p>
-                        <p className="text-[#A5A5A5] text-lg">
+                        <p className="text-[#A5A5A5] text-sm sm:text-base lg:text-lg text-center md:text-right leading-relaxed">
                             All Right Reserved
                         </p>
                     </div>
