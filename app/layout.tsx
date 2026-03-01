@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
-import SmoothScroll from "@/components/SmoothScrollProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TernaQin",
   description: "Smart livestock management platform",
+  icons: {
+    icon: "/img/logoternaqin.svg",
+    shortcut: "/img/logoternaqin.svg",
+    apple: "/img/logoternaqin.svg",
+  },
 };
 
 export default function RootLayout({

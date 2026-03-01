@@ -12,20 +12,43 @@ import {
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import Image from "next/image";
 
-const originalData = [
-  { name: "JAN", value: 40 },
-  { name: "FEB", value: 55 },
-  { name: "MAR", value: 75 },
-  { name: "APR", value: 35 },
-  { name: "MEI", value: 80 },
-  { name: "JUN", value: 45 },
+const monthData = [
+  { name: "JAN", value: 40, amount: 52125, growth: 12 },
+  { name: "FEB", value: 55, amount: 68420, growth: 18 },
+  { name: "MAR", value: 75, amount: 90375, growth: 40 },
+  { name: "APR", value: 35, amount: 47200, growth: 8 },
+  { name: "MEI", value: 80, amount: 97580, growth: 44 },
+  { name: "JUN", value: 45, amount: 59890, growth: 16 },
 ];
 
-const MAX_VALUE = 100;
+type TickPayload = { value: string };
 
-const CustomTick = (props: any) => {
-  const { x, y, payload, index, visibleTicksCount } = props;
+interface CustomTickProps {
+  x?: number;
+  y?: number;
+  payload?: TickPayload;
+  index?: number;
+  visibleTicksCount?: number;
+  activeMonth: string;
+  onMonthClick: (month: string) => void;
+}
+
+interface ChartClickState {
+  activeLabel?: string | number;
+}
+
+const CustomTick = ({
+  x,
+  y,
+  payload,
+  index,
+  visibleTicksCount,
+  activeMonth,
+  onMonthClick,
+}: CustomTickProps) => {
+  if (x === undefined || y === undefined || !payload) return null;
 
   const OFFSET = window.innerWidth < 640 ? 8 : 14;
   let adjustedX = x;
@@ -36,40 +59,46 @@ const CustomTick = (props: any) => {
     textAnchor = "start";
   }
 
-  if (index === visibleTicksCount - 1) {
+  if (index === (visibleTicksCount ?? 0) - 1) {
     adjustedX = x - OFFSET;
     textAnchor = "end";
   }
 
+  const isActive = payload.value === activeMonth;
+
   return (
-    <text
-      x={adjustedX}
-      y={y + 15}
-      textAnchor={textAnchor}
-      fill="#9A9A9A"
-      fontSize={12}
+    <g
+      onClick={() => onMonthClick(payload.value)}
+      style={{ cursor: "pointer", pointerEvents: "all" }}
     >
-      {payload.value}
-    </text>
+      <text
+        x={adjustedX}
+        y={y + 15}
+        textAnchor={textAnchor}
+        fill={isActive ? "#1F4941" : "#9A9A9A"}
+        fontSize={12}
+        fontWeight={isActive ? 600 : 400}
+      >
+        {payload.value}
+      </text>
+    </g>
   );
 };
 
 export default function SalesTransactions() {
   const [progress, setProgress] = useState(0);
   const animationRef = useRef<number | null>(null);
-  const [count, setCount] = useState(0);
+  const [activeMonth, setActiveMonth] = useState("MAR");
 
   useEffect(() => {
     const duration = 1800;
     const start = performance.now();
-    const targetValue = 90375;
 
     const animate = (time: number) => {
       const p = Math.min((time - start) / duration, 1);
       const ease = 1 - Math.pow(1 - p, 3);
 
       setProgress(ease);
-      setCount(Math.floor(targetValue * ease));
 
       if (p < 1) {
         animationRef.current = requestAnimationFrame(animate);
@@ -84,10 +113,33 @@ export default function SalesTransactions() {
     };
   }, []);
 
-  const animatedData = originalData.map((item) => ({
+  const animatedData = monthData.map((item) => ({
     ...item,
     value: item.value * progress,
   }));
+
+  const activeMonthData =
+    monthData.find((item) => item.name === activeMonth) ?? monthData[2];
+  const activePoint =
+    animatedData.find((item) => item.name === activeMonth) ?? animatedData[2];
+  const activeIndex = Math.max(
+    0,
+    monthData.findIndex((item) => item.name === activeMonth)
+  );
+  const displayedAmount = Math.floor(activeMonthData.amount * progress);
+  const leftPercent =
+    monthData.length > 1 ? (activeIndex / (monthData.length - 1)) * 100 : 50;
+  const translateClass =
+    activeIndex === 0
+      ? "translate-x-0"
+      : activeIndex === monthData.length - 1
+        ? "-translate-x-full"
+        : "-translate-x-1/2";
+
+  const handleChartClick = (state: ChartClickState | undefined) => {
+    if (!state?.activeLabel) return;
+    setActiveMonth(String(state.activeLabel));
+  };
 
   return (
     <div className="bg-white rounded-[12px] p-6 h-full flex flex-col">
@@ -126,6 +178,7 @@ export default function SalesTransactions() {
             <AreaChart
               data={animatedData}
               margin={{ top: 0, right: 0, left: 0, bottom: 20 }}
+              onClick={handleChartClick}
             >
               <defs>
                 <linearGradient id="colorArea" x1="0" y1="0" x2="0" y2="1">
@@ -140,7 +193,12 @@ export default function SalesTransactions() {
                 tickLine={false}
                 interval={0}
                 scale="point"
-                tick={<CustomTick />}
+                tick={
+                  <CustomTick
+                    activeMonth={activeMonth}
+                    onMonthClick={setActiveMonth}
+                  />
+                }
               />
 
               <YAxis hide domain={[0, (dataMax: number) => dataMax + 10]} />
@@ -157,16 +215,16 @@ export default function SalesTransactions() {
 
               <ReferenceLine
                 segment={[
-                  { x: "MAR", y: 0 },
-                  { x: "MAR", y: animatedData[2].value },
+                  { x: activeMonth, y: 0 },
+                  { x: activeMonth, y: activePoint.value },
                 ]}
                 stroke="#1F4941"
                 strokeWidth={2}
               />
 
               <ReferenceDot
-                x="MAR"
-                y={animatedData[2].value}
+                x={activeMonth}
+                y={activePoint.value}
                 r={6}
                 fill="#1F4941"
                 stroke="white"
@@ -180,15 +238,22 @@ export default function SalesTransactions() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="absolute top-6 left-1/2 -translate-x-1/2 text-center px-4"
+            className={`absolute top-6 text-center px-4 pointer-events-none ${translateClass}`}
+            style={{ left: `${leftPercent}%` }}
           >
             <div className="flex items-center justify-center gap-4 whitespace-nowrap">
               <p className="text-[clamp(16px,2.5vw,26px)] font-semibold text-[#191919]">
-                ${count.toLocaleString("de-DE")},00
+                ${displayedAmount.toLocaleString("de-DE")},00
               </p>
               <p className="text-[#35B46A] text-[clamp(10px,1.5vw,14px)] font-medium flex items-center gap-1 whitespace-nowrap">
-                <img src="img/trend-up.svg" alt="" className="w-4 h-4" />
-                <AnimatedCounter end={40} suffix="%" />
+                <Image
+                  src="/img/trend-up.svg"
+                  alt="trend"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                <AnimatedCounter end={activeMonthData.growth} suffix="%" />
               </p>
             </div>
           </motion.div>

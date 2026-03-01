@@ -72,10 +72,10 @@ will-change-transform transition-transform
       text-[#1c1c1c]
     "
             >
-              Purpose-Built With Intelligent Automation <span> </span>
+              Purpose-Built With Intelligent Automation{" "}
+              <br className="hidden md:block" />
               <span className="text-[#bcbcbc] font-medium">
                 To Optimize Livestock Management And
-                <br className="hidden md:block" />
                 Accelerate Sustainable Growth
               </span>
             </h2>
@@ -83,7 +83,7 @@ will-change-transform transition-transform
         </div>
 
         {/* TOP GRID */}
-        <div className="grid md:grid-cols-12 gap-4">
+        <div className="grid md:grid-cols-12 gap-4 md:items-stretch">
           {/* LEFT CARD */}
           <div
             className="
@@ -91,7 +91,8 @@ will-change-transform transition-transform
     relative 
     bg-white 
     rounded-[24px] md:rounded-[32px] 
-    aspect-auto md:aspect-square 
+    h-full
+    min-h-[360px] sm:min-h-[420px] md:min-h-[520px]
     p-6 sm:p-8 md:p-14 
     overflow-hidden
     group
@@ -129,7 +130,8 @@ will-change-transform transition-transform
             {/* Inner Content Wrapper */}
             <div className="relative z-10 h-full flex flex-col justify-between">
               {/* Top Row — Logo */}
-              <div className="flex justify-end">
+              <div className="flex items-center gap-4">
+                <span className="h-px flex-1 bg-[#D7D7D7]" />
                 <img
                   src="/img/Ternaqin-logo.svg"
                   alt="TernaQin"
@@ -139,12 +141,13 @@ will-change-transform transition-transform
 
               {/* Center Heading */}
               <div className="flex-1 flex items-center py-6 md:py-0">
+
                 <h3
                   className="
         text-[28px] 
-        sm:text-[36px] 
-        md:text-[48px] 
-        lg:text-[60px] 
+        sm:text-[24px] 
+        md:text-[38px] 
+        lg:text-[40px] 
         leading-[1.15] 
         md:leading-[1.1] 
         font-medium
@@ -176,11 +179,22 @@ will-change-transform transition-transform
         border-2 
         border-[#1f3d34] 
         rounded-[6px] 
-        text-[#1f3d34] 
+        text-[#191919] 
         bg-[#D9F5E5]/50
+        font-medium
       "
                 >
-                  <span className="w-2 h-2 bg-[#1f3d34] rounded-full" />
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_9322_1457)">
+                      <path d="M25.6666 13.1249H23.2866C22.8666 8.67992 19.3199 5.12159 14.8749 4.71325V2.33325C14.8749 1.85492 14.4783 1.45825 13.9999 1.45825C13.5216 1.45825 13.1249 1.85492 13.1249 2.33325V4.71325C8.67992 5.13325 5.12159 8.67992 4.71325 13.1249H2.33325C1.85492 13.1249 1.45825 13.5216 1.45825 13.9999C1.45825 14.4783 1.85492 14.8749 2.33325 14.8749H4.71325C5.13325 19.3199 8.67992 22.8783 13.1249 23.2866V25.6666C13.1249 26.1449 13.5216 26.5416 13.9999 26.5416C14.4783 26.5416 14.8749 26.1449 14.8749 25.6666V23.2866C19.3199 22.8666 22.8783 19.3199 23.2866 14.8749H25.6666C26.1449 14.8749 26.5416 14.4783 26.5416 13.9999C26.5416 13.5216 26.1449 13.1249 25.6666 13.1249ZM13.9999 17.6399C11.9933 17.6399 10.3599 16.0066 10.3599 13.9999C10.3599 11.9933 11.9933 10.3599 13.9999 10.3599C16.0066 10.3599 17.6399 11.9933 17.6399 13.9999C17.6399 16.0066 16.0066 17.6399 13.9999 17.6399Z" fill="#191919" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_9322_1457">
+                        <rect width="28" height="28" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
                   System Track Record
                 </span>
               </div>
@@ -195,6 +209,7 @@ will-change-transform transition-transform
     relative 
     rounded-[24px] md:rounded-[32px] 
     overflow-hidden 
+            h-full
    min-h-[360px] sm:min-h-[420px] md:min-h-[520px]
   "
           >
@@ -516,7 +531,7 @@ will-change-transform transition-transform
         </div>
 
         {/* BOTTOM GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 md:items-stretch">
           {/* LEFT LARGE (Flexible - 7 cols) */}
           <div
             className="
@@ -543,7 +558,7 @@ will-change-transform transition-transform
             {/* Content */}
             <div className="relative z-10 p-6 text-white flex flex-col h-full">
               {/* Title */}
-              <h3 className="text-[32px] sm:text-[40px] md:text-[55px] font-medium leading-tight max-w-[80%]">
+              <h3 className="text-[32px] md:text-[40px] lg:text-[45px] font-medium leading-tight max-w-[80%]">
                 Next-Generation Platform Ecosystem with AI Assistant
               </h3>
 
@@ -639,12 +654,12 @@ will-change-transform transition-transform
     md:col-span-5
     relative
     rounded-[32px]
-    aspect-auto md:aspect-square
+    h-full
     overflow-hidden
-    px-4 py-8
+    px-4 py-6 md:py-7
     text-white
     shadow-sm
-    min-h-[420px] sm:min-h-[480px] md:min-h-0
+    min-h-[340px] sm:min-h-[390px] md:min-h-[460px]
   "
           >
             {/* Background Image */}
@@ -687,10 +702,11 @@ will-change-transform transition-transform
                     alt="TernaQin Logo"
                     width={300}
                     height={32}
+                    className="w-[180px] sm:w-[220px] md:w-[250px] h-auto"
                   />
                 </div>
 
-                <p className="text-white/60 text-[18px] sm:text-[22px] md:text-[28px]">
+                <p className="text-white/60 text-[14px] sm:text-[18px] md:text-[22px] leading-[1.35]">
                   The trial access is now available. Try it now!
                 </p>
               </div>
@@ -700,9 +716,9 @@ will-change-transform transition-transform
                 className="
   relative 
   flex flex-col 
-  gap-12
-  mt-12
-  mb-24
+  gap-8
+  mt-8
+  mb-16
   md:mb-0
   md:mt-0
   md:block 
@@ -712,41 +728,47 @@ will-change-transform transition-transform
               >
                 {/* 85% */}
                 <div className="relative md:absolute md:top-1/2 md:left-1/2 md:-translate-y-[100%] md:translate-x-[-5%] mb-10 md:mb-0">
-                  <p className="text-[60px] sm:text-[80px] md:text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
+                  <p className="text-[44px] sm:text-[58px] md:text-[72px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
                     85
-                    <span className="text-[20px] sm:text-[26px] md:text-[34px] align-top ml-1 text-white/60">
+                    <span className="text-[16px] sm:text-[20px] md:text-[24px] align-top ml-1 text-white/60">
                       %
                     </span>
                   </p>
 
-                  <div className="mt-6 inline-flex items-center gap-3 px-5 py-2 bg-white/20 border border-white rounded-[8px] text-white backdrop-blur-md">
+                  <div className="mt-4 inline-flex items-center gap-2 px-4 py-1.5 bg-white/20 border border-white rounded-[8px] text-white backdrop-blur-md text-[16px] sm:text-[18px] md:text-[20px]">
                     <Image
                       src="/img/status-up.svg"
                       alt="growth"
-                      width={28}
-                      height={28}
+                      width={22}
+                      height={22}
                     />
-                    Livestock Revenue Growth
+                    <span className="text-[16px] md:text-[15px] ">
+                      Livestock Revenue Growth
+                    </span>
+
                   </div>
                 </div>
 
                 {/* 95% */}
                 <div className="relative md:absolute md:top-1/2 md:left-1/2 md:translate-y-[-40%] md:-translate-x-[95%]">
-                  <p className="text-[60px] sm:text-[80px] md:text-[110px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
+                  <p className="text-[44px] sm:text-[58px] md:text-[72px] leading-[0.9] font-semibold tracking-tight text-[#EDEDED]">
                     95
-                    <span className="text-[20px] sm:text-[26px] md:text-[34px] align-top ml-1 text-white/60">
+                    <span className="text-[16px] sm:text-[20px] md:text-[24px] align-top ml-1 text-white/60">
                       %
                     </span>
                   </p>
 
-                  <div className="mt-6 inline-flex items-center gap-3 px-5 py-2 bg-white/20 border border-white rounded-[8px] text-white backdrop-blur-md">
+                  <div className="mt-4 inline-flex items-center gap-2 px-4 py-1.5 bg-white/20 border border-white rounded-[8px] text-white backdrop-blur-md text-[16px] sm:text-[18px] md:text-[20px]">
                     <Image
                       src="/img/lovely.svg"
                       alt="love"
-                      width={28}
-                      height={28}
+                      width={22}
+                      height={22}
                     />
-                    Satisfied With Our Services
+                    <span className="text-[16px] md:text-[15px]">
+                      Satisfied With Our Services
+                    </span>
+
                   </div>
                 </div>
               </div>
@@ -766,7 +788,7 @@ will-change-transform transition-transform
                   <p
                     className="
     text-white/80
-    text-[18px] md:text-[24px]
+    text-[14px] sm:text-[16px] md:text-[20px]
     line-clamp-2
     md:line-clamp-none
     transform
@@ -786,8 +808,8 @@ will-change-transform transition-transform
                     href="/trial"
                     className="
     flex-shrink-0
-    w-[48px] md:w-[60px]
-    h-[48px] md:h-[60px]
+    w-[42px] md:w-[52px]
+    h-[42px] md:h-[52px]
     rounded-[10px] md:rounded-[12px]
     bg-white
     flex items-center justify-center

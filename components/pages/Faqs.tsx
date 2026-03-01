@@ -114,14 +114,14 @@ export default function Faqs() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Left Side - Image Card */}
           <div
-            className="relative bg-gray-800 rounded-3xl overflow-hidden h-[400px] lg:h-auto lg:sticky lg:top-8 transition-all duration-300"
+            className="relative  bg-[#f3f3f3]  rounded-3xl overflow-hidden h-[400px] lg:h-auto lg:sticky lg:top-8 transition-all duration-300"
             style={{ height: faqHeight > 0 ? `${faqHeight}px` : undefined }}
           >
             <Image
               src="/img/bgfaqs.svg"
               alt="Customer meeting"
               fill
-              className="object-cover opacity-80"
+              className="object-cover opacity-80 transition-transform duration-300 max-lg:scale-95 rounded-3xl"
             />
 
             {/* Text Content */}
@@ -187,9 +187,8 @@ export default function Faqs() {
 
                 {/* Answer Content */}
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === index ? "max-h-96" : "max-h-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96" : "max-h-0"
+                    }`}
                 >
                   <div className="px-6 pb-6 leading-relaxed">
                     <div className="text-[#A5A5A5] text-lg">{faq.answer}</div>

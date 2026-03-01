@@ -8,17 +8,14 @@ import { useRouter } from "next/navigation";
 export default function ProcessSection() {
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const [prevStep, setPrevStep] = useState(0);
   const [animating, setAnimating] = useState(false);
 
   const current = PROCESS_STEPS[step];
-  const previous = PROCESS_STEPS[prevStep];
 
   const changeStep = (newStep: number) => {
     if (animating) return;
 
     setAnimating(true);
-    setPrevStep(step);
     setStep(newStep);
 
     setTimeout(() => setAnimating(false), 450);
@@ -62,7 +59,7 @@ export default function ProcessSection() {
         "
             >
               Delivering Integrated, Transparent, and Intelligent Livestock
-              Management
+              Management{" "}
               <br className="hidden md:block" />
               <span className="text-[#bcbcbc] font-medium">
                 Powered By QR Based Tracking
@@ -134,19 +131,19 @@ flex items-center justify-between
               </div>
             </div>
             {/* LOWER GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-[6.5fr_5.5fr] gap-6 md:gap-4 flex-1">
+            <div className="grid grid-cols-1 lg:grid-cols-[6.5fr_5.5fr] gap-6 md:gap-4 flex-1">
               {/* INFO CARD */}
-              <div className="bg-[#F7F7F7] rounded-[28px] p-6 md:p-10flex flex-col justify-between h-full">
+              <div className="bg-[#F7F7F7] rounded-[28px] p-6 md:p-8 lg:p-10 flex flex-col justify-between h-full">
                 <div className="space-y-8">
-                  <h3 className="text-[24px] sm:text-[30px] md:text-[36px] w-full font-semibold text-[#1A1A1A] leading-[1.2]">
+                  <h3 className="text-[24px] sm:text-[30px] md:text-[32px] lg:text-[36px] w-full font-semibold text-[#1A1A1A] leading-[1.2]">
                     {current.title}
                   </h3>
 
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {current.roles.map((role) => (
                       <span
                         key={role}
-                        className="px-5 py-2 rounded-[12px] text-sm font-medium border-2 border-[#1F4941] bg-[#D9F5E5]/50 text-[#1F4941]"
+                        className="px-4 md:px-5 py-2 rounded-[12px] text-xs sm:text-sm font-medium border-2 border-[#1F4941] bg-[#D9F5E5]/50 text-[#1F4941]"
                       >
                         {role}
                       </span>
@@ -159,22 +156,22 @@ flex items-center justify-between
                 </div>
 
                 {/* STAT */}
-                <div className="flex items-end gap-6 mt-16">
-                  <span className="text-[48px] sm:text-[60px] md:text-[72px] font-semibold text-[#1F4941] leading-none">
+                <div className="flex items-end gap-4 md:gap-6 mt-12 md:mt-14 lg:mt-16">
+                  <span className="text-[42px] sm:text-[52px] md:text-[60px] lg:text-[72px] font-semibold text-[#1F4941] leading-none">
                     {current.stat}
                   </span>
 
-                  <div className="border-l border-black/25 pl-6">
-                    <p className="text-[22px] font-medium text-[#1A1A1A]">
+                  <div className="border-l border-black/25 pl-4 md:pl-6">
+                    <p className="text-[18px] md:text-[20px] lg:text-[22px] font-medium text-[#1A1A1A]">
                       {current.statLabel}
                     </p>
-                    <p className="text-[#9A9A9A]">{current.statSub}</p>
+                    <p className="text-sm md:text-base text-[#9A9A9A]">{current.statSub}</p>
                   </div>
                 </div>
               </div>
 
               {/* DEMO CARD */}
-              <div className="relative rounded-[32px] p-10 text-white overflow-hidden h-full">
+              <div className="relative rounded-[32px] p-6 md:p-8 lg:p-10 text-white overflow-hidden h-full">
                 {/* SVG Background */}
                 <Image
                   src="/img/bg-process-card-3.svg"
@@ -185,7 +182,7 @@ flex items-center justify-between
 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* HEADING */}
-                  <p className="text-[30px] leading-[1.5] font-medium text-white/90">
+                  <p className="mb-5 text-[22px] sm:text-[26px] lg:text-[30px] leading-[1.35] lg:leading-[1.5] font-medium text-white/90 max-w-[28ch]">
                     Join our live product demo to see the platform in action and
                     explore all its features
                   </p>
@@ -193,13 +190,13 @@ flex items-center justify-between
                   {/* PUSH CONTENT BELOW TO BOTTOM */}
                   <div className="mt-auto">
                     {/* DATE & LOCATION */}
-                    <div className="space-y-5 text-[18px] text-white/70 mb-8">
+                    <div className="space-y-4 lg:space-y-5 text-[15px] sm:text-[16px] lg:text-[18px] text-white/70 mb-6 lg:mb-8">
                       <div className="flex items-center gap-4">
                         <Image
                           src="/img/calendar.svg"
                           alt="calendar"
-                          width={22}
-                          height={22}
+                          width={18}
+                          height={18}
                           className="opacity-80"
                         />
                         <span>January 01, 2027</span>
@@ -209,8 +206,8 @@ flex items-center justify-between
                         <Image
                           src="/img/location.svg"
                           alt="location"
-                          width={22}
-                          height={22}
+                          width={18}
+                          height={18}
                           className="opacity-80"
                         />
                         <span>Online (Via Zoom & Discord)</span>
@@ -218,25 +215,25 @@ flex items-center justify-between
                     </div>
 
                     {/* DIVIDER */}
-                    <div className="h-px bg-white/20 mb-8" />
+                    <div className="h-px bg-white/20 mb-6 lg:mb-8" />
 
                     <div className="flex gap-4">
                       <button
                         onClick={() => router.push("/book-now")}
-                        className="flex-1 h-[64px] bg-white text-[#1F4941] rounded-[18px] font-medium text-[24px] hover:scale-[1.02] transition"
+                        className="flex-1 h-[50px] sm:h-[56px] lg:h-[64px] bg-white text-[#1F4941] rounded-[14px] lg:rounded-[18px] font-medium text-[18px] sm:text-[20px] lg:text-[24px] hover:scale-[1.02] transition"
                       >
                         Book Now
                       </button>
 
                       <button
                         onClick={() => router.push("/book-now")}
-                        className="w-[64px] h-[64px] bg-white rounded-[18px] flex items-center justify-center hover:scale-[1.02] transition"
+                        className="w-[50px] sm:w-[56px] lg:w-[64px] h-[50px] sm:h-[56px] lg:h-[64px] bg-white rounded-[14px] lg:rounded-[18px] flex items-center justify-center hover:scale-[1.02] transition"
                       >
                         <Image
                           src="/img/arrow-right.svg"
                           alt="arrow"
-                          width={40}
-                          height={40}
+                          width={28}
+                          height={28}
                         />
                       </button>
                     </div>

@@ -69,8 +69,8 @@ export default function ScrollScene({
   }, []);
 
   return (
-    <div ref={trackRef} id={id} className="relative z-0">
-      <div className="sticky top-0 h-screen">
+    <div ref={trackRef} id={id} className="relative z-0 bg-[#f3f3f3] ">
+      <div className="sticky top-0 h-screen bg-[#f3f3f3] ">
         {/* NAVBAR overlay */}
         <div
           className="fixed z-[999] pointer-events-none"
@@ -90,7 +90,7 @@ export default function ScrollScene({
         >
           <div className="relative w-full h-full rounded-[32px] overflow-hidden">
             {/* BACKGROUND */}
-            <div className="absolute inset-0 -z-10">{background}</div>
+            <div className="absolute inset-0 -z-10 " >{background}</div>
 
             {/* CONTENT HERO + NEXT */}
             <div
